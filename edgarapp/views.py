@@ -148,6 +148,9 @@ def SearchResultsView(request):
     else:
       return render(request, 'about.html', {'extended_template': 'base.html'})
 
+
+from .utils import TOCExtractor
+
 def SearchFilingView(request):
   model = Company, Filing, Proxies
   template_name = 'companyFiling.html'
@@ -227,39 +230,39 @@ def SearchFilingView(request):
 
   url = '/mnt/filings-static/capitalrap/edgarapp/static/filings/' + filing.filingpath
   
-  page = open(url)
-  finder = filing.filingpath.split('/')[1]+"#"
-  soup = BeautifulSoup(page.read())
+  # page = open(url)
+  # finder = filing.filingpath.split('/')[1]+"#"
+  # soup = BeautifulSoup(page.read())
   links = []
   verify = []
-  for link in soup.find_all('a'):
-    x = link.get('href')
-    if str(x).startswith('https') or str(x).startswith('http'):
-      if x.find('#') != -1:
-        if link.string.find('Table of Contents') == -1 or x.endswith("#INDEX") == -1:
-          # print(link.string.endswith("Index"))
-          if link.string.endswith("Index") == False:
-            # print('not present')
-            if x in verify:
-              for item in links:
-                if x.find(item["url"]) != -1:
-                  # print(link.string)
-                  itemIndex = links.index(item)
-                  # print("index", itemIndex)
-                  del links[itemIndex]
-                  store = {
-                    "value": item["value"] + " " + link.string,
-                    "url": item["url"]
-                  }
-                  links.append(store)
-            else: 
-              # print('false')
-              verify.append(x)
-              store = {
-                "value": link.string,
-                "url": "#"+x.split('#')[1]
-              }
-              links.append(store)
+  # for link in soup.find_all('a'):
+  #   x = link.get('href')
+  #   if str(x).startswith('https') or str(x).startswith('http'):
+  #     if x.find('#') != -1:
+  #       if link.string.find('Table of Contents') == -1 or x.endswith("#INDEX") == -1:
+  #         # print(link.string.endswith("Index"))
+  #         if link.string.endswith("Index") == False:
+  #           # print('not present')
+  #           if x in verify:
+  #             for item in links:
+  #               if x.find(item["url"]) != -1:
+  #                 # print(link.string)
+  #                 itemIndex = links.index(item)
+  #                 # print("index", itemIndex)
+  #                 del links[itemIndex]
+  #                 store = {
+  #                   "value": item["value"] + " " + link.string,
+  #                   "url": item["url"]
+  #                 }
+  #                 links.append(store)
+  #           else: 
+  #             # print('false')
+  #             verify.append(x)
+  #             store = {
+  #               "value": link.string,
+  #               "url": "#"+x.split('#')[1]
+  #             }
+  #             links.append(store)
 
   object_list = []
   object_list.append((query, fid))
@@ -272,11 +275,22 @@ def SearchFilingView(request):
   object_list.append(links)
 
   # print(finder)
+  toc_extractor = TOCExtractor()
+  
+  with open(url) as file:
+    
+    filing_html = file.read()
+
+    extract_data = toc_extractor.extract(filing_html)
 
   # object_list is ((q, fid), (companyname, name), (filings object), (filing))
   return render(
-    request, template_name,
-    {'object_list': object_list, 'extended_template': extended_template}
+    request, template_name, {
+      'object_list': object_list, 
+      'extended_template': extended_template,
+      'table_of_contents': extract_data.table,
+      'filing_html': filing_html
+    }
   )
 
 

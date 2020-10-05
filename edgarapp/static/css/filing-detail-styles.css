@@ -182,9 +182,13 @@ tbody .directorDisplay:hover td div.comps {
     background-color: #4298ED;
 }
 
+html, body {
+    height: 98%;
+}
+
 .section {
-    height:90vh;
-    overflow:scroll; 
+    height: 100%;
+    overflow-y:scroll; 
 }
 
 #table_filing {

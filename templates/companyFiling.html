@@ -528,10 +528,10 @@
   <script src="../../static/bootstrap/js/formautocomplete.js"></script>
   
   <script>
-    $("#table_filing a").on('click', function(e) {
-    e.preventDefault()
-    let hash = this.hash
-    document.querySelector(hash).scrollIntoView({behavior:'smooth'})
+    $("#table_filing a:not(.exhibit-link)").on('click', function(e) {
+      e.preventDefault()
+      let hash = this.hash
+      document.querySelector(hash).scrollIntoView({behavior:'smooth'})
   })
 
 </script>

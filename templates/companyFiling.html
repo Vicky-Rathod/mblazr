@@ -531,7 +531,12 @@
     $("#table_filing a:not(.exhibit-link)").on('click', function(e) {
       e.preventDefault()
       let hash = this.hash
-      document.querySelector(hash).scrollIntoView({behavior:'smooth'})
+      try {
+        document.querySelector(hash).scrollIntoView({behavior:'smooth'})
+      } catch (error) {
+        hash = hash.slice(1)
+        document.querySelector("[name='"+ hash +"']").scrollIntoView({behavior:'smooth'})
+      }
   })
 
 </script>

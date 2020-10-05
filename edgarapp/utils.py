@@ -179,17 +179,29 @@ class TOCExtractor(object):
                 return s.isdigit()
             return True
         
-        html = html.replace(self.table_html, '')
+        try:
+            html = html.replace(self.table_html, '')
+            exhibit_start_pos = html.lower().index('exhibit')
+        except:
+            return ''
+            
 
-        html = html.replace(
-            html[:html.index('exhibit')], '')
+        html = html.replace( html[:exhibit_start_pos], '')
 
         soup = BeautifulSoup(html, features='lxml')
 
         exhibits = "<h5 class='exhibit-header'>Exhibits</h5>"
 
         for link in soup.find_all('a'):
-            if is_number_regex(link.get_text()): continue
-            exhibits += f"<a href='{link.get('href')}' class='exhibit-link' target='_blank'>{link.get_text()}</a>"
+
+            link_text = link.get_text()
+
+            if not link_text: continue
+            
+            if is_number_regex(link_text): continue
+            
+            if 'table of content' in link_text.lower(): continue
+
+            exhibits += f"<a href='{link.get('href')}' class='exhibit-link' target='_blank'>{link_text}</a>"
 
         return exhibits

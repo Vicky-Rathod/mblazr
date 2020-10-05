@@ -59,28 +59,32 @@
 {% endblock %}
 
 {% block content %}
-  <div class="container-fluid">
+  <div class="container-fluid" style="height: 100%;">
     &nbsp;
 
-    <div class="row">
+    <div class="row" style="height: 100%;">
 
       <!--------------------------------------->
       <!----------- 1st column ---------------->
       <!------------ LEFT MENU ---------------->
-      <div class="col-sm-3" id="1st" style="height:90vh;">
-        <form class="autocomplete" autocomplete="off" action="{% url 'companyOverview' %}" method="get" name="searchForm">
-          <div style="position:relative">
-            <input type="text" class="form-control typeahead tt-query" autocomplete="off" name="q" id="myInput" spellcheck="false" style="background-color:#fff;text-transform:uppercase;" placeholder="Ticker...">
-            <button type="submit" id="myBtn" class="btn btn-primary" disabled="true" style="background-color:#2196f3;"><div style="-webkit-transform: rotate(45deg); 
-                         -moz-transform: rotate(45deg); 
-                           -o-transform: rotate(45deg);
-                              transform: rotate(45deg);">
-              &#9906;
-              </div>
-            </button>
-          </div>
-        </form>
+      <div class="col-sm-3 section" id="1st"  style="height: 100%;">
+        <div style="position: fixed; background-color: white;">
 
+          <form class="autocomplete" autocomplete="off" action="{% url 'companyOverview' %}" method="get" name="searchForm">
+            <div style="position:relative">
+              <input type="text" class="form-control typeahead tt-query" autocomplete="off" name="q" id="myInput" spellcheck="false" style="background-color:#fff;text-transform:uppercase;" placeholder="Ticker...">
+              <button type="submit" id="myBtn" class="btn btn-primary btn-block" disabled="true" style="background-color:#2196f3;"><div style="-webkit-transform: rotate(45deg); 
+                         -moz-transform: rotate(45deg); 
+                         -o-transform: rotate(45deg);
+                         transform: rotate(45deg);">
+              &#9906;
+            </div>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div style="margin-top: 70px;"></div>
         <button id="myBtn1">Funds</button>
 
         <div id="myModal" class="modal">
@@ -90,7 +94,7 @@
             <h2 class = "fund-header" id = 'dynamic-header'></h2>
             <p class = "small-note">* Note that value is based on the market value at the end of the day on at the end of the quarter the 13F was filed.</p>
             <div class = "table-wrapper">
-              <table class = "fl-table" id = "fund-table">
+              <table class="fl-table" id="fund-table">
                 <thead>
                   <th onclick="sortTable(0)">Fund</th>
                   <th onclick="sortTable(1)">Number of Shares</th>
@@ -392,7 +396,7 @@
         </script>
 
         &nbsp;
-        <div style="height:83vh;overflow:scroll;">
+        <div>
           <table class="table table-striped table-hover ">
             <thead>
               <tr>

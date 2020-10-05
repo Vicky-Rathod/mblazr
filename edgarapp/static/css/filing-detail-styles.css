@@ -214,11 +214,19 @@ tbody .directorDisplay:hover td div.comps {
 }
 
 #table_filing .item-link{
-    padding-left: 15px
+    padding-left: 15px;
 }
 
 #table_filing .note-link{
-    padding-left: 25px
+    padding-left: 30px;
+}
+
+#table_filing .notes-link{
+    padding-left: 20px;
+}
+
+#table_filing .other-link{
+    padding-left: 25px;
 }
 
 #filing_td {

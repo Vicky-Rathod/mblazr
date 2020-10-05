@@ -190,7 +190,9 @@ class TOCExtractor(object):
 
         soup = BeautifulSoup(html, features='lxml')
 
-        exhibits = "<h5 class='exhibit-header'>Exhibits</h5>"
+        exhibits = ""
+
+        exhibits_dict = {}
 
         for link in soup.find_all('a'):
 
@@ -202,6 +204,20 @@ class TOCExtractor(object):
             
             if 'table of content' in link_text.lower(): continue
 
-            exhibits += f"<a href='{link.get('href')}' class='exhibit-link' target='_blank'>{link_text}</a>"
+            href = link.get('href')
 
-        return exhibits
+            if href and href not in exhibits_dict:
+                exhibits_dict[href] = link_text
+
+            elif href:
+                exhibits_dict[href] += link_text
+
+        for href, text in exhibits_dict.items():
+            exhibits += f"<a href='{href}' class='exhibit-link' target='_blank'>{text}</a>"
+
+        if not exhibits:
+            return ''
+
+        heading = "<h5 class='exhibit-header'>Exhibits</h5>"
+
+        return heading + exhibits

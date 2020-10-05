@@ -91,6 +91,7 @@ class TOCExtractor(object):
             text = re.sub(r'\\n', ' ', text)
             text = text.strip()
             text = re.sub(r'(\d+|i+|v+)$', '', text)
+            text = re.sub(r'(Item \d+\S*\.)(.*)', '\\1 \\2', text)
 
             href = None
 

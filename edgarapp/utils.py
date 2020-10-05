@@ -218,6 +218,6 @@ class TOCExtractor(object):
         if not exhibits:
             return ''
 
-        heading = "<h5 class='exhibit-header'>Exhibits</h5>"
+        heading = "<h3 class='exhibit-header'>Exhibits</h3>"
 
         return heading + exhibits

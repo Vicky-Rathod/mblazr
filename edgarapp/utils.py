@@ -160,11 +160,11 @@ class TOCExtractor(object):
                 pos = text.lower().index("index")
         
         except:
-            pos = text.index('<hr style="page-break-after:always"')
+            pos = text.lower().index('<hr style="page-break-after:always"')
 
         text = text[pos:]
 
-        end_pos = text.index('</table>')
+        end_pos = text.lower().index('</table>')
 
         text = text[:end_pos+8]
 

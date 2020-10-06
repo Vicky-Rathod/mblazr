@@ -460,9 +460,7 @@
       <div class="col-sm-6 section" id="2nd">
         <!--doc-->
         {% autoescape off %}
-          {% comment %} <iframe name="f-if" id="iFrame" src="{% static 'filings/' %}{{ object_list.3.filingpath }}" frameborder="0" position="absolute" height="100%" width="100%" style="background: #FFFFFF;"></iframe> {% endcomment %}
-        
-          {{filing_html}}
+          <iframe name="f-if" id="iFrame" src="{% static 'filings/' %}{{ object_list.3.filingpath }}" frameborder="0" position="absolute" height="100%" width="100%" style="background: #FFFFFF;"></iframe>
         {% endautoescape %}
 
       </div>

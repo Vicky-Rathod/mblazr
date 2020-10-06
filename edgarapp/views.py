@@ -293,15 +293,19 @@ def SearchFilingView(request):
     with open(url) as file:
 
         filing_html = file.read()
-
-        extract_data = toc_extractor.extract(filing_html)
+        
+        try:
+          extract_data = toc_extractor.extract(filing_html)
+          table_of_contents = extract_data.table
+        except:
+          table_of_contents = ""
 
     # object_list is ((q, fid), (companyname, name), (filings object), (filing))
     return render(
         request, template_name, {
             'object_list': object_list,
             'extended_template': extended_template,
-            'table_of_contents': extract_data.table,
+            'table_of_contents': table_of_contents,
             'filing_html': filing_html
         }
     )

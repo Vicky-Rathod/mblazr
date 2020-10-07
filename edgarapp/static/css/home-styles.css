@@ -1,3 +1,6 @@
+.autocomplete{
+    height: 300px; 
+}
 .autocomplete input {
     padding: 10px;
     height: 50px;
@@ -10,15 +13,10 @@
     padding:10px;
     height: 50px;
 }
-.autocomplete-active, .autocomplete-items .link:hover{
-    background-color: lightgray;
-    text-decoration: none;
-    border-bottom: 1px solid grey
-}
 .autocomplete .autocomplete-items{
-    background-color: white;
     padding: 0 0 0 0;
-/*     border-radius: 0 0 10px 10px */
+    overflow:auto;
+    height: 100%;
 }
 .autocomplete-items .link {
     border-bottom: 1px solid lightgray;
@@ -27,6 +25,12 @@
     color: #555;
     font-size: 16px;
     font-weight: bold;
+    background-color: white
+}
+.autocomplete-active>.link, .autocomplete-items .link:hover{
+    background-color: lightgray;
+    text-decoration: none;
+    border-bottom: 1px solid grey
 }
 .bs-example {
     font-family: sans-serif;

@@ -22,8 +22,8 @@ $(document).ready(function () {
             counter = 0;
             /*for each item in the array...*/
             for (i = 0; i < arr.length; i++) {
-                if (counter == 4) break
-                counter++;
+                // if (counter == 4) break
+                // counter++;
                 /*check if the item starts with the same letters as the text field value:*/
                 /*create a DIV element for each matching element:*/
                 b = document.createElement("DIV");
@@ -118,9 +118,10 @@ $(document).ready(function () {
 
 
     function filterTickers(value) {
+        value = value.toLowerCase()
         let suggestions = tickers.filter(s => {
-            value = value.toLowerCase()
-            if (value.length && (s.name.toLowerCase().indexOf(value) != -1 || s.ticker.toLowerCase().indexOf(value) != -1)) return true;
+            // if (value.length && (s.name.toLowerCase().indexOf(value) != -1 || s.ticker.toLowerCase().indexOf(value) != -1)) return true;
+            if (s.ticker.toLowerCase().substr(0, value.length) == value || s.name.toLowerCase().substr(0, value.length) == value) return true;
             return false
         })
         return suggestions

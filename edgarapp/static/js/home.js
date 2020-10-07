@@ -121,9 +121,27 @@ $(document).ready(function () {
         value = value.toLowerCase()
         let suggestions = tickers.filter(s => {
             // if (value.length && (s.name.toLowerCase().indexOf(value) != -1 || s.ticker.toLowerCase().indexOf(value) != -1)) return true;
-            if (s.ticker.toLowerCase().substr(0, value.length) == value || s.name.toLowerCase().substr(0, value.length) == value) return true;
+            if (s.ticker.toLowerCase().substr(0, value.length) == value) return true;
             return false
         })
-        return suggestions
+        if (suggestions.length < 10) {
+            // suggestions.concat()
+            let others = tickers.filter(s => {
+                // if (value.length && (s.name.toLowerCase().indexOf(value) != -1 || s.ticker.toLowerCase().indexOf(value) != -1)) return true;
+                // if (s.ticker.toLowerCase().substr(0, value.length) == value) return true;
+                if (s.name.toLowerCase().substr(0, value.length) == value) return true;
+                return false
+            })
+            suggestions = suggestions.concat(others)
+            // console.log(others)
+
+        }
+        // suggestions = suggestions
+
+        function onlyUnique(value, index, self) {
+            return self.indexOf(value) === index;
+        }
+
+        return suggestions.filter(onlyUnique)
     }
 })

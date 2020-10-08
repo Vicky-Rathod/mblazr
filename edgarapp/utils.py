@@ -155,7 +155,7 @@ class TOCExtractor(object):
 
         try:
             try:
-                pos = text.lower().index("table of contents")
+                pos = text.lower().index("contents")
             except:
                 pos = text.lower().index("index")
         

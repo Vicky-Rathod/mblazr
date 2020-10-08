@@ -7,6 +7,7 @@ $(document).ready(function () {
         var currentFocus, currentTicker;
         /*execute a function when someone writes in the text field:*/
         inp.addEventListener("input", function (e) {
+            $('.autocomplete').removeClass('h-300')
             var a, b, i, val = this.value;
             /*close any already open lists of autocompleted values*/
             closeAllLists();
@@ -15,7 +16,7 @@ $(document).ready(function () {
             /*create a DIV element that will contain the items (values):*/
             a = document.createElement("DIV");
             a.setAttribute("id", this.id + "autocomplete-list");
-            a.setAttribute("class", "autocomplete-items col-md-12");
+            a.setAttribute("class", "autocomplete-items col-md-12 hidden");
             /*append the DIV element as a child of the autocomplete container:*/
             this.parentNode.appendChild(a);
             arr = filterTickers(val)
@@ -28,7 +29,7 @@ $(document).ready(function () {
                 /*create a DIV element for each matching element:*/
                 b = document.createElement("DIV");
                 /*make the matching letters bold:*/
-                b.innerHTML = "<a class='link' href='/search/?q=" + arr[i].ticker + "'>" + arr[i].ticker + " - " + arr[i].name + "</p>";
+                b.innerHTML = "<a class='link' href='/search/?q=" + arr[i].ticker + "'><span>" + arr[i].ticker + "</span> - " + arr[i].name + "</a>";
                 /*insert a input field that will hold the current array item's value:*/
                 b.innerHTML += "<input type='hidden' value='" + arr[i].name + "'>";
                 currentTicker = arr[i].ticker
@@ -42,6 +43,10 @@ $(document).ready(function () {
                     closeAllLists();
                 });
                 a.appendChild(b);
+            }
+            if (arr.length) {
+                a.classList.remove('hidden');
+                $('.autocomplete').addClass('h-300')
             }
         });
 

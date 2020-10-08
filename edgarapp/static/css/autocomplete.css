@@ -38,5 +38,4 @@
 .autocomplete-active>.link, .autocomplete-items .link:hover{
     background-color: lightgray;
     text-decoration: none;
-    border-bottom: 1px solid grey
 }

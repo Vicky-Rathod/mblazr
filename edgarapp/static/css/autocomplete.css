@@ -1,0 +1,42 @@
+.autocomplete{
+    height: 300px; 
+}
+.autocomplete input {
+    padding: 10px;
+    height: 50px;
+    text-transform: uppercase
+}
+.autocomplete input:focus {
+    outline: none;
+}
+.autocomplete button {
+    padding:10px;
+    height: 50px;
+}
+.autocomplete .autocomplete-items{
+    border-radius: 8px;
+    padding: 8px 0;
+    max-height: 100%;
+    margin-top: 12px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    background-color: white;
+    min-width: max-content;
+    z-index: 5;
+}
+.autocomplete-items .link {
+    display:block;
+    padding: 3px 20px;
+    color: #555;
+    font-size: 14px;
+    margin: 0;
+    text-transform: uppercase;
+}
+.autocomplete-items .link span {
+    font-weight: bold
+}
+.autocomplete-active>.link, .autocomplete-items .link:hover{
+    background-color: lightgray;
+    text-decoration: none;
+    border-bottom: 1px solid grey
+}

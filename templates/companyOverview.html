@@ -7,50 +7,52 @@
 
 {% block head %}
   <title>{{ object_list.1.0 }} Overview</title>
-  <script src="../../static/bootstrap/js/typeahead.bundle.min.js"></script>
-  <script src="../../static/bootstrap/js/handlebars.js"></script>
+  <script type="text/javascript" src="{% static 'js/autocomplete.js' %}"></script>
+
+  <link href="{% static 'css/autocomplete.css' %}" rel="stylesheet">
   <script type="text/javascript">
-    // Autocomplete
-    $(document).ready(function(){
-      var tickers = new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('ticker'),
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        prefetch: {
-          url: "{% static 'bootstrap/js/tickers.json' %}",
-          ttl: 1 // in milliseconds
-        },
-      });
+  
+  // Autocomplete
+    // $(document).ready(function(){
+    //   var tickers = new Bloodhound({
+    //     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('ticker'),
+    //     queryTokenizer: Bloodhound.tokenizers.whitespace,
+    //     prefetch: {
+    //       url: "{% static 'bootstrap/js/tickers.json' %}",
+    //       ttl: 1 // in milliseconds
+    //     },
+    //   });
       
-      // Initializing the typeahead with remote dataset
-      $('.typeahead').typeahead(null, {
-          name: 'tickers',
-          displayKey: 'ticker',
-          source: tickers,
-          limit: 5,
-          //mustSelectItem: true,
-          autoselect: true,
-          templates: {
-            empty: function(context){
-              $(".tt-dataset").text('No companies match the current query');
-            },
-            suggestion: function(data) {
-              return '<p style="font-size:15px;padding:3px 20px;margin:0;text-transform:uppercase;"><strong>' + data.ticker + '</strong> – ' + data.name + '</p>';
-            }
-          },
-      });
+    //   // Initializing the typeahead with remote dataset
+    //   $('.typeahead').typeahead(null, {
+    //       name: 'tickers',
+    //       displayKey: 'ticker',
+    //       source: tickers,
+    //       limit: 5,
+    //       //mustSelectItem: true,
+    //       autoselect: true,
+    //       templates: {
+    //         empty: function(context){
+    //           $(".tt-dataset").text('No companies match the current query');
+    //         },
+    //         suggestion: function(data) {
+    //           return '<p style="font-size:15px;padding:3px 20px;margin:0;text-transform:uppercase;"><strong>' + data.ticker + '</strong> – ' + data.name + '</p>';
+    //         }
+    //       },
+    //   });
 
-      // On select
-      $('.typeahead').on('typeahead:select', function(e){
-        $('#myBtn').prop('disabled', false);
-        e.target.form.submit();
-      });
-      $('.typeahead').keyup(function(e) {
-        if ( !(e.key === "Enter") && !(e.key === "ArrowUp") && !(e.key === "ArrowDown")) {
-          $('#myBtn').prop('disabled', true);
-        }
-      });
+    //   // On select
+    //   $('.typeahead').on('typeahead:select', function(e){
+    //     $('#myBtn').prop('disabled', false);
+    //     e.target.form.submit();
+    //   });
+    //   $('.typeahead').keyup(function(e) {
+    //     if ( !(e.key === "Enter") && !(e.key === "ArrowUp") && !(e.key === "ArrowDown")) {
+    //       $('#myBtn').prop('disabled', true);
+    //     }
+    //   });
 
-    });
+    // });
 
     function formatDate(date) {
       var myDate = new Date(date);
@@ -262,28 +264,32 @@
       <!----------- 1st column ---------------->
       <!------------ LEFT MENU ---------------->
       <div class="col-sm-3" id="1st" style="height:90vh;">
-        <form class="autocomplete" autocomplete="off" action="{% url 'companyOverview' %}" method="get" name="searchForm">
-          <div style="position:relative">
-            <input type="text" class="form-control typeahead tt-query" autocomplete="off" name="q" id="myInput" spellcheck="false" style="background-color:#fff;text-transform:uppercase;" placeholder="Ticker...">
-            <button type="submit" id="myBtn" class="btn btn-primary" disabled="true" style="background-color:#2196f3;"><div style="-webkit-transform: rotate(45deg); 
-                         -moz-transform: rotate(45deg); 
-                           -o-transform: rotate(45deg);
-                              transform: rotate(45deg);">
-              &#9906;
-              </div>
-            </button>
-          </div>
-        </form>
-        <button id="myBtn1" style="border-radius: 5px;">Funds</button>
+                    <form class="autocomplete" autocomplete="off" action="" name="searchForm">
+                      <div class="row" style="height: 100%;">
+                        <input type="text" class="col-md-11" autocomplete="off" id="myInput" spellcheck="false" placeholder="Ticker...">
+                        <button type="submit" id="myBtn" class="col-md-1 btn btn-primary" disabled>
+                          <div style="-webkit-transform: rotate(45deg); 
+                                                 -moz-transform: rotate(45deg); 
+                                                   -o-transform: rotate(45deg);
+                                                      transform: rotate(45deg);">
+                            &#9906;
+                          </div>
+                        </button>
+                      </div>
+                    </form>
 
-        <div id="myModal" class="modal">
-          <!-- Modal content -->
-          <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2 class = "fund-header" id = 'dynamic-header'></h2>
-            <p class = "small-note">* Note that value is based on the market value at the end of the day the 13F was filed.</p>
-            <div class = "table-wrapper">
-              <table class = "fl-table" id = "fund-table">
+        <div class="top-buttons" style="position:absolute; top: 60px;">
+
+          <button id="myBtn1" style="border-radius: 5px;">Funds</button>
+          
+          <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2 class = "fund-header" id = 'dynamic-header'></h2>
+              <p class = "small-note">* Note that value is based on the market value at the end of the day the 13F was filed.</p>
+              <div class = "table-wrapper">
+                <table class = "fl-table" id = "fund-table">
                 <thead>
                   <th onclick="sortTable(0)">Fund</th>
                   <th onclick="sortTable(1)">Number of Shares</th>
@@ -292,41 +298,41 @@
                 </thead>
                 <tbody class = "tbody">
                   {% for fund in object_list.3 %}
-                    <tr id="tr_doc">
-                      <td id = "fund" class="success"><center>{{fund.fund}}</center></td>
+                  <tr id="tr_doc">
+                    <td id = "fund" class="success"><center>{{fund.fund}}</center></td>
                       <td class = "fund-shares" style="cursor:pointer;" onclick="window.location.href = '{% url 'companyFiling' %}?q={{ object_list.0 }}&fid={{ filing.id }}';">{{fund.share_prn_amount}}
                       </td>
                       <td class="fund-value"><center>{{ fund.value }}</center></td>
                       <td class="success"><center>{{fund.put_call}}</center></td>
                     </tr>
-                  {% endfor %}
-                </tbody>
+                    {% endfor %}
+                  </tbody>
               </table>
             </div>
           </div>
         </div>
         <script type="text/javascript">
           console.log("{{ object_list.1 }}")
-
+          
           // Get the modal
           var modal = document.getElementById("myModal");
-
+          
           // Get the button that opens the modal
           var btn = document.getElementById("myBtn1");
-
+          
           // Get the <span> element that closes the modal
           var span = document.getElementsByClassName("close")[0];
-
+          
           // When the user clicks on the button, open the modal
           btn.onclick = function() {
             modal.style.display = "block";
           }
-
+          
           // When the user clicks on <span> (x), close the modal
-          span.onclick = function() {
-            modal.style.display = "none";
+            span.onclick = function() {
+              modal.style.display = "none";
           }
-
+          
           // When the user clicks anywhere outside of the modal, close it
           window.addEventListener("click", function(event) {
             if (event.target == modal) {
@@ -340,17 +346,17 @@
             }
           });
 
-        </script>
+          </script>
         <script type="text/javascript">
 
-          $(document).ready( function() {
+$(document).ready( function() {
             $("td.fund-value").each(function() { $(this).html(parseFloat($(this).text()).toLocaleString('en-US')); })
           })
-
+          
           $(document).ready( function() {
             $("td.fund-shares").each(function() { $(this).html(parseFloat($(this).text()).toLocaleString('en-US')); })
           })
-
+          
         </script>
         <script type="text/javascript">
           let quarter = 1;
@@ -369,7 +375,7 @@
             quarter = 2;
           }
           document.getElementById("dynamic-header").innerHTML = "Top 100 Shareholders of {{ object_list.1.0 }} as of quarter " + quarter + " " + year;
-
+          
           function sortTable(n) {
             var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
             table = document.getElementById("fund-table");
@@ -394,7 +400,7 @@
                 y = rows[i + 1].getElementsByTagName("TD")[n];
                 /* Check if the two rows should switch place,
                 based on the direction, asc or desc: */
-
+                
                 if (Number.isNaN(parseInt(x.innerText))) {
                   if (dir == "asc") {
                     if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
@@ -414,19 +420,19 @@
                   y1 = parseFloat(y.innerText.replace(/,/g, ''))
                   if (dir == "asc") {
                     if (x1 > y1) {
-                    // If so, mark as a switch and break the loop:
+                      // If so, mark as a switch and break the loop:
                     shouldSwitch = true;
                     break;
-                    }
+                  }
                   } else if (dir == "desc") {
-                      if (x1 < y1) {
+                    if (x1 < y1) {
                         // If so, mark as a switch and break the loop:
                         shouldSwitch = true;
                         break;
                       }
                     }
-                }
-                
+                  }
+                  
               }
               if (shouldSwitch) {
                 /* If a switch has been marked, make the switch
@@ -454,22 +460,22 @@
           <div class="modal-content">
             <span class="close">&times;</span>
             <h2 class = "fund-header" id = 'dynamicDirector-header'></h2>
-              <div class = "table-wrapper-director">
-                {% if not object_list.4 %}
-                  <h2>Director information is not available for {{ object_list.1.0 }}</h2>
-                {% else %}
-                <table class = "fl-table" id = "director-table">
-                  <thead>
-                    <th class="directorCol">Directors</th>
+            <div class = "table-wrapper-director">
+              {% if not object_list.4 %}
+              <h2>Director information is not available for {{ object_list.1.0 }}</h2>
+              {% else %}
+              <table class = "fl-table" id = "director-table">
+                <thead>
+                  <th class="directorCol">Directors</th>
                     <th class="directorCol">Age</th>
                     <th class="directorCol">Bio</th>
                     <th class="directorCol">Other Director Memberships</th>
                   </thead>
                   <tbody class = "tbody">
                     {% for person, comps in object_list.4 %}
-                      <tr id="tr_doc" class="directorDisplay">
-                        <td id = "director" class="directorCol" >
-                          <center>{{person.director}}</center>
+                    <tr id="tr_doc" class="directorDisplay">
+                      <td id = "director" class="directorCol" >
+                        <center>{{person.director}}</center>
                         </td>
                         <td id = "director" class="directorCol" >
                           <center>{{person.age}}</center>
@@ -480,10 +486,10 @@
                         <td id = "director" class="directorCol" >
                           {% for comp in comps %}
                             <center>{{ comp }}</center>
-                          {% endfor %}
+                            {% endfor %}
                         </td>
                       </tr>
-                    {% endfor %}
+                      {% endfor %}
                   </tbody>
                 </table>
                 {% endif %}
@@ -492,25 +498,25 @@
         </div>
         <script type="text/javascript">
 
-          // Get the modal
-          var modal2 = document.getElementById("myModal2");
+// Get the modal
+var modal2 = document.getElementById("myModal2");
 
-          // Get the button that opens the modal
+// Get the button that opens the modal
           var btn2 = document.getElementById("myBtn2");
-
+          
           // Get the <span> element that closes the modal
           var span2 = document.getElementsByClassName("close")[1];
-
+          
           // When the user clicks on the button, open the modal
           btn2.onclick = function() {
             modal2.style.display = "block";
           }
-
+          
           // When the user clicks on <span> (x), close the modal
-          span2.onclick = function() {
-            modal2.style.display = "none";
+            span2.onclick = function() {
+              modal2.style.display = "none";
           }
-
+          
           window.addEventListener("click", function(event) {
             if (event.target == modal) {
               modal2.style.display = "none";
@@ -526,34 +532,34 @@
 
           document.getElementById("dynamicDirector-header").innerHTML = "Directors of {{ object_list.1.0 }} as of the " + date.getFullYear() + " proxy statement";
 
-        </script>
+          </script>
 
-        <button id="myBtn3" style="border-radius: 5px;">Executives</button>
+<button id="myBtn3" style="border-radius: 5px;">Executives</button>
 
-        <div id="myModal3" class="modal">
-          <div class="modal-content">
+<div id="myModal3" class="modal">
+  <div class="modal-content">
             <span class="close">&times;</span>
             <h2 class = "fund-header" id = 'dynamicExecutive-header'></h2>
               <div class = "table-wrapper-execs">
                 {% for exec, matches in object_list.5 %}
-                  {% autoescape off %}
-                    {{ exec.executives }}
-                  {% endautoescape %}
+                {% autoescape off %}
+                {{ exec.executives }}
+                {% endautoescape %}
                 {% endfor %}
               </div>
             </div>
         </div>
         <script type="text/javascript">
 
-          // Get the modal
-          var modal3 = document.getElementById("myModal3");
+// Get the modal
+var modal3 = document.getElementById("myModal3");
 
-          // Get the button that opens the modal
-          var btn3 = document.getElementById("myBtn3");
+// Get the button that opens the modal
+var btn3 = document.getElementById("myBtn3");
 
-          // Get the <span> element that closes the modal
-          var span3 = document.getElementsByClassName("close")[2];
-
+// Get the <span> element that closes the modal
+  var span3 = document.getElementsByClassName("close")[2];
+  
           // When the user clicks on the button, open the modal
           btn3.onclick = function() {
             modal3.style.display = "block";
@@ -563,25 +569,27 @@
           span3.onclick = function() {
             modal3.style.display = "none";
           }
-
+          
           window.addEventListener("click", function(event) {
             if (event.target == modal) {
               modal3.style.display = "none";
             }
           });
-
+          
           // When the user clicks anywhere outside of the modal, close it
           window.addEventListener("keydown", function(event) {
             if (event.keyCode == '27') {
               modal3.style.display = "none";
             }
           });
-
+          
           document.getElementById("dynamicExecutive-header").innerHTML = "Executives of {{ object_list.1.0 }} as of the " + date.getFullYear() + " 2020 proxy statement";
+          
+          </script>
 
-        </script>
-
+    </div>
         &nbsp;
+        <section style="position: absolute; top: 90px; width: 95%;">
         <div style="height:83vh;overflow:scroll;">
           <table class="table table-hover ">
             <thead>
@@ -635,6 +643,7 @@
             </tbody>
           </table>
         </div>
+      </section>
       </div>
 
 

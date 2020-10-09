@@ -90,7 +90,13 @@ class TOCExtractor(object):
             text = re.sub(r'\s', ' ', text)
             text = re.sub(r'\\n', ' ', text)
             text = text.strip()
-            text = re.sub(r'(\d+|i+|v+)$', '', text)
+            
+            if text.lower().startswith('consolidated') and text.split()[-1].isdigit():
+                num_to_remove = len(text.split()[-1]) - 4
+                text = text[0:-num_to_remove]
+            else:
+                text = re.sub(r'(\d+|i+|v+)$', '', text)
+
             text = re.sub(r'(Item \d+\S*\.)(.*)', '\\1 \\2', text)
 
             href = None

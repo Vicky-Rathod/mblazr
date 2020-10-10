@@ -5,6 +5,7 @@ body {
 body>.navbar {
   -webkit-transition: background-color .3s ease-in;
   transition: background-color .3s ease-in;
+  height: 50px;
 }
 
 @media (min-width:768px) {

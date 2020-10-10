@@ -414,25 +414,25 @@ try:
                                             # print(page_num)
                                             tables = page_code.find_all('table')
 
-                                            for table in tables:
-                                                if done == False:
-                                                    # print(table)
-                                                    # tableSoup = BeautifulSoup(table, 'lxml')
-                                                    if (('Year' or 'Fiscal Year' or 'YEAR') in table.text) and (('Salary' or 'SALARY') in table.text) and (('Position' or 'Principal' or 'POSITION' or 'PRINCIPAL') in table.text) and (("Total" or 'TOTAL') in table.text) and (('Name' or 'NAME') in table.text):
-                                                        print('------------------------FOUND---------------------------------')
-                                                        print(table)
-                                                        que = "CREATE TABLE IF NOT EXISTS edgarapp_executives (id int auto_increment primary key, company text NOT NULL, executives longtext NOT NULL, filingdate varchar(20))"
-                                                        mycursor.execute(que)
-                                                        try:
-                                                            print('entering {} into db.'.format(company))
-                                                            mycursor.execute("INSERT INTO edgarapp_executives (company, executives, filingdate) VALUES (%s, %s, %s)", [company, str(table), date])
-                                                            print('finished entering')
-                                                            mydb.commit()
-                                                        except mysql.connector.Error as e:
-                                                            print('MySQL error is: {}'.format(e))
-                                                            mydb.rollback()  
-                                                        print('------------------------END FOUND---------------------------------')
-                                                        done  = True         
+                                            # for table in tables:
+                                            #     if done == False:
+                                            #         # print(table)
+                                            #         # tableSoup = BeautifulSoup(table, 'lxml')
+                                            #         if (('Year' or 'Fiscal Year' or 'YEAR') in table.text) and (('Salary' or 'SALARY') in table.text) and (('Position' or 'Principal' or 'POSITION' or 'PRINCIPAL') in table.text) and (("Total" or 'TOTAL') in table.text) and (('Name' or 'NAME') in table.text):
+                                            #             print('------------------------FOUND---------------------------------')
+                                            #             print(table)
+                                            #             # que = "CREATE TABLE IF NOT EXISTS edgarapp_executives (id int auto_increment primary key, company text NOT NULL, executives longtext NOT NULL, filingdate varchar(20))"
+                                            #             # mycursor.execute(que)
+                                            #             # try:
+                                            #             #     print('entering {} into db.'.format(company))
+                                            #             #     mycursor.execute("INSERT INTO edgarapp_executives (company, executives, filingdate) VALUES (%s, %s, %s)", [company, str(table), date])
+                                            #             #     print('finished entering')
+                                            #             #     mydb.commit()
+                                            #             # except mysql.connector.Error as e:
+                                            #             #     print('MySQL error is: {}'.format(e))
+                                            #             #     mydb.rollback()  
+                                            #             print('------------------------END FOUND---------------------------------')
+                                            #             done  = True         
                     except RecursionError as e:
                         print('Recursion error, something went wrong with parsing')
             mydb.close()

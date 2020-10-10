@@ -407,14 +407,14 @@ def login_view(request):
 
     extended_template = 'base.html'
     if request.user.is_authenticated:
-        extended_template = 'base_member.html'
+        extended_template = 'home.html'
 
     if form.is_valid():
         username = form.cleaned_data.get("username")
         password = form.cleaned_data.get("password")
         user = authenticate(username=username, password=password)
         login(request, user)
-        return redirect('memberhome')
+        return redirect('home')
     return render(request, "form.html", {
         "form": form,
         "title": "Login",
@@ -436,7 +436,7 @@ def register_view(request):
         user.save()
         new_user = authenticate(username=user.username, password=password)
         login(request, new_user)
-        return redirect('memberhome')
+        return redirect('home')
     return render(request, "form.html", {
         "title": "Register",
         "form": form,
@@ -466,3 +466,7 @@ def account_view(request):
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect("/")
+
+
+def PlanView(request):
+    return render(request, 'plan.html')

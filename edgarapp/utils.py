@@ -67,7 +67,7 @@ class TOCExtractor(object):
                 link_id = tag.get('id')
 
             if match:
-                tags += f"<a class='note-link' href='#{link_id}'>{text}</a>"
+                tags += "<a class='note-link' href='#{0}'>{1}</a>".format(link_id,text)
             
         return tags
 
@@ -134,20 +134,20 @@ class TOCExtractor(object):
                 else:
                     placeholder = ''
 
-                links += f"<a class='item-link' href='{href}'>{text}</a>{placeholder}"
+                links += "<a class='item-link' href='{0}'>{1}</a>{2}".format(href,text,placeholder)
                 self.note_is_set = True
 
             elif text_lower.startswith("notes") or text_lower.startswith("consolidated"):
-                links += f"<a class='notes-link' href='{href}'>{text}</a>"
+                links += "<a class='notes-link' href='{0}'>{1}</a>".format(href,text)
 
             elif text_lower.startswith("note") or text[0].isdigit():
-                links += f"<a class='note-link' href='{href}'>{text}</a>"
+                links += "<a class='note-link' href='{0}'>{1}</a>".format(href,text)
 
             elif text_lower.startswith('part'):
-                links += f"<a class='part-link' href='{href}'>{text}</a>"
+                links += "<a class='part-link' href='{0}'>{1}</a>".format(href,text)
             
             else:
-                links += f"<a class='other-link' href='{href}'>{text}</a>"
+                links += "<a class='other-link' href='{0}'>{1}</a>".format(href,text)
  
         return links
 
@@ -220,7 +220,7 @@ class TOCExtractor(object):
                 exhibits_dict[href] += link_text
 
         for href, text in exhibits_dict.items():
-            exhibits += f"<a href='{href}' class='exhibit-link' target='_blank'>{text}</a>"
+            exhibits += "<a href='{0}' class='exhibit-link' target='_blank'>{1}</a>".format(href,text)
 
         if not exhibits:
             return ''

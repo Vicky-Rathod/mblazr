@@ -67,7 +67,7 @@ class TOCExtractor(object):
                 link_id = tag.get('id')
 
             if match:
-                tags += "<a class='note-link' href='#{0}'>{1}</a>".format(link_id,text)
+                tags += f"<a class='note-link' href='#{link_id}'>{text}</a>"
             
         return tags
 
@@ -90,7 +90,6 @@ class TOCExtractor(object):
             text = re.sub(r'\s', ' ', text)
             text = re.sub(r'\\n', ' ', text)
             text = text.strip()
-            
             if text.lower().startswith('consolidated') and text.split()[-1].isdigit():
                 num_to_remove = len(text.split()[-1]) - 4
                 text = text[0:-num_to_remove]
@@ -134,20 +133,20 @@ class TOCExtractor(object):
                 else:
                     placeholder = ''
 
-                links += "<a class='item-link' href='{0}'>{1}</a>{2}".format(href,text,placeholder)
+                links += f"<a class='item-link' href='{href}'>{text}</a>{placeholder}"
                 self.note_is_set = True
 
             elif text_lower.startswith("notes") or text_lower.startswith("consolidated"):
-                links += "<a class='notes-link' href='{0}'>{1}</a>".format(href,text)
+                links += f"<a class='notes-link' href='{href}'>{text}</a>"
 
             elif text_lower.startswith("note") or text[0].isdigit():
-                links += "<a class='note-link' href='{0}'>{1}</a>".format(href,text)
+                links += f"<a class='note-link' href='{href}'>{text}</a>"
 
-            elif text_lower.startswith('part'):
-                links += "<a class='part-link' href='{0}'>{1}</a>".format(href,text)
+            elif text_lower.startswith('part') or text_lower.startswith('signature'):
+                links += f"<a class='part-link' href='{href}'>{text}</a>"
             
             else:
-                links += "<a class='other-link' href='{0}'>{1}</a>".format(href,text)
+                links += f"<a class='other-link' href='{href}'>{text}</a>"
  
         return links
 
@@ -159,14 +158,30 @@ class TOCExtractor(object):
 
         text = text[start:]
 
-        try:
-            try:
-                pos = text.lower().index("contents")
-            except:
-                pos = text.lower().index("index")
+        pattern = re.compile(r'<a.+href="([\S]+)".*>Table of Contents.*</a>', re.IGNORECASE)
+
+        links = re.findall(pattern, text)
+
+        pos = -1
+
+        if links:
+            links = links[0]
         
-        except:
-            pos = text.lower().index('<hr style="page-break-after:always"')
+            link = links[links.find('#')+1:]
+
+            pos = text.find(f'id="{link}"')
+
+            if pos == -1:
+                pos = text.find(f'name="{link}"')
+
+        if pos == -1:
+            pos = text.lower().find("table of contents")
+
+        if pos == -1:
+            pos = text.lower().find("index")
+        
+        if pos == -1:
+            pos = text.lower().find('<hr style="page-break-after:always"')
 
         text = text[pos:]
 
@@ -175,7 +190,7 @@ class TOCExtractor(object):
         text = text[:end_pos+8]
 
         self.end_pos = start + len(text)
-        
+
         return text
 
     def _get_exhibits(self, html):
@@ -220,7 +235,7 @@ class TOCExtractor(object):
                 exhibits_dict[href] += link_text
 
         for href, text in exhibits_dict.items():
-            exhibits += "<a href='{0}' class='exhibit-link' target='_blank'>{1}</a>".format(href,text)
+            exhibits += f"<a href='{href}' class='exhibit-link' target='_blank'>{text}</a>"
 
         if not exhibits:
             return ''

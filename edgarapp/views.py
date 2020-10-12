@@ -63,15 +63,15 @@ def SearchResultsView(request):
     if request.user.is_authenticated:
         extended_template = 'base_company_member.html'
 
-
     query = request.GET.get('q')
     print(query)
     if not request.user.is_authenticated:
         # print("done")
         if query != 'TSLA':
-            messages.error(request,'you can search only for TSLA for other option you have to logged in')
+            messages.error(request,'To search for other Tickers,')
             return render(
             request, 'home.html',
+            {'extended_template': extended_template}
             )
     mycompany = Company.objects.get(ticker=query)
     filings = Filing.objects.filter(cik=mycompany.cik).order_by('-filingdate')
@@ -154,6 +154,7 @@ def SearchResultsView(request):
 
     # object_list is (q, (companyname, ticker), (filings object))
     # if request.user.is_authenticated:
+    print(object_list)
     return render(
         request, template_name,
         {'object_list': object_list, 'extended_template': extended_template}

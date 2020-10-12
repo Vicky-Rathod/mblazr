@@ -136,7 +136,7 @@ class TOCExtractor(object):
                 links += f"<a class='item-link' href='{href}'>{text}</a>{placeholder}"
                 self.note_is_set = True
 
-            elif text_lower.startswith("notes") or text_lower.startswith("consolidated"):
+            elif text_lower.startswith("notes") or text_lower.startswith("consolidated") or text_lower.startswith("condensed"):
                 links += f"<a class='notes-link' href='{href}'>{text}</a>"
 
             elif text_lower.startswith("note") or text[0].isdigit():

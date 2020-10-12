@@ -33,7 +33,7 @@
                 <div class="bs-example">
                     <form class="autocomplete" autocomplete="off" action="" name="searchForm">
                         <div class="row" style="height: 100%;">
-                        {% if user.is_authenticate %}
+                        {% if user.is_authenticated %}
                             <input type="text" class="col-md-11" autocomplete="off" id="myInput" spellcheck="false" placeholder="Ticker...">
                             <button type="submit" id="myBtn" class="col-md-1 btn btn-primary" disabled>
                         {% else %}

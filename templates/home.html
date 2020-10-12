@@ -48,16 +48,19 @@
                                     &#9906;
                                 </div>
                             </button>
+                            <br>
+                            <center>
                             {% if messages %}
                                     <div >
-                                        <ul style="list-style-type:none;color: red">
+                                        <ul  style="list-style-type:none">
                                         {% for message in messages %}
-                                            <li>{{ message }}</li>
+                                            <li><i>{{ message }} <a href="{% url 'login'%}" style="color: #666">Login</a></i></li>
                                             {% endfor %}
                                         </ul>
                                     </div>
                                 
                                 {% endif %}
+                                </center>
                         </div>
                     </form>
                 </div>

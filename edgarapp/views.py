@@ -68,7 +68,7 @@ def SearchResultsView(request):
     if not request.user.is_authenticated:
         # print("done")
         if query != 'TSLA':
-            messages.error(request,'you can search only for TSLA for other option you have to logged in')
+            messages.error(request,'To search for other Tickers,')
             return render(
             request, 'home.html',
             {'extended_template': extended_template}

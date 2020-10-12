@@ -2,6 +2,7 @@
 
 import itertools
 from datetime import datetime
+from django.contrib import messages
 
 import requests
 import textdistance
@@ -62,7 +63,16 @@ def SearchResultsView(request):
     if request.user.is_authenticated:
         extended_template = 'base_company_member.html'
 
+
     query = request.GET.get('q')
+    print(query)
+    if not request.user.is_authenticated:
+        # print("done")
+        if query != 'TSLA':
+            messages.error(request,'you can search only for TSLA for other option you have to logged in')
+            return render(
+            request, 'home.html',
+            )
     mycompany = Company.objects.get(ticker=query)
     filings = Filing.objects.filter(cik=mycompany.cik).order_by('-filingdate')
     proxies = Proxies.objects.filter(cik=mycompany.cik).order_by('-filingdate')
@@ -143,19 +153,19 @@ def SearchResultsView(request):
     # object_list.append(itertools.zip_longest(proxies, filings, fillvalue='foo'))
 
     # object_list is (q, (companyname, ticker), (filings object))
-    if request.user.is_authenticated:
-        return render(
-            request, template_name,
-            {'object_list': object_list, 'extended_template': extended_template}
-        )
-    else:
-        if query == 'HD':
-            return render(
-                request, template_name,
-                {'object_list': object_list, 'extended_template': extended_template}
-            )
-        else:
-            return render(request, 'about.html', {'extended_template': 'base.html'})
+    # if request.user.is_authenticated:
+    return render(
+        request, template_name,
+        {'object_list': object_list, 'extended_template': extended_template}
+    )
+    # else:
+    #     if query == 'HD':
+    #         return render(
+    #             request, template_name,
+    #             {'object_list': object_list, 'extended_template': extended_template}
+    #         )
+    #     else:
+    #         return render(request, 'about.html', {'extended_template': 'base.html'})
 
 
 @gzip_page

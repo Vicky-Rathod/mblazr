@@ -40,17 +40,7 @@
                         <input type="text" class="col-md-11" autocomplete="off" id="myInput" spellcheck="false" value="TSLA">
                             <button type="submit" id="myBtn" class="col-md-1 btn btn-primary">
                         {% endif %}
-                        {% if messages %}
-                                Hello
-                                    <div class="alert alert-danger">
-                                        <ul style="list-style-type:none;">
-                                        {% for message in messages %}
-                                            <li>{{ message }}</li>
-                                            {% endfor %}
-                                        </ul>
-                                    </div>
-                                
-                                {% endif %}
+                        
                                 <div style="-webkit-transform: rotate(45deg); 
                              -moz-transform: rotate(45deg); 
                                -o-transform: rotate(45deg);
@@ -58,6 +48,16 @@
                                     &#9906;
                                 </div>
                             </button>
+                            {% if messages %}
+                                    <div >
+                                        <ul style="list-style-type:none;color: red">
+                                        {% for message in messages %}
+                                            <li>{{ message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                
+                                {% endif %}
                         </div>
                     </form>
                 </div>

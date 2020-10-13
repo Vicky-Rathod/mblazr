@@ -27,6 +27,6 @@ urlpatterns = [
     url(r'^accounts/logout/$', logout_view, name = "logout"),
     url(r'^account/$', account_view, name = "account"),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('plan/', PlanView, name='plan'),
+    path('pricing/', PlanView, name='pricing'),
 
 ]

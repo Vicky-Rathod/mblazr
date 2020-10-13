@@ -26,7 +26,7 @@
       <!----------- 1st column ---------------->
       <!------------ LEFT MENU ---------------->
       <div class="col-sm-3 section" id="1st"  style="height: 100%;">
-        <!-- <div style="position: fixed; z-index: 1;"> -->
+        <div style="position: fixed; z-index: 1;">
 
         <form class="autocomplete" autocomplete="off" action="" name="searchForm">
           <div class="row" style="height: 100%;">
@@ -42,7 +42,7 @@
           </div>
         </form>
 
-    <!-- </div> -->
+    </div>
 
     <div class="top-buttons" style="position:absolute; top: 60px;">
 
@@ -373,10 +373,10 @@
               {% for filing in object_list.2 %}
                 <tr id="tr_doc">
                   {% if "10-Q" in filing.filingtype %}
-                    <td id = "qbg"style="cursor:pointer;" onclick="window.location.href = '{% url 'companyFiling' %}?q={{ object_list.0.0 }}&fid={{ filing.id }}';"><center>10-Q</center></td>
+                    <td id = "qbg"><center>10-Q</center></td>
                     <td style="cursor:pointer;" onclick="window.location.href = '{% url 'companyFiling' %}?q={{ object_list.0.0 }}&fid={{ filing.id }}';">Filed on {{ filing.filingdate }}</td>
                   {% elif "10-K" in filing.filingtype %}
-                    <td id = "kbg" style="cursor:pointer;" onclick="window.location.href = '{% url 'companyFiling' %}?q={{ object_list.0.0 }}&fid={{ filing.id }}';"><center>10-K</center></td>
+                    <td id = "kbg"><center>10-K</center></td>
                     <td style="cursor:pointer;background-color: #f9f9f9;" onclick="window.location.href = '{% url 'companyFiling' %}?q={{ object_list.0.0 }}&fid={{ filing.id }}';">Filed on {{ filing.filingdate }}</td>
                   {% endif %}
                 </tr>

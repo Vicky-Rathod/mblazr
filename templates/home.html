@@ -33,14 +33,8 @@
                 <div class="bs-example">
                     <form class="autocomplete" autocomplete="off" action="" name="searchForm">
                         <div class="row" style="height: 100%;">
-                        {% if user.is_authenticated %}
                             <input type="text" class="col-md-11" autocomplete="off" id="myInput" spellcheck="false" placeholder="Ticker...">
                             <button type="submit" id="myBtn" class="col-md-1 btn btn-primary" disabled>
-                        {% else %}
-                        <input type="text" class="col-md-11" autocomplete="off" id="myInput" spellcheck="false" value="TSLA">
-                            <button type="submit" id="myBtn" class="col-md-1 btn btn-primary">
-                        {% endif %}
-                        
                                 <div style="-webkit-transform: rotate(45deg); 
                              -moz-transform: rotate(45deg); 
                                -o-transform: rotate(45deg);
@@ -48,19 +42,6 @@
                                     &#9906;
                                 </div>
                             </button>
-                            <br>
-                            <center>
-                            {% if messages %}
-                                    <div >
-                                        <ul  style="list-style-type:none">
-                                        {% for message in messages %}
-                                            <li><i>{{ message }} <a href="{% url 'login'%}" style="color: #666">Login</a></i></li>
-                                            {% endfor %}
-                                        </ul>
-                                    </div>
-                                
-                                {% endif %}
-                                </center>
                         </div>
                     </form>
                 </div>

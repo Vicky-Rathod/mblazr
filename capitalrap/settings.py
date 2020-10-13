@@ -25,7 +25,8 @@ SECRET_KEY = '(jb(b+5r68^(-ye))k-x@f%gyhy=1w)b!4#%g*(pg-9cti3u@y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['172.104.7.112', 'alphahuntr.com', 'www.alphahuntr.com', 'emblazr.com', 'www.emblazr.com', 'mblazr.com', 'www.mblazr.com'] #Linode server
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['172.104.7.112', 'alphahuntr.com', 'www.alphahuntr.com', 'emblazr.com', 'www.emblazr.com', 'mblazr.com', 'www.mblazr.com'] #Linode server
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 #EMAIL_USE_SSL = True
@@ -93,20 +94,33 @@ WSGI_APPLICATION = 'capitalrap.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'edgarData',
+#         'USER': 'reguser',
+#         'PASSWORD': 'Edgar@2020',
+#         'HOST': '172.104.7.112',
+#         'PORT': '3306',
+#         'OPTIONS': {
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+#         }
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'edgarData',
-        'USER': 'reguser',
-        'PASSWORD': 'Edgar@2020',
-        'HOST': '172.104.7.112',
+        'NAME': 'capitalrapDB',
+        'USER': 'root',
+        'PASSWORD': '123456',
+        'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
         }
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

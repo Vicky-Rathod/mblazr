@@ -5,7 +5,7 @@
 {% load static %}
 
 {% block head %}
-<title>mBlazr</title>
+<title>MBlazr</title>
 <script type="text/javascript" src="{% static 'js/autocomplete.js' %}"></script>
 
 <link href="{% static 'css/autocomplete.css' %}" rel="stylesheet" >
@@ -14,6 +14,9 @@
 {% endblock %}
 
 {% block content %}
+<body id="body_div">
+    <div style="width:100%;background-color:#f1f5fa">
+      <div class="main_div">
 <div class="container">
     <h2>&nbsp;</h2>
 
@@ -22,12 +25,13 @@
     <div class="jumbotron">
         <h2>&nbsp;</h2>
         <center>
-            <h2>Your Fundamental Analysis Tool</h2>
-            <p class="lead">An easy way to read company filings including 10-K, 10-Q and Proxy statements.</p>
-            <p class="lead">Take a test drive with Home Depot (HD)</p>
+            <h1 style="font-family: Tahoma,Geneva,sans-serif;     color: #000;">Your Fundamental Analysis Tool</h1>
+         <br>
+            <p class="lead"  style="font-family: Tahoma,Geneva,sans-serif;     color: #000;">An easy way to read company filings including 10-K, 10-Q and Proxy statements.</p>
+            <p class="lead"style="font-family: Tahoma,Geneva,sans-serif;     color: #000;">Take a test drive with Home Depot (HD)</p>
         </center>
         <!--searchBar-->
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-sm-3"></div>
             <div class="col-sm-6">
                 <div class="bs-example">
@@ -65,7 +69,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         &nbsp;
     </div>
@@ -111,11 +115,30 @@
 
     <!----------- Footer ----------------------->
     <!------------------------------------------>
-    <footer>
-    </footer>
+   
 
 </div>
 
+      </div>
+    </div>
+
+    <div style="width:100%;background-color:#72c1fb;color:#FFF;height:200px;">
+        <div class="main_div" style="position:relative">
+          <div id="price_div" style="height:200px;text-align:left;padding-top:60px;padding-left:60px;">
+            <span style="font-size:2.4em;font-weight:600; font-family: Tahoma,Geneva,sans-serif;">Just $29/month</span>
+            <br/>
+            <span style="font-size:1.6em; font-family: Tahoma,Geneva,sans-serif;">Paid monthly. Cancel anytime.</span>
+            <br/>
+            <div style="text-align:left;color:#FFF;padding-top:5px;">
+                <a href="https://q10k.com/terms" style="color:#FFF;font-weight:600;font-size:1.0em;">Terms</a>
+                <a href="https://q10k.com/privacy" style="color:#FFF;font-weight:600;font-size:1.0em;">Privacy</a>
+            </div>
+            <div style="position:absolute;top:60px;right:100px;">
+                <a href="https://q10k.com/sign-up"><button style="background-color:#FFF;color:#72c1fb;padding:25px 90px;font-size:1.4em;border-radius:20px;">Get Started</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
 {% endblock %}
 
 {% block script %}

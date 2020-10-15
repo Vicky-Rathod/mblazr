@@ -56,8 +56,8 @@ def HomePageView(request):
 
 
 def SearchResultsView(request):
-    model = Company, Filing, Funds, Directors, Proxies, Executives
-    template_name = 'companyOverview.html'
+    #model = Company, Filing, Funds, Directors, Proxies, Executives
+    #template_name  = 'companyOverview.html'
 
     extended_template = 'base_company.html'
     if request.user.is_authenticated:
@@ -65,6 +65,9 @@ def SearchResultsView(request):
 
     query = request.GET.get('q')
     print(query)
+
+
+
     if not request.user.is_authenticated:
         # print("done")
         if query != 'TSLA':
@@ -74,91 +77,122 @@ def SearchResultsView(request):
             {'extended_template': extended_template}
             )
     mycompany = Company.objects.get(ticker=query)
-    filings = Filing.objects.filter(cik=mycompany.cik).order_by('-filingdate')
-    proxies = Proxies.objects.filter(cik=mycompany.cik).order_by('-filingdate')
-    name = mycompany.name
-    name = name.upper()
-    name = name.replace('INTERNATIONAL', 'INTL')
-    name = name.replace(' /DE', '')
-    name = name.replace('/DE', '')
-    name = name.replace('INC.', 'INC')
-    name = name.replace(',', '')
 
-    matches = []
-    exectable = []
+    filing = Filing.objects.filter(cik=mycompany.cik).order_by('-filingdate').latest('filingdate');
 
-    funds = Funds.objects.raw(
-        'SELECT * FROM edgarapp_funds WHERE company = %s ORDER BY share_prn_amount+0 DESC LIMIT 100', [name])
 
-    directors = Directors.objects.filter(
-        company=mycompany.name).order_by('-director')
+    return HttpResponseRedirect('/filing/?q=' + query +'&fid='+str(filing.cik))
 
-    allDirectors = Directors.objects.all()
+    #-------------no need to carry out the other searches as they are expensive-----------------------"
+    # filings = Filing.objects.filter(cik=mycompany.cik).order_by('-filingdate')
+    # proxies = Proxies.objects.filter(cik=mycompany.cik).order_by('-filingdate')
+    # name = mycompany.name
+    # name = name.upper()
+    # name = name.replace('INTERNATIONAL', 'INTL')
+    # name = name.replace(' /DE', '')
+    # name = name.replace('/DE', '')
+    # name = name.replace('INC.', 'INC')
+    # name = name.replace(',', '')
 
-    executives = Executives.objects.filter(company=mycompany.name)
-    today = datetime.today()
-    currYear = today.year
+    # matches = []
+    # exectable = []
 
-    for year in executives:
-        if year.filingdate.split('-')[0] == str(currYear):
-            exectable.append(year)
+    # funds = Funds.objects.raw(
+    #     'SELECT * FROM edgarapp_funds WHERE company = %s ORDER BY share_prn_amount+0 DESC LIMIT 100', [name])
+    #
+    # directors = Directors.objects.filter(
+    #     company=mycompany.name).order_by('-director')
+    #
+    # allDirectors = Directors.objects.all()
 
-    for person in directors:
-        if person:
-            personA = person.director.replace("Mr.", '')
-            personA = person.director.replace("Dr.", '')
-            personA = person.director.replace("Ms.", '')
-            a = set([s for s in personA if s != "," and s != "." and s != " "])
-            aLast = personA.split(' ')[-1]
-            if (len(personA.split(' ')) == 1):
-                aLast = personA.split('.')[-1]
-        comps = []
-        for check in allDirectors:
-            if person:
-                personB = check.director.replace("Mr.", '')
-                personB = check.director.replace("Dr.", '')
-                personB = check.director.replace("Ms.", '')
-                bLast = personB.split(' ')[-1]
-                if (len(personB.split(' ')) == 1):
-                    bLast = personB.split('.')[-1]
-                # print(personA, aLast, person.company, personB, bLast, check.company)
-                if aLast == bLast:
-                    # first check jaccard index to speed up algo, threshold of .65
-                    b = set([s for s in personB if s !=
-                             "," and s != "." and s != " "])
-                    if (len(a.union(b)) != 0):
-                        jaccard = float(
-                            len(a.intersection(b)) / len(a.union(b)))
-                    else:
-                        jaccard = 1
-                    # print(personA, personB, jaccard)
-                    if (jaccard > 0.65):
-                        # run Ratcliff-Obershel for further matching, threshold of .75 and prevent self-match
-                        sequence = textdistance.ratcliff_obershelp(
-                            personA, personB)
-                        # print(sequence)
-                        if sequence > 0.75 and mycompany.name != check.company:
-                            comps.append(check.company)
-        if not comps:
-            comps.append('Director is not on the board of any other companies')
-        matches.append(comps)
-
-    object_list = []
-    object_list.append(query)
-    object_list.append((mycompany.name, mycompany.ticker))
-    object_list.append(filings)
-    object_list.append(funds)
-    object_list.append(zip(directors, matches))
-    object_list.append(zip(exectable, matches))
+    # executives = Executives.objects.filter(company=mycompany.name)
+    # today = datetime.today()
+    # currYear = today.year
+    #
+    # for year in executives:
+    #     if year.filingdate.split('-')[0] == str(currYear):
+    #         exectable.append(year)
+    #
+    # for person in directors:
+    #     if person:
+    #         personA = person.director.replace("Mr.", '')
+    #         personA = person.director.replace("Dr.", '')
+    #         personA = person.director.replace("Ms.", '')
+    #         a = set([s for s in personA if s != "," and s != "." and s != " "])
+    #         aLast = personA.split(' ')[-1]
+    #         if (len(personA.split(' ')) == 1):
+    #             aLast = personA.split('.')[-1]
+    #     comps = []
+    #     for check in allDirectors:
+    #         if person:
+    #             personB = check.director.replace("Mr.", '')
+    #             personB = check.director.replace("Dr.", '')
+    #             personB = check.director.replace("Ms.", '')
+    #             bLast = personB.split(' ')[-1]
+    #             if (len(personB.split(' ')) == 1):
+    #                 bLast = personB.split('.')[-1]
+    #             # print(personA, aLast, person.company, personB, bLast, check.company)
+    #             if aLast == bLast:
+    #                 # first check jaccard index to speed up algo, threshold of .65
+    #                 b = set([s for s in personB if s !=
+    #                          "," and s != "." and s != " "])
+    #                 if (len(a.union(b)) != 0):
+    #                     jaccard = float(
+    #                         len(a.intersection(b)) / len(a.union(b)))
+    #                 else:
+    #                     jaccard = 1
+    #                 # print(personA, personB, jaccard)
+    #                 if (jaccard > 0.65):
+    #                     # run Ratcliff-Obershel for further matching, threshold of .75 and prevent self-match
+    #                     sequence = textdistance.ratcliff_obershelp(
+    #                         personA, personB)
+    #                     # print(sequence)
+    #                     if sequence > 0.75 and mycompany.name != check.company:
+    #                         comps.append(check.company)
+    #     if not comps:
+    #         comps.append('Director is not on the board of any other companies')
+    #     matches.append(comps)
+    #
+    # object_list = []
+    # object_list.append(query)
+    # object_list.append((mycompany.name, mycompany.ticker))
+    # object_list.append(filings)
+    # object_list.append(funds)
+    # object_list.append(zip(directors, matches))
+    # object_list.append(zip(exectable, matches))
     # object_list.append(itertools.zip_longest(proxies, filings, fillvalue='foo'))
 
     # object_list is (q, (companyname, ticker), (filings object))
     # if request.user.is_authenticated:
-    print(object_list)
-    return render(
-        request, template_name,
-        {'object_list': object_list, 'extended_template': extended_template}
-    )
+    #print(object_list)
+
+    latest_filing = []
+    #for file in filings:
+
+
+    # filing = Filing.objects.filter(cik=mycompany.cik).order_by('-filingdate').first()
+    # print(filing)
+    # url ='E:/Workspace/mblazr/edgarapp/static'+'/'+ 'filings/' + filing.filingpath
+    # toc_extractor = TOCExtractor()
+    # with open(url) as file:
+    #
+    #     filing_html = file.read()
+    #
+    #     try:
+    #         extract_data = toc_extractor.extract(filing_html)
+    #         table_of_contents = extract_data.table
+    #     except:
+    #        table_of_contents = ""
+    #'filing_html': filing_html,'table_of_contents': table_of_contents
+
+
+    #return render(
+        #request, template_name,
+        #{'object_list': object_list, 'extended_template': extended_template,
+       #  'table_of_contents': table_of_contents,
+      #   'filing_html': filing_html
+     #    }
+    #)
     # else:
     #     if query == 'HD':
     #         return render(
@@ -181,11 +215,14 @@ def SearchFilingView(request):
     matches = []
     exectable = []
 
+   
     query = request.GET.get('q')
     fid = request.GET.get('fid')
     mycompany = Company.objects.get(ticker=query)
     filings = Filing.objects.filter(cik=mycompany.cik).order_by('-filingdate')
+
     filing = Filing.objects.get(id=fid)  # the filing requested by fid
+
 
     name = mycompany.name
     name = name.upper()
@@ -252,8 +289,10 @@ def SearchFilingView(request):
             comps.append('Director is not on the board of any other companies')
         matches.append(comps)
 
+    #link to use locally
+    #url ='E:/Workspace/mblazr/edgarapp/static'+'/'+ 'filings/' + filing.filingpath
     url = '/mnt/filings-static/capitalrap/edgarapp/static/filings/' + filing.filingpath
-    
+
     # page = open(url)
     # finder = filing.filingpath.split('/')[1]+"#"
     # soup = BeautifulSoup(page.read())
@@ -312,13 +351,15 @@ def SearchFilingView(request):
           table_of_contents = ""
 
     # object_list is ((q, fid), (companyname, name), (filings object), (filing))
+    #print(filing_html)
+
     return render(
-        request, template_name, {
-            'object_list': object_list,
-            'extended_template': extended_template,
-            'table_of_contents': table_of_contents,
-            'filing_html': filing_html
-        }
+         request, template_name, {
+             'object_list': object_list,
+             'extended_template': extended_template,
+             'table_of_contents': table_of_contents,
+             'filing_html': filing_html
+         }
     )
 
 

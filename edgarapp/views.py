@@ -184,8 +184,51 @@ def SearchFilingView(request):
     query = request.GET.get('q')
     fid = request.GET.get('fid')
     mycompany = Company.objects.get(ticker=query)
-    filings = Filing.objects.filter(cik=mycompany.cik).order_by('-filingdate')
-    filing = Filing.objects.get(id=fid)  # the filing requested by fid
+    #check if query sqtring has valid arguments
+    if fid=='all':
+        #query string fetches the latest filing
+
+        filings = Filing.objects.filter(cik=mycompany.cik).order_by('-filingdate')
+        filing = Filing.objects.filter(cik=mycompany.cik).order_by('-filingdate').latest('filingdate')
+         # the latest filing is being recieved
+
+    else:
+        #normal fid is in place
+        filings = Filing.objects.filter(cik=mycompany.cik).order_by('-filingdate')
+        filing = Filing.objects.get(id=fid)  # the filing was requested by fid
+    # page = open(url)
+        # finder = filing.filingpath.split('/')[1]+"#"
+        # soup = BeautifulSoup(page.read())
+    links = []
+    verify = []
+    # for link in soup.find_all('a'):
+        #   x = link.get('href')
+        #   if str(x).startswith('https') or str(x).startswith('http'):
+        #     if x.find('#') != -1:
+        #       if link.string.find('Table of Contents') == -1 or x.endswith("#INDEX") == -1:
+        #         # print(link.string.endswith("Index"))
+        #         if link.string.endswith("Index") == False:
+        #           # print('not present')
+        #           if x in verify:
+        #             for item in links:
+        #               if x.find(item["url"]) != -1:
+        #                 # print(link.string)
+        #                 itemIndex = links.index(item)
+        #                 # print("index", itemIndex)
+        #                 del links[itemIndex]
+        #                 store = {
+        #                   "value": item["value"] + " " + link.string,
+        #                   "url": item["url"]
+        #                 }
+        #                 links.append(store)
+        #           else:
+        #             # print('false')
+        #             verify.append(x)
+        #             store = {
+        #               "value": link.string,
+        #               "url": "#"+x.split('#')[1]
+        #             }
+        #             links.append(store)
 
     name = mycompany.name
     name = name.upper()
@@ -251,42 +294,7 @@ def SearchFilingView(request):
         if not comps:
             comps.append('Director is not on the board of any other companies')
         matches.append(comps)
-
     url = '/mnt/filings-static/capitalrap/edgarapp/static/filings/' + filing.filingpath
-    
-    # page = open(url)
-    # finder = filing.filingpath.split('/')[1]+"#"
-    # soup = BeautifulSoup(page.read())
-    links = []
-    verify = []
-    # for link in soup.find_all('a'):
-    #   x = link.get('href')
-    #   if str(x).startswith('https') or str(x).startswith('http'):
-    #     if x.find('#') != -1:
-    #       if link.string.find('Table of Contents') == -1 or x.endswith("#INDEX") == -1:
-    #         # print(link.string.endswith("Index"))
-    #         if link.string.endswith("Index") == False:
-    #           # print('not present')
-    #           if x in verify:
-    #             for item in links:
-    #               if x.find(item["url"]) != -1:
-    #                 # print(link.string)
-    #                 itemIndex = links.index(item)
-    #                 # print("index", itemIndex)
-    #                 del links[itemIndex]
-    #                 store = {
-    #                   "value": item["value"] + " " + link.string,
-    #                   "url": item["url"]
-    #                 }
-    #                 links.append(store)
-    #           else:
-    #             # print('false')
-    #             verify.append(x)
-    #             store = {
-    #               "value": link.string,
-    #               "url": "#"+x.split('#')[1]
-    #             }
-    #             links.append(store)
 
     object_list = []
     object_list.append((query, fid))
@@ -298,28 +306,26 @@ def SearchFilingView(request):
     object_list.append(zip(exectable, matches))
     object_list.append(links)
 
-    # print(finder)
+        # print(finder)
     toc_extractor = TOCExtractor()
 
     with open(url) as file:
+            filing_html = file.read()
+            try:
+              extract_data = toc_extractor.extract(filing_html)
+              table_of_contents = extract_data.table
+            except:
+              table_of_contents = ""
 
-        filing_html = file.read()
-        
-        try:
-          extract_data = toc_extractor.extract(filing_html)
-          table_of_contents = extract_data.table
-        except:
-          table_of_contents = ""
-
-    # object_list is ((q, fid), (companyname, name), (filings object), (filing))
+        # object_list is ((q, fid), (companyname, name), (filings object), (filing))
     return render(
-        request, template_name, {
-            'object_list': object_list,
-            'extended_template': extended_template,
-            'table_of_contents': table_of_contents,
-            'filing_html': filing_html
-        }
-    )
+            request, template_name, {
+                'object_list': object_list,
+                'extended_template': extended_template,
+                'table_of_contents': table_of_contents,
+                'filing_html': filing_html
+   }
+)
 
 
 def AboutView(request):

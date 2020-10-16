@@ -98,7 +98,12 @@
             <br><center>
               {% if title == "Login" %}
                 <a href = "#">Forgot your password?</a>
+                  {% if request.GET.next %}
+                <br>Don't have an account? <a href = " {% url 'register' %}?next={{request.GET.next }} ">Register</a>
+                   {%else%}
                 <br>Don't have an account? <a href = "{% url 'register' %}">Register</a>
+                   {%endif%}
+
               {% endif %}
               {% if title == "Register" %}
                 Already have an account? <a  href = "{% url 'login' %}">Login</a>

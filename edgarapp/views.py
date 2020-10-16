@@ -184,38 +184,46 @@ def SearchFilingView(request):
     query = request.GET.get('q')
     fid = request.GET.get('fid')
     mycompany = Company.objects.get(ticker=query)
+    #user is not logged in and
+    # they are not searching for Tesla
+    if not request.user.is_authenticated and query != 'TSLA' :
+     #redirect them to login
+         return redirect('/accounts/login/?next='+query)
+
+    elif request.user.is_authenticated or ( not request.user.is_authenticated and query == 'TSLA') :
+        #user is authenticated or they are not authenticated but are searching for Tesla
     #check if query sqtring has valid arguments
-    if fid=='all':
+      if fid=='all':
         #query string fetches the latest filing
 
         filings = Filing.objects.filter(cik=mycompany.cik).order_by('-filingdate')
         filing = Filing.objects.filter(cik=mycompany.cik).order_by('-filingdate').latest('filingdate')
          # the latest filing is being recieved
 
-    else:
+      else:
         #normal fid is in place
         filings = Filing.objects.filter(cik=mycompany.cik).order_by('-filingdate')
         filing = Filing.objects.get(id=fid)  # the filing was requested by fid
-    # page = open(url)
+      # page = open(url)
         # finder = filing.filingpath.split('/')[1]+"#"
         # soup = BeautifulSoup(page.read())
-    links = []
-    verify = []
-    # for link in soup.find_all('a'):
-        #   x = link.get('href')
-        #   if str(x).startswith('https') or str(x).startswith('http'):
-        #     if x.find('#') != -1:
-        #       if link.string.find('Table of Contents') == -1 or x.endswith("#INDEX") == -1:
-        #         # print(link.string.endswith("Index"))
-        #         if link.string.endswith("Index") == False:
-        #           # print('not present')
-        #           if x in verify:
-        #             for item in links:
-        #               if x.find(item["url"]) != -1:
-        #                 # print(link.string)
-        #                 itemIndex = links.index(item)
-        #                 # print("index", itemIndex)
-        #                 del links[itemIndex]
+      links = []
+      verify = []
+      # for link in soup.find_all('a'):
+      #   x = link.get('href')
+      #   if str(x).startswith('https') or str(x).startswith('http'):
+      #     if x.find('#') != -1:
+      #       if link.string.find('Table of Contents') == -1 or x.endswith("#INDEX") == -1:
+      #         # print(link.string.endswith("Index"))
+      #         if link.string.endswith("Index") == False:
+      #           # print('not present')
+      #           if x in verify:
+      #             for item in links:
+      #               if x.find(item["url"]) != -1:
+      #                 # print(link.string)
+      #                 itemIndex = links.index(item)
+      #                 # print("index", itemIndex)
+      #                 del links[itemIndex]
         #                 store = {
         #                   "value": item["value"] + " " + link.string,
         #                   "url": item["url"]
@@ -230,32 +238,32 @@ def SearchFilingView(request):
         #             }
         #             links.append(store)
 
-    name = mycompany.name
-    name = name.upper()
-    name = name.replace('INTERNATIONAL', 'INTL')
-    name = name.replace(' /DE', '')
-    name = name.replace('/DE', '')
-    name = name.replace('INC.', 'INC')
-    name = name.replace(',', '')
+      name = mycompany.name
+      name = name.upper()
+      name = name.replace('INTERNATIONAL', 'INTL')
+      name = name.replace(' /DE', '')
+      name = name.replace('/DE', '')
+      name = name.replace('INC.', 'INC')
+      name = name.replace(',', '')
 
-    funds = Funds.objects.raw(
+      funds = Funds.objects.raw(
         'SELECT * FROM edgarapp_funds WHERE company = %s ORDER BY share_prn_amount+0 DESC LIMIT 100', [name])
 
-    directors = Directors.objects.filter(
+      directors = Directors.objects.filter(
         company=mycompany.name).order_by('-director')
 
-    allDirectors = Directors.objects.all()
+      allDirectors = Directors.objects.all()
 
-    executives = Executives.objects.filter(company=mycompany.name)
+      executives = Executives.objects.filter(company=mycompany.name)
 
-    today = datetime.today()
-    currYear = today.year
+      today = datetime.today()
+      currYear = today.year
 
-    for year in executives:
+      for year in executives:
         if year.filingdate.split('-')[0] == str(currYear):
             exectable.append(year)
 
-    for person in directors:
+      for person in directors:
         if person:
             personA = person.director.replace("Mr.", '')
             personA = person.director.replace("Dr.", '')
@@ -292,24 +300,24 @@ def SearchFilingView(request):
                         if sequence > 0.75 and mycompany.name != check.company:
                             comps.append(check.company)
         if not comps:
-            comps.append('Director is not on the board of any other companies')
+             comps.append('Director is not on the board of any other companies')
         matches.append(comps)
-    url = '/mnt/filings-static/capitalrap/edgarapp/static/filings/' + filing.filingpath
+        url = '/mnt/filings-static/capitalrap/edgarapp/static/filings/' + filing.filingpath
 
-    object_list = []
-    object_list.append((query, fid))
-    object_list.append((mycompany.name, mycompany.ticker))
-    object_list.append(filings)
-    object_list.append(filing)
-    object_list.append(funds)
-    object_list.append(zip(directors, matches))
-    object_list.append(zip(exectable, matches))
-    object_list.append(links)
+        object_list = []
+        object_list.append((query, fid))
+        object_list.append((mycompany.name, mycompany.ticker))
+        object_list.append(filings)
+        object_list.append(filing)
+        object_list.append(funds)
+        object_list.append(zip(directors, matches))
+        object_list.append(zip(exectable, matches))
+        object_list.append(links)
 
         # print(finder)
-    toc_extractor = TOCExtractor()
+        toc_extractor = TOCExtractor()
 
-    with open(url) as file:
+        with open(url) as file:
             filing_html = file.read()
             try:
               extract_data = toc_extractor.extract(filing_html)
@@ -318,7 +326,7 @@ def SearchFilingView(request):
               table_of_contents = ""
 
         # object_list is ((q, fid), (companyname, name), (filings object), (filing))
-    return render(
+        return render(
             request, template_name, {
                 'object_list': object_list,
                 'extended_template': extended_template,
@@ -431,7 +439,11 @@ def login_view(request):
         password = form.cleaned_data.get("password")
         user = authenticate(username=username, password=password)
         login(request, user)
-        return redirect('home')
+
+        if request.GET.get('next') == None :
+            return redirect('home')
+        else:
+            return redirect('/filing/?q='+request.GET.get('next') + '&fid=all')
     return render(request, "form.html", {
         "form": form,
         "title": "Login",
@@ -453,7 +465,11 @@ def register_view(request):
         user.save()
         new_user = authenticate(username=user.username, password=password)
         login(request, new_user)
-        return redirect('home')
+        if request.GET.get('next') == None:
+            return redirect('home')
+        else:
+            return redirect('/filing/?q=' + request.GET.get('next') + '&fid=all')
+
     return render(request, "form.html", {
         "title": "Register",
         "form": form,

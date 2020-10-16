@@ -5,15 +5,21 @@
 {% load static %}
 
 {% block head %}
-<title>mBlazr</title>
+<title>MBlazr</title>
 <script type="text/javascript" src="{% static 'js/autocomplete.js' %}"></script>
 
 <link href="{% static 'css/autocomplete.css' %}" rel="stylesheet" >
 <link href="{% static 'css/home-styles.css' %}" rel="stylesheet" >
+<link href="{% static 'css/homecss.css' %}" rel="stylesheet" >
+<style>
 
+</style>
 {% endblock %}
 
 {% block content %}
+<body class="body-div">
+    <div style="width:100%;background-color:#f1f5fa">
+      <div class="main-div">
 <div class="container">
     <h2>&nbsp;</h2>
 
@@ -22,100 +28,43 @@
     <div class="jumbotron">
         <h2>&nbsp;</h2>
         <center>
-            <h2>Your Fundamental Analysis Tool</h2>
-            <p class="lead">An easy way to read company filings including 10-K, 10-Q and Proxy statements.</p>
-            <p class="lead">Take a test drive with Home Depot (HD)</p>
+            <h1 style="font-family: Tahoma,Geneva,sans-serif;     color: #000;">Your Fundamental Analysis Tool</h1>
+         <br>
+            <p class="lead"  style="font-family: Tahoma,Geneva,sans-serif;     color: #000;">An easy way to read company filings including 10-K, 10-Q and Proxy statements.</p>
+            <p class="lead"style="font-family: Tahoma,Geneva,sans-serif;     color: #000;">Take a test drive with Home Depot (HD)</p>
         </center>
-        <!--searchBar-->
-        <div class="row">
-            <div class="col-sm-3"></div>
-            <div class="col-sm-6">
-                <div class="bs-example">
-                    <form class="autocomplete" autocomplete="off" action="" name="searchForm">
-                        <div class="row" style="height: 100%;">
-                        {% if user.is_authenticated %}
-                            <input type="text" class="col-md-11" autocomplete="off" id="myInput" spellcheck="false" placeholder="Ticker...">
-                            <button type="submit" id="myBtn" class="col-md-1 btn btn-primary" disabled>
-                        {% else %}
-                        <input type="text" class="col-md-11" autocomplete="off" id="myInput" spellcheck="false" value="TSLA">
-                            <button type="submit" id="myBtn" class="col-md-1 btn btn-primary">
-                        {% endif %}
-                        
-                                <div style="-webkit-transform: rotate(45deg); 
-                             -moz-transform: rotate(45deg); 
-                               -o-transform: rotate(45deg);
-                                  transform: rotate(45deg);">
-                                    &#9906;
-                                </div>
-                            </button>
-                            <br>
-                            <center>
-                            {% if messages %}
-                                    <div >
-                                        <ul  style="list-style-type:none">
-                                        {% for message in messages %}
-                                            <li><i>{{ message }} <a href="{% url 'login'%}" style="color: #666">Login</a></i></li>
-                                            {% endfor %}
-                                        </ul>
-                                    </div>
-                                
-                                {% endif %}
-                                </center>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+        
 
         &nbsp;
     </div>
 
-    <!--autocomplete script
-    <script src="../../static/bootstrap/js/capspecs.js"></script> -->
 
-    <!----------- Tool Features ---------------->
-    <!------------------------------------------>
-    <!--<div class="bs-docs-section">
-      <div class="page-header">
-      </div>
-      <div class="row">-->
-    <!--1st column-->
-    <!--<div class="col-sm-4">
-          <h4><center>Easy access sec filings</center></h4>
-          <p>Nullam quis risus eget <a href="#">urna mollis ornare</a> vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
-          <p><small>This line of text is meant to be treated as fine print.</small></p>
-          <p>The following snippet of text is <strong>rendered as bold text</strong>.</p>
-          <p>The following snippet of text is <em>rendered as italicized text</em>.</p>
-          <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
-        </div>-->
-    <!--2nd column-->
-    <!--<div class="col-sm-4" style="background-color:lavenderblush;">
-          <h4><center>Clear analytics</center></h4>
-          <p>Nullam quis risus eget <a href="#">urna mollis ornare</a> vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
-          <p><small>This line of text is meant to be treated as fine print.</small></p>
-          <p>The following snippet of text is <strong>rendered as bold text</strong>.</p>
-          <p>The following snippet of text is <em>rendered as italicized text</em>.</p>
-          <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
-        </div>-->
-    <!--3rd column-->
-    <!--<div class="col-sm-4">
-          <h4><center>Additional features</center></h4>
-          <p>Nullam quis risus eget <a href="#">urna mollis ornare</a> vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
-          <p><small>This line of text is meant to be treated as fine print.</small></p>
-          <p>The following snippet of text is <strong>rendered as bold text</strong>.</p>
-          <p>The following snippet of text is <em>rendered as italicized text</em>.</p>
-          <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
-        </div>
-      </div>
-    </div>-->
-
-    <!----------- Footer ----------------------->
-    <!------------------------------------------>
-    <footer>
-    </footer>
+   
+   
 
 </div>
 
+      </div>
+    </div>
+ <!----------- Footer ----------------------->
+    <!------------------------------------------>
+    <div id="footer_div">
+        <div class="main-div" >
+          <div class="price-div" >
+            <span class ="footer-span" >Just $29/month</span>
+            <br/>
+            <span class="footer-span-two" >Paid monthly. Cancel anytime.</span>
+            <br/>
+            <div class="terms-policy" >
+                <a href="#terms" >Terms</a>
+                <a href="#privacy" >Privacy</a>
+            </div>
+        <div class="sign_up_div">
+                <a href="#sign-up"><button style="background-color:#FFF;color:#72c1fb;padding:25px 90px;font-size:1.4em;border-radius:20px;">Get Started</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
 {% endblock %}
 
 {% block script %}

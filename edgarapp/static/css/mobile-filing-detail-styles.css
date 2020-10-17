@@ -1,28 +1,44 @@
 .navbar{
 display:none
 }
-#filing-quick-navbar{
+
+#filing-quick-navbar-small {
     position:absolute;
     top:0px;
     left:0px;
-    width:100%;
-    height:auto;
-    background-color:#001a33;
-}
-#filing-quick-navbar button{
-    color:white;
-    font-weight:bolder;
+    width:100%!important;
     background-color:#3973ac;
+    z-index:20;
+}
+
+#filing-quick-navbar-small button{
+  background-color:#3973ac;
+  color:white;
+  border:1px;
+  font-weight:bold;
+}
+#filing-quick-navbar-small button:hover{
+  background-color:#2d5986;
+}
+#filing-quick-navbar-small button:active{
+  background-color:#2d5986;
+}
+#filing-quick-navbar-large{
+display:none;
+}
+
+.button1{
+  text-align:center;
+    width:25%;
 
 }
-.button1{
-    width:24.8%;
-}
 .center-btn{
-    width:49.8%;
+  text-align:center;
+    width:50%;
 }
 .button2{
-    width:24.8%;
+  text-align:center;
+    width:23%;
 }
 .center-btn span{
     position:absolute;
@@ -177,9 +193,16 @@ html, body {
 .section {
     height: 100%;
     overflow-y:scroll;
-    border-right:3px solid black
-}
+    border-right:3px solid black;
+    top:-47px;
 
+}
+.section form{
+
+  height:auto;
+  padding:0px;
+  margin:0px 0px 1px 0px;
+}
 #table_filing {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -232,9 +255,8 @@ html, body {
     background-color: #dddddd;
 }
 
-/* Design for Small screen */
-@media screen and (max-width:700px){
-    #filing-quick-navbar button:hover{
+
+#filing-quick-navbar-small button:hover{
     cursor:pointer;
 }
 /* Modal Content/Box */
@@ -281,7 +303,6 @@ html, body {
 }
 
 .fl-table {
-
      overflow: scroll;
     border-radius: 5px;
     font-size: 12px;
@@ -299,83 +320,46 @@ html, body {
     margin-left:-15%;
 }
  #myInput{
-    font-size:small;
-
-    margin-left:10%;
-    width:80%;
-}
-
-.top-buttons{
-
-  top:0%;
-  padding:0%;
-  left:0%;
-  width:100%!important;
-}
-.top-buttons button{
-    background-color:lightblue;
-    width:32.7%;
     height:30px;
-    color:black;
-    font-weight:bold;
-    border:none;
+    font-size:smaller;
+    margin-left:0%;
+    width:90%;
+    text-align:center;
+    position:fixed;
+    z-index:5;
+    top:25px;
+    background-color:white;
 }
+ #myBtn{
+   position:fixed;
+   left:90%;
+   top:15px;
+   height:25px;
+   color:blue;
 
-
-}
-
-/*  Designs For Large Screen */
-@media screen and (min-width:700px){
-    #filing-quick-navbar button:hover{
-    cursor:auto;
-}
-.container-fluid{
-    margin-top:-43.9px;
-    padding-top:-30px;
-}
- #myInput{
-     margin-left:1.9%;
-     width:89%;
-     height:40px;
-     margin-top:8px;
-     font-size:small;
-     text-align:center;
 
  }
- .top-buttons{
-  background-color:#3973ac;
-  top:0%;
+.top-buttons{
+  position:absolute;
+  top:5%;
   padding:0%;
   left:0%;
   width:100%!important;
-}
-.top-buttons button{
-    background-color:#3973ac;;
-    padding:0px;
-    margin:1.2px;
-    width:31.9%;
-    height:30px;
-    color:black;
-    font-weight:bold;
-    border:none;
-}
-.top-buttons button:hover{
-    background-color:#6899ca;
-    color:white;
-}
-#report_table_cont{
-    position:absolute;
-    background-color:#d9d9d9;
-    width:100%;
-    left:0%;
-    font-weight:bolder
-}
-#filings-section-list{
-position: absolute;
-left:0%;
- top: 80px;
-  width: 100%;
-  margin-top:10px;
-}
+  background-color:#3973ac;
 
 }
+.top-buttons button{
+    background-color:#3973ac;
+    width:32.7%;
+    height:30px;
+    color:white;
+    font-weight:bold;
+    border:1px;
+    border-right:1px solid white;
+}
+/* #1st form{
+  padding:0px;
+  background-color:red;
+} */
+
+

@@ -1,7 +1,9 @@
 .navbar{
-display:none
+display:none;
 }
-#filing-quick-navbar{
+html { height: 100%;
+ }
+#filing-quick-navbar-large{
     position:absolute;
     top:0px;
     left:0px;
@@ -9,7 +11,10 @@ display:none
     height:auto;
     background-color:#001a33;
 }
-#filing-quick-navbar button{
+#filing-quick-navbar-small{
+ display:none;
+}
+#filing-quick-navbar-large div{
     color:white;
     font-weight:bolder;
     background-color:#3973ac;
@@ -237,7 +242,7 @@ html, body {
     background-color: #dddddd;
 }
 
-#filing-quick-navbar button:hover{
+#filing-quick-navbar-large div:hover{
     cursor:auto;
 }
 .container-fluid{
@@ -255,8 +260,8 @@ html, body {
 
  }
  #myBtn{
-     margin-top:0px;
-     height:40px;
+     margin-top:-5px;
+     height:45.5px;
  }
  .top-buttons{
 

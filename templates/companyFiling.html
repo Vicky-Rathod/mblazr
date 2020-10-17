@@ -11,14 +11,38 @@
   <script type="text/javascript" src="{% static 'js/autocomplete.js' %}"></script>
   
   <link href="{% static 'css/autocomplete.css' %}" rel="stylesheet">
-
-  <link href="{% static 'css/filing-detail-styles.css' %}" rel="stylesheet" />
-
+<!-- stylesheets for large screens-->
+  <link href="{% static 'css/filing-detail-styles.css' %}" media="screen and (min-width:700px)" rel="stylesheet" />
+<!-- stylesheet for small screens  -->
+<link href="{% static 'css/mobile-filing-detail-styles.css' %}" media="screen and (max-width:700px)" rel="stylesheet" />
 {% endblock %}
 
 {% block content %}
   <div class="container-fluid" style="height: 100%;">
-    &nbsp;
+<!--    Shows a quick navigation -->
+    &nbsp;<div id="filing-quick-navbar">
+
+        <button class="btn btn-sm  button1">mBlazr</button>
+         <button class="btn btn-sm center-btn">{{ object_list.1.0 }} Earnings {{ object_list.3.filingdate }}
+        <span>
+         <a href="">top</a>
+         <a href="">bs</a>
+         <a href="">is</a>
+         <a href="">cf</a>
+          </span>
+
+       </button>
+       {% if object_list.3.filingtype == '10-Q' %}
+       <button class="btn btn-sm button2">{{ object_list.1.1 }} {{ object_list.3.filingtype }} Quarterly Report</button>
+       {%elif object_list.3.filingtype == '10-K'%}
+       <button class="btn btn-sm button2">{{ object_list.1.1 }} {{ object_list.3.filingtype }} Annually Report</button>
+       {%else%}
+       <button class="btn btn-sm button2">{{ object_list.1.1 }} {{ object_list.3.filingtype }} Report</button>
+       {%endif%}
+
+
+
+     </div>
 
     <div class="row" style="height: 100%;">
 
@@ -28,26 +52,27 @@
       <div class="col-sm-3 section" id="1st"  style="height: 100%;">
         <!-- <div style="position: fixed; z-index: 1;"> -->
 
-        <form class="autocomplete" autocomplete="off" action="" name="searchForm">
+        <form class="autocomplete m-0 " autocomplete="off" action="" name="searchForm">
           <div class="row" style="height: 100%;">
-            <input type="text" class="col-md-11" autocomplete="off" id="myInput" spellcheck="false" placeholder="Ticker...">
-            <button type="submit" id="myBtn" class="col-md-1 btn btn-primary" disabled>
-              <div style="-webkit-transform: rotate(45deg); 
-                                              -moz-transform: rotate(45deg); 
+            <input type="text" class="col-md-11 form-control" autocomplete="off" id="myInput" spellcheck="false" placeholder="Search (ticker)">
+            <button type="submit" id="myBtn" class="col-md-1 btn " disabled>
+              <div style="font-size:1.6em;font-weight:bold;color:blue;-webkit-transform: rotate(45deg);
+                                              -moz-transform: rotate(45deg);
                                                 -o-transform: rotate(45deg);
                                                   transform: rotate(45deg);">
                 &#9906;
               </div>
+
             </button>
           </div>
         </form>
 
     <!-- </div> -->
 
-    <div class="top-buttons" style="position:absolute; top: 60px;">
+    <div class="top-buttons" >
 
-        <div></div>
-            <button id="myBtn1">Funds</button>
+
+            <button   id="myBtn1">Funds</button>
 
             <div id="myModal" class="modal">
               <!-- Modal content -->
@@ -223,7 +248,7 @@
               }
 
             </script>
-            <button id="myBtn2">Directors</button>
+            <button  id="myBtn2">Directors</button>
 
             <div id="myModal2" class="modal">
               <!-- Modal content -->
@@ -304,7 +329,7 @@
 
             </script>
 
-            <button id="myBtn3">Executives</button>
+            <button  id="myBtn3">Executives</button>
 
             <div id="myModal3" class="modal">
               <div class="modal-content">
@@ -359,25 +384,27 @@
 
         </div>
         
-      <section style="position: absolute; top: 90px; width: 95%;">
+      <section id="filings-section-list" >
 
         <div>
-          <table class="table table-striped table-hover ">
-            <thead>
+
+          <table class=" table-hover ">
+<!--            <div style="color:#002266;font-weight:bolder" class="text-center center">{{ object_list.1.0 }}</div>-->
+            <thead style="background-color:#bfbfbf;">
               <tr>
                 <th><center>Type</center></th>
-                <th>SEC Filing Reference</th>
+                  <th ><center>SEC Filing Reference</center></th>
               </tr>
             </thead>
             <tbody>
               {% for filing in object_list.2 %}
-                <tr id="tr_doc">
+                <tr id="tr_doc" style="padding:3px 0px">
                   {% if "10-Q" in filing.filingtype %}
-                    <td id = "qbg"style="cursor:pointer;" onclick="window.location.href = '{% url 'companyFiling' %}?q={{ object_list.0.0 }}&fid={{ filing.id }}';"><center>10-Q</center></td>
-                    <td style="cursor:pointer;" onclick="window.location.href = '{% url 'companyFiling' %}?q={{ object_list.0.0 }}&fid={{ filing.id }}';">Filed on {{ filing.filingdate }}</td>
+                    <td class="p-0" id = "qbg" style="cursor:pointer;border:1px;border-right:1px solid black;" onclick="window.location.href = '{% url 'companyFiling' %}?q={{ object_list.0.0 }}&fid={{ filing.id }}';"><center>10-Q</center></td>
+                    <td class="filedate p-0" style="cursor:pointer;padding:0px 0px 0px 30px;color:black" onclick="window.location.href = '{% url 'companyFiling' %}?q={{ object_list.0.0 }}&fid={{ filing.id }}';">Filed on  <span style="color:blue">{{ filing.filingdate }}</span></td>
                   {% elif "10-K" in filing.filingtype %}
-                    <td id = "kbg" style="cursor:pointer;" onclick="window.location.href = '{% url 'companyFiling' %}?q={{ object_list.0.0 }}&fid={{ filing.id }}';"><center>10-K</center></td>
-                    <td style="cursor:pointer;background-color: #f9f9f9;" onclick="window.location.href = '{% url 'companyFiling' %}?q={{ object_list.0.0 }}&fid={{ filing.id }}';">Filed on {{ filing.filingdate }}</td>
+                    <td class="p-0" id = "kbg" style="cursor:pointer;border:1px;border-right:1px solid black;" onclick="window.location.href = '{% url 'companyFiling' %}?q={{ object_list.0.0 }}&fid={{ filing.id }}';"><center>10-K</center></td>
+                    <td class="filedate p-0" style="cursor:pointer;padding:0px 0px 0px 30px;color:black" onclick="window.location.href = '{% url 'companyFiling' %}?q={{ object_list.0.0 }}&fid={{ filing.id }}';">Filed  on <span style="color:blue">{{ filing.filingdate }}<span>  </td>
                   {% endif %}
                 </tr>
               {% endfor %}
@@ -454,21 +481,19 @@
       <!----------- RIGHT MENU ---------------->
 
       <div class="col-sm-3 section toc" id="3rd">
-        <div style="text-align:center;font-family:Helvetica,sans-serif;font-size:10pt;">
-          <hr style="margin-top:1%;">
-          <h5 style="margin:0px;font-size:1.3em;color:black;font-weight:bold;">{{ object_list.1.0 }} Earnings {{ object_list.3.filingdate }}</h5>
-          <h5 style="margin:10px;font-size:1.3em;color:black;font-weight:bold;">{{ object_list.1.1 }} {{ object_list.3.filingtype }} Report</h5>
-          <hr style="margin-bottom:1%;">
-        </div>
+
         {% comment %} <table class="table table-striped table-hover " id="table_filing"> {% endcomment %}
         <div id="table_filing">
+            <h3 id="report_table_cont" style="font-weight:bolder">Contents</h3>
           {% comment %} <thead>
             <tr>
-              <th><center>TABLE OF CONTENT</center></th>
+              <th ><center>CONTENT</center></th>
             </tr>
           </thead>
+
           <tbody>
-            
+
+            {{filing in object_list.7}}
             {% for filing in object_list.7 %}
               <tr id="filing_tr">
                 <td onclick="reloadFrame('{{ filing.url }}')" id="filing_td" style="cursor: pointer;">
@@ -477,9 +502,9 @@
               </tr>
             {% endfor %} {% endcomment %}
 
-            <h3>Table of Contents</h3>
+
             {{ table_of_contents|safe }}
-          
+
             {% comment %} </tbody> {% endcomment %}
         </div>
       </div>

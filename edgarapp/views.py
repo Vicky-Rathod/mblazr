@@ -375,7 +375,12 @@ def SearchFilingView(request):
         t_o_c.body=extract_data.table
         t_o_c.save()
     
-    if not t_o_c or request.GET.get('save', False):
+    if not t_o_c or request.GET.get('save'):
+      
+
+        toc_extractor = TOCExtractor()
+
+        extract_data = toc_extractor.extract(url)
 
         t_o_c = filing.table_of_contents.create(body=extract_data.table)
 

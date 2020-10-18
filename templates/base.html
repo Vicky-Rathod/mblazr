@@ -55,8 +55,8 @@
       
         <!-- Overlay content -->
         <div class="overlay-content">
-          <a href="{% url 'register' %}">Login</a>
-          <a href="{% url 'login' %}">Sign Up</a>
+          <a href="{% url 'login' %}">Login</a>
+          <a href="{% url 'register' %}">Sign Up</a>
           
         </div>
       
@@ -77,8 +77,8 @@
 </div>
       <div class="header-right-div">
         {% if not user.is_authenticated %}
-              <a href="{% url 'register' %}"><button id="loginbutton">Log In</button></a>
-              <a href="{% url 'login' %}"><button>Sign Up</button></a>
+              <a href="{% url 'login' %}"><button id="loginbutton">Log In</button></a>
+              <a href="{% url 'register' %}"><button>Sign Up</button></a>
           {% else %}
           <a href="#"><button id="loginbutton">Home</button></a>
           <a href="#"><button>Pricing</button></a>

@@ -7,6 +7,8 @@
 <html lang="en">
 
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168264615-1"></script>
     <script>
@@ -35,98 +37,100 @@
     <!------------------------------------------>
     <link rel="stylesheet" href="../../static/bootstrap/css/stylesheet.min.css" media="screen">
     <link rel="stylesheet" href="../../static/bootstrap/css/custom.css">
-    <script src="{% static 'js/base.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/basecss.css' %}">
     {% block head %}
     {% endblock %}
+
+    <script src="{% static 'js/base.js' %}"></script>
   </head>
 
 
-  <body  class="body-div">
-  
-    <nav role="navigation">
-      <div >
-        
-        <h2 >MBlazr</h2>
-      </div>
-      <div id="myNav" class="overlay">
+  <body class="body-div">
+    <!------------------------------------------>
+    <!----------- Top Navigation bar ----------->
+    <!------------------------------------------>
 
-        <!-- Button to close the overlay navigation -->
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      
-        <!-- Overlay content -->
-        <div class="overlay-content">
-          <a href="{% url 'login' %}">Login</a>
-          <a href="{% url 'register' %}">Sign Up</a>
-          
-        </div>
-      
-      </div>
-      
-      <!-- Use any element to open/show the overlay navigation menu -->
-      <span id ="navopen" onclick="openNav()">&#9776;</span>
-      </nav>
-    <div class="header-div" >
-      <div class="header-left-div">
-    
-           <div class="navbar-header">
-            <a href="{% url 'home' %}" class="navbar-brand">MBlazr</a>
+        <nav role="navigation">
+          <div >
             
-          </div> 
-   
+            <h2 >MBlazr</h2>
+          </div>
+          <div id="myNav" class="overlay">
 
-</div>
-      <div class="header-right-div">
-        {% if not user.is_authenticated %}
-              <a href="{% url 'login' %}"><button id="loginbutton">Log In</button></a>
-              <a href="{% url 'register' %}"><button>Sign Up</button></a>
-          {% else %}
-          <a href="#"><button id="loginbutton">Home</button></a>
-          <a href="#"><button>Pricing</button></a>
-     {% endif %}
-      </div>
+            <!-- Button to close the overlay navigation -->
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+          
+            <!-- Overlay content -->
+            <div class="overlay-content">
+              <a href="{% url 'pricing' %}">Login</a>
+              <a href="{% url 'login' %}">Sign Up</a>
+              
+            </div>
+          
+          </div>
+          
+          <!-- Use any element to open/show the overlay navigation menu -->
+          <span id ="navopen" onclick="openNav()">&#9776;</span>
+          </nav>
+        <div class="header-div" >
+          <div class="header-left-div">
+        
+               <div class="navbar-header">
+                <a href="{% url 'home' %}" class="navbar-brand">MBlazr</a>
+                
+              </div> 
+       
+
+    </div>
+          <div class="header-right-div">
+              
+                  <a href="{% url 'login' %}"><button id="loginbutton">Log In</button></a>
+                  <a href="{% url 'register' %}"><button>Sign Up</button></a>
+              
+          </div>
 
 
 
 <!----------- Search container ------------->
-<!------------------------------------------>
+    <!------------------------------------------>
 
 
-      <form class="autocomplete" autocomplete="off" action="" name="searchForm">
-               
-      <div class="search-wrapper-div">
-        <div class="search-div0" >
-          <div class="search-t0" ></div>
-          {% if user.is_authenticated %}
-          <input id="myInput" autocomplete="off" type="text"  spellcheck="false" placeholder="Search (ticker, company)" autofocus=""  value="TSLA">
-          <div class="search-symbol-div">
-              <div class="symbol-div">
-                  ⚲
+          <form class="autocomplete" autocomplete="off" action="" name="searchForm">
+                   
+          <div class="search-wrapper-div">
+            <div class="search-div0" >
+              <div class="search-t0" ></div>
+              {% if user.is_authenticated %}
+              <input id="myInput" autocomplete="off" type="text"  spellcheck="false" placeholder="Search (ticker, company)" autofocus="">
+              <div class="search-symbol-div">
+                  <div class="symbol-div">
+                      ⚲
+                  </div>
               </div>
-          </div>
-          {% else %}
-          <input id="myInput" autocomplete="off" type="text"  spellcheck="false" placeholder="Search (ticker, company)" autofocus="" value="TSLA">
-          <div class="search-symbol-div">
-              <div class="symbol-div">
-                  ⚲
+              {% else %}
+              <input id="myInput" autocomplete="off" type="text"  spellcheck="false" placeholder="Search (ticker, company)" autofocus="" value="TSLA">
+              <div class="search-symbol-div">
+                  <div class="symbol-div">
+                      ⚲
+                  </div>
               </div>
+              {% endif %}
+            </div>
           </div>
-          {% endif %}
-        </div>
+          <div class="search_results_div"></div>
+          </form>
       </div>
-      <div class="search_results_div"></div>
-      </form>
-  </div>
 
-  
+      
 
-<!------------------------------------------>
-<!----------- Main body container ---------->
-<!------------------------------------------>
+    <!------------------------------------------>
+    <!----------- Main body container ---------->
+    <!------------------------------------------>
 
-{% block content %}
-{% endblock %}
+    {% block content %}
+    {% endblock %}
 
+ 
 
-
-</body>
+  </body>
 </html>

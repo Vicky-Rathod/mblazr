@@ -27,7 +27,7 @@ from django.views.generic import ListView, TemplateView
 
 from .forms import ContactForm, UsersLoginForm, UsersRegisterForm
 from .models import Company, Directors, Executives, Filing, Funds, Proxies
-from .utils import TOCExtractor
+from .utils import TOCExtractor, TOCAlternativeExtractor
 
 
 def handler404(request, *args, **argv):

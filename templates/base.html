@@ -43,7 +43,7 @@
 
   <body  class="body-div">
   
-    <nav role='navigation'>
+    <nav role="navigation">
       <div >
         
         <h2 >MBlazr</h2>
@@ -55,7 +55,7 @@
       
         <!-- Overlay content -->
         <div class="overlay-content">
-          <a href="{% url 'pricing' %}">Login</a>
+          <a href="{% url 'register' %}">Login</a>
           <a href="{% url 'login' %}">Sign Up</a>
           
         </div>
@@ -77,7 +77,7 @@
 </div>
       <div class="header-right-div">
           
-              <a href="{% url 'pricing' %}"><button id="loginbutton">Log In</button></a>
+              <a href="{% url 'register' %}"><button id="loginbutton">Log In</button></a>
               <a href="{% url 'login' %}"><button>Sign Up</button></a>
           
       </div>
@@ -94,7 +94,7 @@
         <div class="search-div0" >
           <div class="search-t0" ></div>
           {% if user.is_authenticated %}
-          <input id="myInput" autocomplete="off" type="text"  spellcheck="false" placeholder="Search (ticker, company)" autofocus="">
+          <input id="myInput" autocomplete="off" type="text"  spellcheck="false" placeholder="Search (ticker, company)" autofocus=""  value="TSLA">
           <div class="search-symbol-div">
               <div class="symbol-div">
                   ⚲

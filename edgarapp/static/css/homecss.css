@@ -1,0 +1,40 @@
+.footer-div{
+  width:100%;background-color:#72c1fb;color:#FFF;height:200px;
+}
+.main_class{
+  position:relative
+}
+.price-div{
+  height:200px;text-align:left;padding-top:60px;padding-left:60px;
+}
+
+.footer-span{
+  font-size:2.4em;font-weight:600; font-family: Tahoma,Geneva,sans-serif;
+}
+.footer-span-two{
+  font-size:1.6em; 
+  font-family: Tahoma,Geneva,sans-serif;
+}
+.terms-policy{
+  text-align:left;
+  color:#FFF;
+  padding-top:5px;
+}
+.terms-policy{
+  color:#FFF;
+  font-weight:600;
+  font-size:1.0em;
+
+}
+.sign_up_div{
+  position:absolute;
+  right: 122px;
+  margin-top: -111px;
+}
+.footerbutton{
+  background-color:#FFF;
+  color:#72c1fb;
+  padding:25px 90px;
+  font-size:1.4em;
+  border-radius:20px;
+}

@@ -7,6 +7,8 @@
 <html lang="en">
 
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168264615-1"></script>
     <script>
@@ -35,41 +37,93 @@
     <!------------------------------------------>
     <link rel="stylesheet" href="../../static/bootstrap/css/stylesheet.min.css" media="screen">
     <link rel="stylesheet" href="../../static/bootstrap/css/custom.css">
-
+    <link rel="stylesheet" href="{% static 'css/basecss.css' %}">
     {% block head %}
     {% endblock %}
+
+    <script src="{% static 'js/base.js' %}"></script>
   </head>
 
 
-  <body>
+  <body class="body-div">
     <!------------------------------------------>
     <!----------- Top Navigation bar ----------->
     <!------------------------------------------>
-    <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a href="{% url 'home' %}" class="navbar-brand">mBlazr</a>
-        </div>
-        <div class="navbar-collapse collapse" id="navbar-main">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="{% url 'about' %}">About</a></li>
-            <li><a href="{% url 'faq' %}">FAQ</a></li>
-            <li><a href="{% url 'contact' %}">Contact</a></li>
-            <!-- <li><a href="{% url 'register' %}">Sign Up</a></li> -->
-            <li><a href="{% url 'pricing' %}">Pricing</a></li>
-            <li><a href="{% url 'login' %}">Sign In</a></li>
-            <!--<li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="account">My Account<span class="caret"></span></a>
-              <ul class="dropdown-menu" aria-labelledby="account">
-                <li><a href="{% url 'login' %}">Sign In</a></li>
-                <li class="divider"></li>
-                <li><a href="{% url 'register' %}">Sign Up</a></li>
-              </ul>
-            </li>-->
-          </ul>
-        </div>
-      </div>
+
+        <nav role="navigation">
+          <div >
+            
+            <h2 >MBlazr</h2>
+          </div>
+          <div id="myNav" class="overlay">
+
+            <!-- Button to close the overlay navigation -->
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+          
+            <!-- Overlay content -->
+            <div class="overlay-content">
+              <a href="{% url 'pricing' %}">Login</a>
+              <a href="{% url 'login' %}">Sign Up</a>
+              
+            </div>
+          
+          </div>
+          
+          <!-- Use any element to open/show the overlay navigation menu -->
+          <span id ="navopen" onclick="openNav()">&#9776;</span>
+          </nav>
+        <div class="header-div" >
+          <div class="header-left-div">
+        
+               <div class="navbar-header">
+                <a href="{% url 'home' %}" class="navbar-brand">MBlazr</a>
+                
+              </div> 
+       
+
     </div>
+          <div class="header-right-div">
+              
+                  <a href="{% url 'pricing' %}"><button id="loginbutton">Log In</button></a>
+                  <a href="{% url 'login' %}"><button>Sign Up</button></a>
+              
+          </div>
+
+
+
+<!----------- Search container ------------->
+    <!------------------------------------------>
+
+
+                    
+          <div class="search-wrapper-div">
+            <form class="autocomplete" autocomplete="off" action="" name="searchForm">
+         
+            <div class="search-div0" >
+              <div class="search-t0" ></div>
+              {% if user.is_authenticated %}
+              <input id="myInput" autocomplete="off" type="text"  spellcheck="false" placeholder="Search (ticker, company)" autofocus="">
+              <div class="search-symbol-div">
+                  <div class="symbol-div">
+                      ⚲
+                  </div>
+              </div>
+              {% else %}
+              <input id="myInput" autocomplete="off" type="text"  spellcheck="false" placeholder="Search (ticker, company)" autofocus="" value="TSLA">
+              <div class="search-symbol-div">
+                  <div class="symbol-div">
+                      ⚲
+                  </div>
+              </div>
+              {% endif %}
+            </div>
+          </form>
+          </div>
+          <div class="search_results_div"></div>
+          
+      </div>
+
+      
 
     <!------------------------------------------>
     <!----------- Main body container ---------->
@@ -78,8 +132,7 @@
     {% block content %}
     {% endblock %}
 
-    {% block script %}
-    {% endblock %}
+ 
 
   </body>
 </html>

@@ -57,7 +57,7 @@ table.table_nav td:hover {cursor:pointer;}
     .header-left-div {display:none;}
     #search_div {width:100%;padding:30px 0px;margin:0px;height:200px;background:#252037;color:#FFF;}
     #search_div h2 {font-size:1.2em;margin-bottom:10px;}
-    .search-wrapper-div {position:absolute;left:10%;width:80%;margin-top:13px;}
+    .search-wrapper-div {position:absolute;left:10%;width:80%;margin-top:11px;}
     .search_results_div {position:absolute;left:5%;width:90%;text-align:left;margin:0;padding:0;border:2px #72c1fb solid;border-radius:5px;display:none;background-color:white;color:#000;top:70px;}
     #search_results_td_div {border-left:0px;border-right:0px;padding:20px;}
     .price-div {display:none}
@@ -70,10 +70,10 @@ table.table_nav td:hover {cursor:pointer;}
     .main-div {width:1000px;margin:auto;padding:0px;     margin-left: 173px;}
     .header-div {margin:0px;padding:0px;height:65px;border:none;background-color:#FFF;margin-top: 0px;}
     #search_div {width:1000px;padding-top:30px;margin:0px;height:120px;text-align:center;background-image:linear-gradient(#f1f5fa,#f1f5fa);color:#000;}
-    .search-wrapper-div {position:absolute;left:calc(50% - 400px);width:500px;margin-top:12px;}
+    .search-wrapper-div {position:absolute;left:calc(50% - 400px);width:500px;    margin-top: -10px;}
     .search_results_div {width:100%;text-align:left;margin:0;padding:0;border:2px #72c1fb solid;border-radius:5px;display:none;background-color:white;color:#000;}
     #search_results_td_div {border:none;border-left:0px;border-right:0px;padding:30px;}
-    .header-right-div {    margin-top: 1px;
+    .header-right-div {    margin-top: -10px;
       margin-right: 107px;float:right;}
     .mobilev{display: none;}
     .header-left-div {padding-top: 28px;
@@ -116,7 +116,14 @@ width: 100%;
 text-align: center;
 margin-top: 30px;
 }
-
+.overlay-content1 {
+  position: relative;
+  top: 12%;
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+  }
+  
 .overlay a {
 padding: 8px;
 text-decoration: none;
@@ -208,3 +215,41 @@ font-size:1.6em;
 transform:rotate(45deg);
 
 }
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 8px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}

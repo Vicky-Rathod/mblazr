@@ -57,7 +57,7 @@ table.table_nav td:hover {cursor:pointer;}
     .header-left-div {display:none;}
     #search_div {width:100%;padding:30px 0px;margin:0px;height:200px;background:#252037;color:#FFF;}
     #search_div h2 {font-size:1.2em;margin-bottom:10px;}
-    .search-wrapper-div {position:absolute;left:10%;width:80%;margin-top:0px;}
+    .search-wrapper-div {position:absolute;left:10%;width:80%;margin-top:13px;}
     .search_results_div {position:absolute;left:5%;width:90%;text-align:left;margin:0;padding:0;border:2px #72c1fb solid;border-radius:5px;display:none;background-color:white;color:#000;top:70px;}
     #search_results_td_div {border-left:0px;border-right:0px;padding:20px;}
     .price-div {display:none}

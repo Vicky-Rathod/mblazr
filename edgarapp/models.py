@@ -65,3 +65,9 @@ class Executives(models.Model):
 	company = models.CharField(max_length=255)
 	executives = models.CharField(max_length=255)
 	filingdate = models.CharField(max_length=255)
+	
+
+
+class FilingTOC(models.Model):
+	body = models.TextField()
+	filing = models.ForeignKey(Filing, on_delete=models.SET_NULL,null=True, related_name='table_of_contents')

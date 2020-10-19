@@ -62,8 +62,8 @@
           
             <!-- Overlay content -->
             <div class="overlay-content">
-              <a href="{% url 'login' %}">Login</a>
-              <a href="{% url 'register' %}">Sign Up</a>
+              <a href="{% url 'pricing' %}">Login</a>
+              <a href="{% url 'login' %}">Sign Up</a>
               
             </div>
           
@@ -82,7 +82,12 @@
        
 
     </div>
-  
+          <div class="header-right-div">
+              
+                  <a href="{% url 'pricing' %}"><button id="loginbutton">Log In</button></a>
+                  <a href="{% url 'login' %}"><button>Sign Up</button></a>
+              
+          </div>
 
 
 
@@ -90,9 +95,10 @@
     <!------------------------------------------>
 
 
-          <form class="autocomplete" autocomplete="off" action="" name="searchForm">
-                   
+                    
           <div class="search-wrapper-div">
+            <form class="autocomplete" autocomplete="off" action="" name="searchForm">
+         
             <div class="search-div0" >
               <div class="search-t0" ></div>
               {% if user.is_authenticated %}
@@ -111,15 +117,10 @@
               </div>
               {% endif %}
             </div>
+          </form>
           </div>
           <div class="search_results_div"></div>
-          </form>
-          <div class="header-right-div">
-              
-            <a href="{% url 'login' %}"><button  onclick="location.href='{% url 'login' %}'" id="loginbutton">Log In</button></a>
-            <a href="{% url 'register' %}"><button onclick="location.href='{% url 'register' %}'">Sign Up</button></a>
-        
-    </div>
+          
       </div>
 
       

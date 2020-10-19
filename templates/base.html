@@ -82,12 +82,7 @@
        
 
     </div>
-          <div class="header-right-div">
-              
-                  <a href="{% url 'login' %}"><button id="loginbutton">Log In</button></a>
-                  <a href="{% url 'register' %}"><button>Sign Up</button></a>
-              
-          </div>
+  
 
 
 
@@ -119,6 +114,12 @@
           </div>
           <div class="search_results_div"></div>
           </form>
+          <div class="header-right-div">
+              
+            <a href="{% url 'login' %}"><button  onclick="location.href='{% url 'login' %}'" id="loginbutton">Log In</button></a>
+            <a href="{% url 'register' %}"><button onclick="location.href='{% url 'register' %}'">Sign Up</button></a>
+        
+    </div>
       </div>
 
       

@@ -244,11 +244,50 @@
 
 
     #table_filing {
-        font-family: arial, sans-serif;
+        font-family:Tahoma,Geneva,sans-serif;
+        font-size:10pts;
         border-collapse: collapse;
         width: 100%;
-    }
+        margin-top:30px;
 
+    }
+#myInputautocomplete-list{
+  width:109%;
+  max-width:109%!important;
+  padding:0px;
+  margin:0px;
+  min-height:100vh;
+  overflow-y:scroll;
+
+}
+#myInputautocomplete-list div{
+    font-family:Tahoma,Geneva,sans-serif;
+   padding:5px 20px;
+   border-bottom:1px solid black;
+
+}
+#myInputautocomplete-list div:hover{
+   padding:5px 20px;
+   border-bottom:1px solid black;
+   background-color:#d8ecf3;
+   cursor:pointer;
+
+}
+
+#myInputautocomplete-list a{
+     color:black;
+     font-size:10pt;
+}
+#myInputautocomplete-list a:hover{
+     color:black;
+     font-size:10pt;
+
+     text-decoration:none;
+}
+
+#myInputautocomplete-list span{
+    padding-left:10px;
+}
     #table_filing h3 {
     color:black;
     font-size: 16px;
@@ -260,11 +299,11 @@
     background-color:#d9d9d9;
     }
  #table_filing a{
-      font-family: Helvetica, sans-serif;
+     font-family: Tahoma,Geneva,sans-serif;
     display: block;
     color: black;
     border-bottom: 1px solid lightgrey;
-    padding: 02px 0px;
+    padding: 01px 0px;
     line-height: 1.4;
     border-bottom:0.5px solid black;
 }
@@ -275,12 +314,15 @@
 }
 
 #table_filing .item-link{
-    padding-left: 10px;
+    padding-left: 0px;
     font-size:9pt;
 
     }
+.part-link{
+     margin-top:10px;
+ }
  #table_filing .note-link{
-        padding-left: 30px;
+        padding-left: 2px;
   }
     #table_filing .notes-link{
         padding-left: 20px;
@@ -293,7 +335,7 @@
     #filing_td {
         border: 1px solid #dddddd;
         text-align: left;
-        padding: 8px;
+        padding: 0px;
     }
 
     #filing_tr:nth-child(even) {
@@ -344,7 +386,8 @@
         background-color:#d9d9d9;
         width:100%;
         left:0%;
-
+         padding:0px;
+         margin:0px;
         font-weight:bolder;
     }
     #filings-section-list{
@@ -368,6 +411,7 @@
     padding-bottom:0px;
     margin-bottom:-30px;
 
+
     }
 
     #tr_doc{
@@ -378,10 +422,10 @@
     text-align:left;
     margin-left:10px;
     cursor:pointer;
-    padding:0px 0px 0px 30px;
+    padding:0px 0px 0px 50px;
     color:black;
-    font-family:"Lucida Console", Monaco, monospace;
-
+    font-family:Tahoma,Geneva,sans-serif;
+     width:80%;
     border-color:black;
     border-top:1px solid black;
      border-bottom:1px solid black;
@@ -401,24 +445,26 @@
     }
 
     #searchform{
-/*    position:absolute;
-   top:4.5vh; */
+   position:relative;
+   top:1vh;
+
         padding-bottom:0px;
         margin-bottom:0px;
     font-size:x-small;
-    width:100%;
+    min-width:100%;
     height:40px;
-    overflow:hidden;
-    border-bottom:1px solid gray;
+
     }
+
     #myBtn{
         background-color:transparent;
         border:none;
         padding:0px;
         margin:0px;
-        height:40px;
+        min-height:40px;
         position:absolute;
         right:-15px;
+        top:0px;
 
 
     }
@@ -426,9 +472,13 @@
         font-size:10pt;
         padding-left:40px;
         padding-top:0px;
-
+        margin:0px;
+        padding-bottom:0px;
         text-transform:capitalize;
+        min-height:40px;
+         outline:none;
     }
+
 
     #filings-section-list #companyname{
     background-color:#3973ac;;
@@ -460,11 +510,11 @@
      position:relative;
      overflow-y:scroll;
      padding:0px 60px;
-
      top:1vh;
       overflow-y:scroll;
       height:95vh;
       max-height:95vh!important;
+      overflow-x:hidden;
  }
  .toc{
 
@@ -474,5 +524,6 @@
      height:95vh;
       max-height:95vh;
       overflow-y:scroll;
+
 
  }

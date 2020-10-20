@@ -7,6 +7,7 @@
      display:none;
     }
     #filing-quick-navbar-large{
+         z-index:50;
         padding:0px;
         margin:0px;
         position:absolute;
@@ -527,3 +528,10 @@
 
 
  }
+  #fixed-content-filing{
+  position:sticky;top:0px;
+  background-color:white;
+ }
+  #table_filing .print{
+  display:none;
+  }

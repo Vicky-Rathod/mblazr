@@ -1,0 +1,151 @@
+body{
+    padding: 0px;
+    margin: 0px;
+    max-width: 100vw;
+}
+#small-nav{
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    background-color:#3973ac;;
+    padding: 0px;
+   
+    top:0px;
+    left: 0px;
+    z-index: 5;
+   
+  
+  
+}
+#small-nav button{
+    height: 30px;
+     display: inline-block;
+     width:32.5%;
+     background-color:#3973ac;
+     border: none;
+     text-align: center;
+     font-weight: bolder;
+     color: white;
+     font-family: 'Commissioner', sans-serif;
+}
+#small-nav button:active{
+    background-color: #264d73;
+}
+#small-nav button:hover{
+    background-color: #264d73;
+}
+#small-nav-shortcuts{
+    width: 100%;
+    background-color: #12283a;
+    color: white;
+    font-weight: bolder;
+    text-align: center;
+    padding: 3px 0px;
+    text-align: center;
+    display: none;
+}
+#small-nav-shortcuts span{
+    margin-right: 10px;
+    float: right;
+}
+#small-nav-shortcuts a{
+  background-color: white;
+  color: #3973ac;
+  text-decoration: none;
+  padding: 1.5px;
+}
+.fixed-data{
+ position: fixed;
+ top:30px;
+ z-index: 5;
+
+}
+#icon-search{
+    background-color: transparent;
+    color: blue;
+    font-weight: bolder;
+    font-size:1em;
+    -webkit-transform:rotate(45deg);
+    -moz-transform:rotate(45deg);
+    -o-transform:rotate(45deg);
+    transform:rotate(45deg);
+    border:none;
+}
+.search-ticker-form{
+    position: fixed;
+    min-width: 100vw;
+    width: 100vw;
+
+}
+.search-ticker-form input{
+    width: 80%!important;
+    padding: 10px;
+    font-size: smaller;
+  
+}
+.filling-list-sec #company{
+    display: block;
+    position: fixed;
+    top:10vh;
+    left: 0px;
+    width: 100%;
+    text-align: center;
+    background-color: #1e4362;
+    color:white;
+    font-weight: bolder; 
+}
+.btn-toggle-reports{
+    position: fixed;
+    top:13.7vh;
+    left: 0%;
+    width: 100%;
+    background-color: white;
+}
+.btn-toggle-reports button{
+    min-width: 31.5%;
+    background-color: #4f92c9;
+}
+.filing-list{
+
+    position: relative;
+    top:14.1vh;
+}
+
+.filing-list div{
+    background-color: #d9d9d9;
+    text-align: center;
+    font-weight: bolder;
+    color: black;
+}
+.filing-list table{
+    min-width: 100vw;
+    max-width: 100vw;
+    overflow-y: scroll;
+
+    
+}
+.filing-list .filed{
+   background-color: #f2f2f2;
+   border:1px 0px 1px 0px;
+   border-color: black;
+  
+   padding-left: 10px;
+}
+.filing-list .type{
+    border:1px 0px;
+    border-color: black;
+    text-align: center;
+    background-color: green;
+
+}
+
+.doc-sec{
+    min-width: 100vw;
+    padding:0px 5vw;
+}
+.show-doc-sec{
+    display: none;
+}
+.show-table-content{
+    display: none;
+}

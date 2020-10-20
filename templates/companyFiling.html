@@ -399,7 +399,7 @@ document.addEventListener('DOMContentLoaded',function(){
         <div>
 
           <table class=" table-hover ">
-              <div style="position:sticky;top:0px;background-color:white">
+              <div id="fixed-content-filing">
 
                      <div id="companyname" class="text-center center">{{ object_list.1.0 }}</div>
                   <div id="buttons-file-sec" >
@@ -547,4 +547,16 @@ document.addEventListener('DOMContentLoaded',function(){
   })
 
 </script>
+
+<!--      Append the print button to TOC-->
+    <script>
+        document.addEventListener('DOMContentLoaded',function(){
+        let all_toc = document.querySelectorAll('')
+
+        all_toc.forEach((itm)=>{
+         itm.innerHTML =itm.innerHTML  + '<span class="print">print</span>'
+        })
+
+        })
+    </script>
 {% endblock %}

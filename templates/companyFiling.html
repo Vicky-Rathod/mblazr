@@ -10,7 +10,7 @@
 
   <script type="text/javascript" src="{% static 'js/autocomplete.js' %}"></script>
 
-  <link href="{% static 'css/autocomplete.css' %}" rel="stylesheet">
+<!--  <link href="{% static 'css/autocomplete.css' %}" rel="stylesheet">-->
 <!-- stylesheets for large screens-->
   <link href="{% static 'css/filing-detail-styles.css' %}" media="screen and (min-width:700px)" rel="stylesheet" />
 <!-- stylesheet for small screens  -->
@@ -25,8 +25,8 @@
         <div class="col-md-3 button1">mBlazr</div>
          <div class="col-md-6  center-btn">{{ object_list.1.0 }} Earnings {{ object_list.3.filingdate }}
         <span>
-         <a href="">top</a>
-         <a href="">bs</a>
+         <a href="#part1">top</a>
+         <a href="#part2">bs</a>
          <a href="">is</a>
          <a href="">cf</a>
           </span>
@@ -495,8 +495,9 @@ document.addEventListener('DOMContentLoaded',function(){
       <div class="col-md-3 section toc" id="3rd">
 
         {% comment %} <table class="table table-striped table-hover " id="table_filing"> {% endcomment %}
+        <h5 id="report_table_cont" style="font-weight:bolder;text-align:center">CONTENT</h5>
         <div id="table_filing">
-            <h3 id="report_table_cont" style="font-weight:bolder;text-align:center">CONTENT</h3>
+
           {% comment %} <thead>
             <tr>
               <th style="font-weight:bolder" ><center>CONTENT</center></th>

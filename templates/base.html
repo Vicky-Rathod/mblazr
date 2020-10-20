@@ -7,10 +7,9 @@
 <html lang="en">
 
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168264615-1"></script>
+
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -46,11 +45,11 @@
 
 
   <body class="body-div">
-    <!------------------------------------------>
+    <div style="width:100%;background-color:#f1f5fa">    <!------------------------------------------>
     <!----------- Top Navigation bar ----------->
     <!------------------------------------------>
-
-        <nav role="navigation">
+<div class="main-div">
+        <nav role='navigation'>
           <div >
             
             <h2 >MBlazr</h2>
@@ -82,6 +81,7 @@
        
 
     </div>
+    
           <div class="header-right-div">
               
                   <a href="{% url 'login' %}"><button id="loginbutton">Log In</button></a>
@@ -117,13 +117,12 @@
               </div>
               {% endif %}
             </div>
-          </form>
           </div>
           <div class="search_results_div"></div>
-          
+          </form>
       </div>
 
-      
+    
 
     <!------------------------------------------>
     <!----------- Main body container ---------->
@@ -131,8 +130,6 @@
 
     {% block content %}
     {% endblock %}
-
- 
 
   </body>
 </html>

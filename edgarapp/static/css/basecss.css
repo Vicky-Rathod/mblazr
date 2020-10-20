@@ -1,6 +1,6 @@
 body {font-family:Tahoma,Geneva,sans-serif;font-weight:500;margin: 0%;}
 h2 {margin-top:0px;padding-top:0px;font-size:1.5em;margin-bottom:30px;}
-h3 {color:#003666;font-size:1.1em;font-weight:600;margin-top:0px;margin-bottom:2px;padding:0px;}
+h3 {color:#72c1fb;font-size:1.1em;font-weight:600;margin-top:0px;margin-bottom:2px;padding:0px;}
 h4 {font-size:1.1em;font-weight:400;margin:0px;}
 a {text-decoration:none;}
 button {background-color:#72c1fb;color:#FFF;font-size:0.7em;border:2px solid #72c1fb;padding:10px 12px;border-radius:5px;cursor:pointer;float:left;font-weight:600;}
@@ -38,7 +38,7 @@ table.table_nav td:hover {cursor:pointer;}
 .guide_main_div table th {border:1px solid #AAA;border-left:0px;border-right:0px;height:18px;}
 .guide_main_div table td {border:1px solid #AAA;border-left:0px;border-right:0px;height:18px;padding:4px 0px 4px 10px;}
 .guide_main_div table tr:hover {background-color:#d9e1f2;}
-.guide_main_div {float:left;width:550px;height:330px;border:1px solid #AAA;padding:40px 40px 30px 40px;}
+.guide_main_div {float:left;width:550px;height:390px;border:1px solid #AAA;padding:40px 40px 30px 40px;}
 .guide_option_div {border:1px solid #72c1fb;border-top:none;border-right:none;padding:20px 0px 20px 15px;cursor:pointer;}
 
 .q10k_tbl td {border:1px solid #72c1fb;}
@@ -73,11 +73,10 @@ table.table_nav td:hover {cursor:pointer;}
     .search-wrapper-div {position:absolute;left:calc(50% - 400px);width:500px;    margin-top: -10px;}
     .search_results_div {width:100%;text-align:left;margin:0;padding:0;border:2px #72c1fb solid;border-radius:5px;display:none;background-color:white;color:#000;}
     #search_results_td_div {border:none;border-left:0px;border-right:0px;padding:30px;}
-    .header-right-div {    margin-top: -10px;
-      margin-right: 107px;float:right;}
+    .header-right-div {    margin:-10px 105px;float:right;}
     .mobilev{display: none;}
     .header-left-div {padding-top: 28px;
-      padding-left: 47px;
+     
   }
 
     nav{
@@ -93,6 +92,7 @@ height: 64px;
 padding: 0px;
 font-size: 36px;
 line-height: 23px;
+margin-left: -38px;
 }
 
 
@@ -208,11 +208,11 @@ box-sizing: border-box;
 
 }
 .symbol-div{
-font-size:1.6em;
--webkit-transform:rotate(45deg);
--moz-transform:rotate(45deg);
--o-transform:rotate(45deg);
-transform:rotate(45deg);
+  font-size:1.6em;
+  -webkit-transform:rotate(45deg);
+  -moz-transform:rotate(45deg);
+  -o-transform:rotate(45deg);
+  transform:rotate(45deg);
 
 }
 .dropbtn {

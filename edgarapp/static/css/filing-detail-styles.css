@@ -257,8 +257,11 @@
   max-width:109%!important;
   padding:0px;
   margin:0px;
-  min-height:100vh;
+  height:85vh;
+  min-height:85vh;
   overflow-y:scroll;
+  margin-bottom:3vh;
+
 
 }
 #myInputautocomplete-list div{

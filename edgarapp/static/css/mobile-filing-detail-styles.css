@@ -169,7 +169,7 @@
         padding: 30px 0;
     }
     .table-wrapper-execs{
-        min-height1090vh;
+        min-height:100vh;
         height:100vh;
         width:100vw;
         max-width:100vw;
@@ -203,7 +203,7 @@
        margin:0px;
     }
     .firstsec{
-
+        display:none;
          width:100vw;
          min-width:100vw;
         position:relative;
@@ -258,18 +258,17 @@
 
     }
 #myInputautocomplete-list{
-  width:109%;
-  max-width:109%!important;
-  padding:0px;
-  margin:0px;
-  min-height:100vh;
+   background-color:white;
+   max-width:100vw;
+   width:98vw;
+   padding:0px;
+   margin:0px;
+   position:absolute;
+   left:0px;
+   top:10ch;
+   height:90vh;
+   max-height:90vh;
   overflow-y:scroll;
-  background-color:white;
-  position:absolute;
-  left:0px;
-
-  z-index:30;
-
 }
 #myInputautocomplete-list div{
     font-family:Tahoma,Geneva,sans-serif;
@@ -474,7 +473,7 @@
         min-height:40px;
         position:absolute;
         right:1%;
-        top:0px;
+        top:-10px;
 
 
 
@@ -521,7 +520,7 @@
        }
 
  .document-view-section{
-   display:none;
+
      position:relative;
      overflow-y:scroll;
 

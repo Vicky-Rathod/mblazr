@@ -43,9 +43,9 @@
 
      </div>
       <div id="filing-quick-navbar-small">
-          <button class="button1">Company</button>
-          <button class="center-btn">Mblazr</button>
-          <button class="button2">Filing</button>
+          <button class="button1 show_filings_btn">Company</button>
+          <button class="center-btn show_doc_btn">Mblazr</button>
+          <button class="button2 show_toc_btn">Filing</button>
 
       </div>
 
@@ -551,12 +551,45 @@ document.addEventListener('DOMContentLoaded',function(){
 <!--      Append the print button to TOC-->
     <script>
         document.addEventListener('DOMContentLoaded',function(){
-        let all_toc = document.querySelectorAll('')
+        let all_toc = document.querySelectorAll('.note-link')
 
         all_toc.forEach((itm)=>{
          itm.innerHTML =itm.innerHTML  + '<span class="print">print</span>'
         })
 
         })
+
+
+        /* Toogle between the sections*/
+        let fillinglist = document.querySelectorAll('.firstsec')[0]
+        let doc_preview = document.querySelectorAll('.document-view-section')[0]
+        let toc = document.querySelectorAll('.toc')[0]
+
+        /* buttons for toggling */
+        let showfilings_btn = document.querySelectorAll('.show_filings_btn')[0]
+        let showdoc_btn = document.querySelectorAll('.show_doc_btn')[0]
+        let showtoc_btn = document.querySelectorAll('.show_toc_btn')[0]
+        showfilings_btn.addEventListener('click',function(){
+          fillinglist.style.display = 'block'
+          doc_preview.style.display = 'none'
+          toc.style.display= 'none'
+        })
+        showdoc_btn.addEventListener('click',function(){
+          fillinglist.style.display = 'none'
+          doc_preview.style.display = 'block'
+          toc.style.display= 'none'
+        })
+        
+        showtoc_btn.addEventListener('click',function(){
+          fillinglist.style.display = 'none'
+          doc_preview.style.display = 'none'
+          toc.style.display= 'block'
+        })  
+      
+      
+
+
+      
+
     </script>
 {% endblock %}

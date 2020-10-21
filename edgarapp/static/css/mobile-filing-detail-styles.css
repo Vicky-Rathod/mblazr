@@ -30,7 +30,7 @@
       background-color:#3973ac;
         font-family:Tahoma,Geneva,sans-serif;
         font-weight:bold;
-        font-size:11pt;
+        font-size:10pt;
 /*           border-right:1px solid #2d5986; */
         width:32.70%;
         padding-left:0px; 
@@ -202,7 +202,7 @@
         height:95vh;
         left:0px;
         overflow:hidden;
-       top:4.5vh;
+       top:3.3vh;
        padding:0px;
        margin:0px;
     }
@@ -263,23 +263,26 @@
 
     }
 #myInputautocomplete-list{
+   
    background-color:white;
    max-width:100vw;
    width:100vw;
-    max-width: :100vw;
+    max-width: 100vw;
    padding:0px;
    margin:0px;
    position:absolute;
    left:0px;
-   top:10ch;
+   top:5vh;
    height:90vh;
    max-height:90vh;
   overflow-y:scroll;
+ 
 }
 #myInputautocomplete-list div{
     font-family:Tahoma,Geneva,sans-serif;
    padding:5px 20px;
    border-bottom:1px solid black;
+        border-top: 1px solid gray;
 
 }
 #myInputautocomplete-list div:hover{
@@ -287,6 +290,7 @@
    border-bottom:1px solid black;
    background-color:#d8ecf3;
    cursor:pointer;
+
 
 }
 
@@ -319,7 +323,7 @@
     display: block;
     color: black;
     border-bottom: 1px solid lightgrey;
-    padding: 1px 0px;
+    padding: 2px 0px;
     line-height: 1.4;
     border-bottom:0.5px solid black;
     font-size:9pt;
@@ -412,18 +416,20 @@
         font-weight:bolder;
     }
     #filings-section-list{
+        position: absolute;
       min-width: 105%;
       max-width:105%;
-      margin-top:12.5vh;;
+      top:11.5vh;
       overflow-y:scroll;
       height:88vh;
       max-height:88vh;
       min-height:87vh;
       border-right:1px solid #2d5986;
+       
 
     }
     #filings-section-list table{
-
+ 
     width:100%;
     max-width:100%!important;
 
@@ -472,21 +478,21 @@
     }
 
     #searchform{
-       
+     
       z-index:50;
          position:fixed;
-         top:4vh;
+         top:3.5vh;
         padding-bottom:0px;
         margin-bottom:0px;
     font-size:x-small;
     min-width:100vw;
     max-width:100vw;
     height:40px;
-    max-height:40px;
+    max-height:40px!important;;
 
     }
   #searchform input{
-    
+      border:none;
       position:absolute;
         font-size:12pt;
         color:black;
@@ -495,6 +501,7 @@
            bottom:0px;
         text-transform:capitalize;
         min-height:40px;
+      max-height: :40px!important;;
          outline:none;
          width:100%;
          overflow:hidden;

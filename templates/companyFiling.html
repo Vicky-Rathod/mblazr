@@ -579,14 +579,16 @@ document.addEventListener('DOMContentLoaded',function(){
         let showfilings_btn = document.querySelectorAll('.show_filings_btn')[0]
         let showdoc_btn = document.querySelectorAll('.show_doc_btn')[0]
         let showtoc_btn = document.querySelectorAll('.show_toc_btn')[0]
-        let shortcutsmobile = $('#shortcuts-mobile')
+ 
         showfilings_btn.addEventListener('click',function(){
+          let shortcutsmobile =document.querySelector('#shortcuts-mobile')      
           fillinglist.style.display = 'block'
           doc_preview.style.display = 'none'
           toc.style.display= 'none'
           shortcutsmobile.style.display='none'
         })
         showdoc_btn.addEventListener('click',function(){
+          let shortcutsmobile = document.querySelector('#shortcuts-mobile')   
           fillinglist.style.display = 'none'
           doc_preview.style.display = 'block'
           toc.style.display= 'none'
@@ -594,6 +596,7 @@ document.addEventListener('DOMContentLoaded',function(){
         })
         
         showtoc_btn.addEventListener('click',function(){
+          let shortcutsmobile = document.querySelector('#shortcuts-mobile')   
           fillinglist.style.display = 'none'
           doc_preview.style.display = 'none'
           toc.style.display= 'block'

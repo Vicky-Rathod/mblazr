@@ -34,12 +34,15 @@ table.table_nav td:hover {cursor:pointer;}
 .keyboard_shortcut_letter {font-family:"Courier New";font-size:24px;font-weight:600;}
 .keyboard_shortcut_symbol {font-family:"Courier New";font-size:18px;font-weight:600;}
 
-.guide_main_div table {border-collapse:collapse;width:100%;text-align:left;border:2px solid #AAA;font-size:0.9em;}
-.guide_main_div table th {border:1px solid #AAA;border-left:0px;border-right:0px;height:18px;}
-.guide_main_div table td {border:1px solid #AAA;border-left:0px;border-right:0px;height:18px;padding:4px 0px 4px 10px;}
-.guide_main_div table tr:hover {background-color:#d9e1f2;}
-.guide_main_div {float:left;width:550px;height:390px;border:1px solid #AAA;padding:40px 40px 30px 40px;}
-.guide_option_div {border:1px solid #72c1fb;border-top:none;border-right:none;padding:20px 0px 20px 15px;cursor:pointer;}
+.guide-main-div table {border-collapse:collapse;width:100%;text-align:left;border:2px solid #AAA;font-size:0.9em;}
+.guide-main-div table th {border:1px solid #AAA;border-left:0px;border-right:0px;height:18px;}
+.guide-main-div table td {border:1px solid #AAA;border-left:0px;border-right:0px;height:18px;padding:4px 0px 4px 10px;}
+.guide-main-div table tr:hover {background-color:#d9e1f2;}
+.guide-main-div {float:left;width:550px;height:390px;border:1px solid #AAA;padding:40px 40px 30px 40px;background-color: rgb(255, 255, 255); display: block;}
+.guide-option-div {border:1px solid #72c1fb;border-top:none;border-right:none;padding:20px 0px 20px 15px;cursor:pointer;
+  background-color: #72c1fb; color: rgb(255, 255, 255); font-weight: 600; border-top: 1px solid rgb(37, 32, 55);
+
+}
 
 .q10k_tbl td {border:1px solid #72c1fb;}
 
@@ -49,13 +52,13 @@ table.table_nav td:hover {cursor:pointer;}
     #myInput {padding-left:8px;}
     .body-div {background-color:#72c1fb;padding:0px;margin:0px;}
     .main-div {width:100%;text-align:center;margin:auto;background-color:#FFF;padding:0px;}
-    #guide_div {display:none;}
+    .guide-div {display:none;}
     
     .header-div {margin:0px;padding:0px;height:65px;border:none;background-color:#FFF; margin-top: 35px;}
     .header-right-div {display:none;}
     
     .header-left-div {display:none;}
-    #search_div {width:100%;padding:30px 0px;margin:0px;height:200px;background:#252037;color:#FFF;}
+    #search_div {width:100%;padding:30px 0px;margin:0px;height:200px;background:#f1f5fa;}
     #search_div h2 {font-size:1.2em;margin-bottom:10px;}
     .search-wrapper-div {position:absolute;left:10%;width:80%;margin-top:11px;}
     .search_results_div {position:absolute;left:5%;width:90%;text-align:left;margin:0;padding:0;border:2px #72c1fb solid;border-radius:5px;display:none;background-color:white;color:#000;top:70px;}
@@ -69,7 +72,7 @@ table.table_nav td:hover {cursor:pointer;}
     .body-div {padding:0px;margin:0px;background-color:#72c1fb;}
     .main-div {width:1000px;margin:auto;padding:0px;     margin-left: 173px;}
     .header-div {margin:0px;padding:0px;height:65px;border:none;background-color:#FFF;margin-top: 0px;}
-    #search_div {width:1000px;padding-top:30px;margin:0px;height:120px;text-align:center;background-image:linear-gradient(#f1f5fa,#f1f5fa);color:#000;}
+    #search_div {width:1000px;padding-top:30px;margin:0px;height:120px; margin-bottom: 55px;text-align:center;background-image:linear-gradient(#f1f5fa,#f1f5fa);color:#000;}
     .search-wrapper-div {position:absolute;left:calc(50% - 400px);width:500px;    margin-top: -10px;}
     .search_results_div {width:100%;text-align:left;margin:0;padding:0;border:2px #72c1fb solid;border-radius:5px;display:none;background-color:white;color:#000;}
     #search_results_td_div {border:none;border-left:0px;border-right:0px;padding:30px;}
@@ -253,3 +256,6 @@ box-sizing: border-box;
 .dropdown a:hover {background-color: #ddd;}
 
 .show {display: block;}
+
+
+

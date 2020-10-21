@@ -24,6 +24,7 @@
     min-width:100%;
     z-index: 5;
     border:2px #72c1fb solid;border-radius:5px;
+    text-align: left;
 }
 .autocomplete-items .link {
     display:block;

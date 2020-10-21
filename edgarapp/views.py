@@ -354,15 +354,36 @@ def SearchFilingView(request):
         object_list.append(zip(exectable, matches))
         object_list.append(links)
 
+ 
     t_o_c = filing.table_of_contents.first()
-    
-    if not t_o_c:
 
-        toc_extractor = TOCAlternativeExtractor()
+    if request.GET.get('new'):
+        print('new')
+
+        if request.GET.get('type') and request.GET.get('type') == 'alt':
+
+            toc_extractor = TOCAlternativeExtractor()
+            
+            extract_data = toc_extractor.extract(url)
         
+        else:
+
+            toc_extractor = TOCExtractor()
+            
+            extract_data = toc_extractor.extract(url)
+        
+        t_o_c.body=extract_data.table
+        t_o_c.save()
+    
+    if not t_o_c or request.GET.get('save'):
+      
+
+        toc_extractor = TOCExtractor()
+
         extract_data = toc_extractor.extract(url)
 
         t_o_c = filing.table_of_contents.create(body=extract_data.table)
+
 
     with open(url) as file:
         filing_html = file.read()
@@ -376,6 +397,7 @@ def SearchFilingView(request):
             'filing_html': filing_html
         }
     )
+
 
 
 def AboutView(request):

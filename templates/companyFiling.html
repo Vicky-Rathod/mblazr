@@ -46,6 +46,17 @@
           <button class="button1 show_filings_btn">Company</button>
           <button class="center-btn show_doc_btn">Mblazr</button>
           <button class="button2 show_toc_btn">Filing</button>
+          <div id="shortcuts-mobile" >
+            <div id="company_name">Some Company </div>
+            <div id="short-mobile-links" >
+            <a href="#">top</a>
+            <a href="#">bs</a>
+            <a href="#">is</a>
+            <a href="#">cf</a>
+            </div>
+
+
+        </div>
 
       </div>
 
@@ -555,13 +566,12 @@ document.addEventListener('DOMContentLoaded',function(){
 
         all_toc.forEach((itm)=>{
          itm.innerHTML =itm.innerHTML  + '<span class="print">print</span>'
+         itm.addEventListener('click',function(){
+              this.querySelector('.span')[0].style.display = 'block'
+         })
         })
-
-        })
-
-
-        /* Toogle between the sections*/
-        let fillinglist = document.querySelectorAll('.firstsec')[0]
+     /* Toogle between the sections*/
+     let fillinglist = document.querySelectorAll('.firstsec')[0]
         let doc_preview = document.querySelectorAll('.document-view-section')[0]
         let toc = document.querySelectorAll('.toc')[0]
 
@@ -569,25 +579,37 @@ document.addEventListener('DOMContentLoaded',function(){
         let showfilings_btn = document.querySelectorAll('.show_filings_btn')[0]
         let showdoc_btn = document.querySelectorAll('.show_doc_btn')[0]
         let showtoc_btn = document.querySelectorAll('.show_toc_btn')[0]
+        let shortcutsmobile = $('#shortcuts-mobile')
         showfilings_btn.addEventListener('click',function(){
           fillinglist.style.display = 'block'
           doc_preview.style.display = 'none'
           toc.style.display= 'none'
+          shortcutsmobile.style.display='none'
         })
         showdoc_btn.addEventListener('click',function(){
           fillinglist.style.display = 'none'
           doc_preview.style.display = 'block'
           toc.style.display= 'none'
+          shortcutsmobile.style.display='block'
         })
         
         showtoc_btn.addEventListener('click',function(){
           fillinglist.style.display = 'none'
           doc_preview.style.display = 'none'
           toc.style.display= 'block'
+          shortcutsmobile.style.display='none'
         })  
       
+        $( ".section document-view-section div" ).eq(1).after('<div id="doc-head"></div>')
       
 
+
+
+
+        })
+        
+
+   
 
       
 

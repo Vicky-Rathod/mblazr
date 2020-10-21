@@ -16,7 +16,7 @@
      left:0px;
      min-width:100vw;
      padding:0px;
-     margin:0px;
+     margin:0px!important;
        overflow:hidden;
         z-index:50;
          background-color:#3973ac;
@@ -29,11 +29,14 @@
      text-align:center;
       background-color:#3973ac;
         font-family:Tahoma,Geneva,sans-serif;
-        font-weight:bolder;
-        font-size:14pt;
-          border-right:1px solid #2d5986;
-        width:32.6%;
-        overflo:hidden;
+        font-weight:bold;
+        font-size:12pt;
+/*           border-right:1px solid #2d5986; */
+        width:32.79%;
+        padding-left:0px; 
+        display:inline-block;
+        overflow:hidden;
+     
   }
   #filing-quick-navbar-small button:hover{
       background-color:#2d5989;
@@ -122,6 +125,7 @@
        height:98vh;
        min-height:50vh;
 
+
    }
 
 
@@ -207,9 +211,10 @@
          width:100vw;
          min-width:100vw;
         position:relative;
-        top:1vh;
+        top:2.5vh;
+        left:0px;
         padding-left:0px;
-
+       
        }
     .section{
 
@@ -251,7 +256,7 @@
 
     #table_filing {
         font-family:Tahoma,Geneva,sans-serif;
-        font-size:10pts;
+        font-size:9pts;
         border-collapse: collapse;
         width: 100%;
         margin-top:30px;
@@ -313,9 +318,10 @@
     display: block;
     color: black;
     border-bottom: 1px solid lightgrey;
-    padding: 01px 0px;
+    padding: 1px 0px;
     line-height: 1.4;
     border-bottom:0.5px solid black;
+    font-size:9pt;
 }
 
 #table_filing a:hover {
@@ -324,18 +330,22 @@
 }
 
 #table_filing .item-link{
-    padding-left: 0px;
+    padding-left: 8px;
     font-size:9pt;
+    color:black;
 
     }
 .part-link{
-     margin-top:10px;
+     margin-top:0px;
+     font-size:9pt;
  }
  #table_filing .note-link{
-        padding-left: 2px;
-  }
-    #table_filing .notes-link{
         padding-left: 20px;
+  }
+    #table_filing .note-link{
+         color:black!important;
+        padding-left: 20px;
+        font-size:9pt;
     }
 
     #table_filing .other-link{
@@ -403,14 +413,12 @@
     #filings-section-list{
       min-width: 105%;
       max-width:105%;
-      margin-top:0px;
+      margin-top:11.5vh;;
       overflow-y:scroll;
       height:88vh;
       max-height:88vh;
       min-height:87vh;
-      border-right:1px solid #2d5986;;
-
-
+      border-right:1px solid #2d5986;
 
     }
     #filings-section-list table{
@@ -420,6 +428,8 @@
 
     padding-bottom:0px;
     margin-bottom:-30px;
+    color:black!important;
+    background-color:White;
 
 
     }
@@ -428,12 +438,13 @@
 
       font-size:small;
     }
+   
     .filedate{
     text-align:left;
     margin-left:10px;
     cursor:pointer;
-    padding:0px 0px 0px 50px;
-    color:black;
+    padding:0px 0px 0px 10px;
+
     font-family:Tahoma,Geneva,sans-serif;
      width:75%;
     border-color:black;
@@ -441,13 +452,18 @@
      border-bottom:1px solid black;
 
     }
+    #filings-section-list tbody tr:first-child{
+        color:black;
+         background-color:#f3e5d8;
+        
+    }
     .filedate:hover{
       background-color:#d8ecf3;
     }
     #search-icon{
-        font-size:1.8em;
+        font-size:2em;
         font-weight:bolder;
-        color:blue;
+        color:#3973ac;
         -webkit-transform: rotate(45deg);
         -moz-transform: rotate(45deg);
         -o-transform: rotate(45deg);
@@ -455,35 +471,27 @@
     }
 
     #searchform{
-   position:sticky;
-   top:1vh;
+       
+      z-index:200;
+         position:fixed;
+         top:4vh;
         padding-bottom:0px;
         margin-bottom:0px;
     font-size:x-small;
-    min-width:100%;
+    min-width:100vw;
+    max-width:100vw;
     height:40px;
+    max-height:40px;
 
     }
-
-    #myBtn{
-        background-color:transparent;
-        border:none;
-        padding:0px;
-        margin:0px;
-        min-height:40px;
-        position:absolute;
-        right:1%;
-        top:-10px;
-
-
-
-    }
-    #searchform input{
+  #searchform input{
+    
       position:absolute;
         font-size:12pt;
-            padding-left:10px;
+        color:black;
+            padding-left:5px;
            left:0px;
-           bottom:10px;
+           bottom:0px;
         text-transform:capitalize;
         min-height:40px;
          outline:none;
@@ -491,20 +499,34 @@
          overflow:hidden;
 
     }
+    #myBtn{
+        
+        background-color:transparent;
+        border:none;
+        padding:0px;
+        margin:0px;
+        min-height:40px;
+        position:absolute;
+        right:5%;
+        top:0px;
+
+
+
+    }
+  
 
 
     #filings-section-list #companyname{
-    background-color:#3973ac;;
+    background-color:#3973ac;
    color:white;
-    font-weight:bolder;
-    font-family:Tahoma, Geneva, sans-serif;
+   font-size:10pt;
 
     }
     #buttons-file-sec{
     width:100%;
     padding:2px 0px;
 /*      background-color:#003366; */
-     margin-bottom:2px;
+     margin-bottom:1px;
 
     }
        #buttons-file-sec button{
@@ -519,20 +541,77 @@
 
        }
 
+#shortcuts-mobile{
+     display:none;
+    background-color:#204060;
+    min-width:100vw;
+    width:100vw;
+    padding:0px;
+    margin:0px;
+    max-width:100vw;
+    overflow:hidden;
+    height:25px;
+    border-top:1px solid blue;;
+}
+#shortcuts-mobile div{
+    display:inline;
+    height:50px;
+}
+#shortcuts-mobile  #company_name{
+    position:absolute;
+    color:white;
+    font-size:10pt;
+    min-width:100vw;
+    text-align:center;
+    font-family:Tahoma,Geneva,sans-serif;
+    font-size:10pt;
+    margin:0px;
+    font-weight:bold;
+    display:block;
+}
+#short-mobile-links {
+    position:absolute; 
+    right:5px;
+    z-index:30;
+ 
+      
+}
+#short-mobile-links a{
+    font-size:10pt;
+    color:#204060;
+    font-weight:bold;
+    margin-top:5px;
+    background-color:white;
+    padding:2px;
+    border-radius:5px;
+
+
+
+}
  .document-view-section{
 
      position:relative;
      overflow-y:scroll;
-
+      font-family:Tahoma,Geneva,sans-serif;;
      padding:0px 20px;
-     top:1vh;
+     top:3.5vh;
       overflow-y:scroll;
       height:95vh;
       max-height:95vh!important;
       overflow-x:hidden;
-      max-width:100vw;
+      max-width:95vw;
+     
+      margin-left:2.8%;
+      border-right:none;
+      background-color:white;
+      color:black;
 
  }
+#doc-head{
+  
+    width:95vw;
+    border:4px solid #204060;
+}
  .toc{
      display:none;
      position:relative;
@@ -545,8 +624,14 @@
 
  }
  #fixed-content-filing{
- position:sticky;top:0px;
- background-color:white
+ position:fixed;
+ top:8.8vh;
+ min-width:100vw;
+ max-width:100vw;
+ background-color:white;
+ z-index:20;
+
+
  }
  #table_filing .print{
     display: none;

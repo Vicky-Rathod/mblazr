@@ -356,29 +356,10 @@ def SearchFilingView(request):
 
  
     t_o_c = filing.table_of_contents.first()
-
-    if request.GET.get('new'):
-        print('new')
-
-        if request.GET.get('type') and request.GET.get('type') == 'alt':
-
-            toc_extractor = TOCAlternativeExtractor()
-            
-            extract_data = toc_extractor.extract(url)
-        
-        else:
-
-            toc_extractor = TOCExtractor()
-            
-            extract_data = toc_extractor.extract(url)
-        
-        t_o_c.body=extract_data.table
-        t_o_c.save()
     
-    if not t_o_c or request.GET.get('save'):
+    if not t_o_c:
       
-
-        toc_extractor = TOCExtractor()
+        toc_extractor = TOCAlternativeExtractor()
 
         extract_data = toc_extractor.extract(url)
 

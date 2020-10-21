@@ -27,9 +27,9 @@
 
 }
 .sign_up_div{
-  position:absolute;
-  right: 122px;
-  margin-top: -111px;
+  position: absolute;
+  top: 60px;
+  right: 100px;
 }
 .footerbutton{
   background-color:#FFF;
@@ -45,4 +45,29 @@
 .lead{
   font-family: Tahoma,Geneva,sans-serif;     
   color: #000;
+}
+.guide-div{
+  height:480px;
+  width:1000px;
+  padding:0px 50px 40px 80px;
+  background-color:#f1f5fa;
+}
+.table-box{
+  float:left;width:20%;padding-top:28px;
+}
+
+.guide-option-div2{
+  float:right;padding-right:10px;
+}
+.guide-main-div-h4{
+  padding-top:5px;padding-bottom:25px;
+}
+.guide-main-div-table{
+  width:100%;
+}
+.guide-main-table-row{
+  cursor:pointer;
+}
+.search-h2{
+  color:#000;font-size:1.4em;font-weight:500;margin-top:10px;
 }

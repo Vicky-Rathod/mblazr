@@ -15,39 +15,77 @@
 
 
 {% block content %}
-<body class="body-div">
-    <div style="width:100%;background-color:#f1f5fa">
-      <div class="main-div">
-<div class="container">
-    <h2>&nbsp;</h2>
+
+
 
     <!----------- Search container ------------->
     <!------------------------------------------>
-    <div class="jumbotron">
-        <h2>&nbsp;</h2>
-        <center>
-            <h1 class="home-heading">Your Fundamental Analysis Tool</h1>
-         <br>
-            <p class="lead">An easy way to read company filings including 10-K, 10-Q and Proxy statements.</p>
-            <p class="lead">Take a test drive with Home Depot (HD)</p>
-        </center>
+
+
+            <div id="search_div" >
+              <h1>Your Fundamental Analysis Tool</h1>
+              <h2 class="search-h2" >An easy way to read company filings including 10-K, 10-Q and Proxy statements.</h2>
+              <h2 class="search-h2" >Take a test drive with Home Depot (HD)</h2>
+          </div>
         
 
-        &nbsp;
-    </div>
+ 
+        <div class="guide-div" >
+          <div class="table-box">
+              <div class="guide-option-div">
+                  One-Click Filings
+                  <div class="guide-option-div2" >&gt;</div>
+              </div>
+         
+          </div>
+          <div class="guide-main-div" >
+              <h3>One-Click Filings</h3>
+              <h4 class="guide-main-div-h4">Go directly to a filing with just one click</h4>
+              <table class="guide-main-div-table" >
+                  <tbody><tr class="guide-main-table-row" onclick="window.location.href='#HBKA'">
+                      <td>HBKA</td><td>10-Q</td><td>Highlands Bankshares</td><td>2018-09-30</td>
+                  </tr>
+                  <tr class="guide-main-table-row" onclick="window.location.href='#NVT'">
+                      <td>NVT</td><td>10-Q</td><td>nVent Electric</td><td>2018-09-30</td>
+                  </tr>
+                  <tr class="guide-main-table-row" onclick="window.location.href='#TSLA'">
+                      <td>TSLA</td><td>10-K</td><td>Tesla</td><td>2017-12-31</td>
+                  </tr>
+                  <tr class="guide-main-table-row" onclick="window.location.href='#GPK'">
+                      <td>GPK</td><td>10-K</td><td>Graphic Packaging Holding</td><td>2018-09-30</td>
+                  </tr>
+                  <tr class="guide-main-table-row" onclick="window.location.href='#KFY'">
+                      <td>KFY</td><td>10-Q</td><td>Korn Ferry</td><td>2018-07-31</td>
+                  </tr>
+                  <tr class="guide-main-table-row" onclick="window.location.href='#EVRI'">
+                      <td>EVRI</td><td>10-Q</td><td>Everi Holdings</td><td>2018-09-30</td>
+                  </tr>
+                  <tr class="guide-main-table-row" onclick="window.location.href='#GARS'">
+                      <td>GARS</td><td>10-K</td><td>Garrison Capital</td><td>2018-09-30</td>
+                  </tr>
+                  <tr class="guide-main-table-row" onclick="window.location.href='#PEBK'">
+                      <td>PEBK</td><td>10-K</td><td>Peoples Bancorp of North Carolina</td><td>2018-09-30</td>
+                  </tr>
+              </tbody></table>
+          </div>
+      
+        
+      </div>
+
 
 
    
    
 
-</div>
+
 
       </div>
     </div>
  <!----------- Footer ----------------------->
     <!------------------------------------------>
+   
     <div class="footer-div">
-        <div class="main-div" >
+        <div class="main-div" style="position: relative;">
           <div class="price-div" >
             <span class ="footer-span" >Just $29/month</span>
             <br/>
@@ -58,7 +96,7 @@
                 <a href="#privacy" >Privacy</a>
             </div>
         <div class="sign_up_div">
-                <a href="#sign-up"><button class="footerbutton">Get Started</button></a>
+                <a href="{% url 'register' %}"><button class="footerbutton">Get Started</button></a>
             </div>
           </div>
         </div>

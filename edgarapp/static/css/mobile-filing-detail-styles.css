@@ -30,9 +30,9 @@
       background-color:#3973ac;
         font-family:Tahoma,Geneva,sans-serif;
         font-weight:bold;
-        font-size:12pt;
+        font-size:11pt;
 /*           border-right:1px solid #2d5986; */
-        width:32.79%;
+        width:32.70%;
         padding-left:0px; 
         display:inline-block;
         overflow:hidden;
@@ -265,7 +265,8 @@
 #myInputautocomplete-list{
    background-color:white;
    max-width:100vw;
-   width:98vw;
+   width:100vw;
+    max-width: :100vw;
    padding:0px;
    margin:0px;
    position:absolute;
@@ -413,7 +414,7 @@
     #filings-section-list{
       min-width: 105%;
       max-width:105%;
-      margin-top:11.5vh;;
+      margin-top:12.5vh;;
       overflow-y:scroll;
       height:88vh;
       max-height:88vh;
@@ -444,7 +445,7 @@
     margin-left:10px;
     cursor:pointer;
     padding:0px 0px 0px 10px;
-
+   
     font-family:Tahoma,Geneva,sans-serif;
      width:75%;
     border-color:black;
@@ -472,7 +473,7 @@
 
     #searchform{
        
-      z-index:200;
+      z-index:50;
          position:fixed;
          top:4vh;
         padding-bottom:0px;
@@ -542,7 +543,7 @@
        }
 
 #shortcuts-mobile{
-     display:none;
+    
     background-color:#204060;
     min-width:100vw;
     width:100vw;

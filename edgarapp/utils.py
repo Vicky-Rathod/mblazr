@@ -64,14 +64,8 @@ class TOCAlternativeExtractor(object):
 
             href = link.get('href')
 
-            if href and href not in exhibits_dict:
-                exhibits_dict[href] = link_text
-
-            elif href:
-                exhibits_dict[href] += link_text
-
-        for href, text in exhibits_dict.items():
-            exhibits += f"<a href='{href}' class='exhibit-link' target='_blank'>{text}</a>"
+            if href:
+                exhibits += f"<a href='{href}' class='exhibit-link' target='_blank'>{link_text}</a>"
 
         if not exhibits:
             return ''

@@ -342,8 +342,6 @@ def SearchFilingView(request):
              comps.append('Director is not on the board of any other companies')
         matches.append(comps)
 
-        url = '/mnt/filings-static/capitalrap/edgarapp/static/filings/' + filing.filingpath
-
         object_list = []
         object_list.append((query, fid))
         object_list.append((mycompany.name, mycompany.ticker))
@@ -353,8 +351,9 @@ def SearchFilingView(request):
         object_list.append(zip(directors, matches))
         object_list.append(zip(exectable, matches))
         object_list.append(links)
+    
+    url = '/mnt/filings-static/capitalrap/edgarapp/static/filings/' + filing.filingpath
 
- 
     t_o_c = filing.table_of_contents.first()
     
     if not t_o_c:

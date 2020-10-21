@@ -191,11 +191,13 @@ class TOCAlternativeExtractor(object):
 
         text = text[pos:]
 
-        end_pos = text.lower().index('</table>')
-
-        text = text[:end_pos+8]
-
-        self.end_pos = start + len(text)
+        end_pos = text.lower().find('</table>')
+        
+        if pos != -1 or end_pos != -1:
+            text = text[:end_pos+8]
+        
+        else:
+            return ''
 
         return text
 

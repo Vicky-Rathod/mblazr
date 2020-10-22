@@ -472,67 +472,24 @@ document.addEventListener('DOMContentLoaded',function(){
       <!----------- 2nd column ---------------->
       <!------------ MAIN BODY ---------------->
 
-      {% comment %} <div class="col-md-6" style="background-color:lavenderblush;height:90vh;overflow:scroll;" id="2nd"> {% endcomment %}
-      <div class="col-md-6 section document-view-section" id="2nd">
-        <!--doc-->
-        {% autoescape off %}
-          {% comment %} <iframe name="f-if" id="iFrame" src="{% static 'filings/' %}{{ object_list.3.filingpath }}" frameborder="0" position="absolute" height="100%" width="100%" style="background: #FFFFFF;"></iframe> {% endcomment %}
+      <section class="col-md-6 section document-view-section" id="2nd">
+          {{filing_html|safe}}
+      </section>
 
-          {{filing_html}}
-        {% endautoescape %}
-
-      </div>
-
-      <!-- edit document -->
-      <script>
-        $('iframe').load(function() {
-          $("#iFrame").contents().find("FILENAME").css('display', 'none');
-        });
-
-        function reloadFrame(value) {
-          document.getElementById('iFrame').src = "{% static 'filings/' %}{{ object_list.3.filingpath }}"+value;
-          // console.log('reloaded')
-        }
-        // $('iframe').scroll(function() {
-        //   console.log("{{ object_list.3.filingpath }}")
-        // })
-        // document.getElementById('iFrame2').contentWindow.document.write("{% static 'filings/' %}{{ object_list.3.filingpath }}");
-      </script>
 
       <!--------------------------------------->
       <!----------- 3rd column ---------------->
       <!----------- RIGHT MENU ---------------->
 
-      <div class="col-md-3 section toc" id="3rd">
+      <section class="col-md-3 section toc" id="3rd">
 
-        {% comment %} <table class="table table-striped table-hover " id="table_filing"> {% endcomment %}
         <h5 id="report_table_cont" style="font-weight:bolder;text-align:center">CONTENT</h5>
         <div id="table_filing">
 
-          {% comment %} <thead>
-            <tr>
-              <th style="font-weight:bolder" ><center>CONTENT</center></th>
-            </tr>
-          </thead>
-
-          <tbody>
-
-            {{filing in object_list.7}}
-            {% for filing in object_list.7 %}
-              <tr id="filing_tr">
-                <td onclick="reloadFrame('{{ filing.url }}')" id="filing_td" style="cursor: pointer;">
-                  <a style="text-decoration: none;">{{ filing.value }}</a>
-                </td>
-              </tr>
-            {% endfor %} {% endcomment %}
-
-
             {{ table_of_contents|safe }}
 
-            {% comment %} </tbody> {% endcomment %}
-        </div>
-      </table>
-      </div>
+          </div>
+        </section>
 
 
 

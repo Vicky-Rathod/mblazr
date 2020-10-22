@@ -72,11 +72,7 @@
       
         <!-- Overlay content -->
         <div class="overlay-content1">
-          <a href="{% url 'about' %}">About</a>
-          <a href="{% url 'faq' %}">FAQ</a>
-          <a href="{% url 'contact' %}">Contact</a>
-          <a href="{% url 'pricing' %}">Pricing</a>
-          <a href="{% url 'memberhome' %}">Dashboard</a>
+
           <a href="{% url 'account' %}">My account</a>
           <a href="{% url 'logout' %}">Logout</a>
         </div>
@@ -98,13 +94,9 @@
 
 </div>
       <div class="header-right-div">
-        <a href="{% url 'about' %}"><button id="loginbutton">About</button></a>
-        <a href="{% url 'faq' %}"><button id="loginbutton">FAQ</button></a>
-        <a href="{% url 'contact' %}"><button id="loginbutton">Contact</button></a>
-        <a href="{% url 'pricing' %}"><button id="loginbutton">Pricing</button></a>
-        <div class="dropdown">
-          <button onclick="myFunction()" class="dropbtn">Hi, {{ user.email }}</button>
-          <div id="myDropdown" class="dropdown-content">
+         <div class="dropdown">
+          <button  class="dropbtn">Hi, {{ user.email }}</button>
+          <div  class="dropdown-content">
             <a href="{% url 'memberhome' %}">Dashboard</a>
             <a href="{% url 'account' %}">My account</a>
             <a href="{% url 'logout' %}">Logout</a>

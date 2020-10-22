@@ -20,8 +20,7 @@
 
     <!----------- Search container ------------->
     <!------------------------------------------>
-
-
+    
             <div id="search_div" >
               <h1>Your Fundamental Analysis Tool</h1>
               <h2 class="search-h2" >An easy way to read company filings including 10-K, 10-Q and Proxy statements.</h2>
@@ -42,28 +41,28 @@
               <h3>One-Click Filings</h3>
               <h4 class="guide-main-div-h4">Go directly to a filing with just one click</h4>
               <table class="guide-main-div-table" >
-                  <tbody><tr class="guide-main-table-row" onclick="window.location.href='#HBKA'">
+                  <tbody><tr class="guide-main-table-row" onclick="window.location.href='/filing/?q=HBKA&fid=all'">
                       <td>HBKA</td><td>10-Q</td><td>Highlands Bankshares</td><td>2018-09-30</td>
                   </tr>
-                  <tr class="guide-main-table-row" onclick="window.location.href='#NVT'">
+                  <tr class="guide-main-table-row" onclick="window.location.href='/filing/?q=NVT&fid=all'">
                       <td>NVT</td><td>10-Q</td><td>nVent Electric</td><td>2018-09-30</td>
                   </tr>
-                  <tr class="guide-main-table-row" onclick="window.location.href='#TSLA'">
+                  <tr class="guide-main-table-row" onclick="window.location.href='/filing/?q=TSLA&fid=all'">
                       <td>TSLA</td><td>10-K</td><td>Tesla</td><td>2017-12-31</td>
                   </tr>
-                  <tr class="guide-main-table-row" onclick="window.location.href='#GPK'">
+                  <tr class="guide-main-table-row" onclick="window.location.href='/filing/?q=GPK&fid=all'">
                       <td>GPK</td><td>10-K</td><td>Graphic Packaging Holding</td><td>2018-09-30</td>
                   </tr>
-                  <tr class="guide-main-table-row" onclick="window.location.href='#KFY'">
+                  <tr class="guide-main-table-row" onclick="window.location.href='/filing/?q=KFY&fid=all'">
                       <td>KFY</td><td>10-Q</td><td>Korn Ferry</td><td>2018-07-31</td>
                   </tr>
-                  <tr class="guide-main-table-row" onclick="window.location.href='#EVRI'">
+                  <tr class="guide-main-table-row" onclick="window.location.href='/filing/?q=EVRI&fid=all'">
                       <td>EVRI</td><td>10-Q</td><td>Everi Holdings</td><td>2018-09-30</td>
                   </tr>
-                  <tr class="guide-main-table-row" onclick="window.location.href='#GARS'">
+                  <tr class="guide-main-table-row" onclick="window.location.href='/filing/?q=GARS&fid=all'">
                       <td>GARS</td><td>10-K</td><td>Garrison Capital</td><td>2018-09-30</td>
                   </tr>
-                  <tr class="guide-main-table-row" onclick="window.location.href='#PEBK'">
+                  <tr class="guide-main-table-row" onclick="window.location.href='/filing/?q=PEBK&fid=all'">
                       <td>PEBK</td><td>10-K</td><td>Peoples Bancorp of North Carolina</td><td>2018-09-30</td>
                   </tr>
               </tbody></table>
@@ -87,6 +86,7 @@
     <div class="footer-div">
         <div class="main-div" style="position: relative;">
           <div class="price-div" >
+            {% if not user.is_authenticated %}
             <span class ="footer-span" >Just $29/month</span>
             <br/>
             <span class="footer-span-two" >Paid monthly. Cancel anytime.</span>
@@ -98,7 +98,18 @@
         <div class="sign_up_div">
                 <a href="{% url 'register' %}"><button class="footerbutton">Get Started</button></a>
             </div>
-          </div>
+        </div>
+       
+            {% else %}
+            <div class="price-div1" >
+            <span class ="footer-span1" > <a href="{% url 'about' %}"><button id="loginbutton">About</button></a>
+                <a href="{% url 'faq' %}"><button id="loginbutton">FAQ</button></a>
+                <a href="{% url 'contact' %}"><button id="loginbutton">Contact</button></a>
+                <a href="{% url 'pricing' %}"><button id="loginbutton">Pricing</button></a>
+              </span>
+            </div>
+              {% endif %}
+          
         </div>
       </div>
 {% endblock %}

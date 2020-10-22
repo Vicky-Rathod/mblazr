@@ -233,6 +233,8 @@ box-sizing: border-box;
 .dropdown {
   position: relative;
   display: inline-block;
+
+  right: calc(50% - 150px);
 }
 
 .dropdown-content {

@@ -1,5 +1,13 @@
 .autocomplete{
-    height: 300px; 
+    height: 300px;
+    left: 245px;
+
+}
+@media only screen and (max-width: 1100px){
+.autocomplete {
+    height: 300px;
+    left: 0px;
+}
 }
 .autocomplete input {
     padding: 10px;

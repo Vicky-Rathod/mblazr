@@ -24,54 +24,35 @@
             <div id="search_div" >
               <h1>Your Fundamental Analysis Tool</h1>
               <h2 class="search-h2" >An easy way to read company filings including 10-K, 10-Q and Proxy statements.</h2>
-              <h2 class="search-h2" >Take a test drive with Home Depot (HD)</h2>
-          </div>
+              <h2 class="search-h2" >Take a test drive with Tesla (TSLA)</h2>
+ 
+              <form class="autocomplete col-md-6 mx-auto" autocomplete="off" action="" name="searchForm">
+         
+                <div class="search-div0" >
+                  <div class="search-t0" ></div>
+                  {% if user.is_authenticated %}
+                  <input id="myInput" autocomplete="off" type="text"  spellcheck="false" placeholder="Search (ticker, company)" autofocus="">
+                  <div class="search-symbol-div">
+                      <div class="symbol-div">
+                          ⚲
+                      </div>
+                  </div>
+                  {% else %}
+                  <input id="myInput" autocomplete="off" type="text"  spellcheck="false" placeholder="Search (ticker, company)" autofocus="" value="TSLA">
+                  <div class="search-symbol-div">
+                      <div class="symbol-div">
+                          ⚲
+                      </div>
+                  </div>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="search_results_div"></div>
+              </form>
+            </div>
         
 
  
-        <div class="guide-div" >
-          <div class="table-box">
-              <div class="guide-option-div">
-                  One-Click Filings
-                  <div class="guide-option-div2" >&gt;</div>
-              </div>
-         
-          </div>
-          <div class="guide-main-div" >
-              <h3>One-Click Filings</h3>
-              <h4 class="guide-main-div-h4">Go directly to a filing with just one click</h4>
-              <table class="guide-main-div-table" >
-                  <tbody><tr class="guide-main-table-row" onclick="window.location.href='/filing/?q=HBKA&fid=all'">
-                      <td>HBKA</td><td>10-Q</td><td>Highlands Bankshares</td><td>2018-09-30</td>
-                  </tr>
-                  <tr class="guide-main-table-row" onclick="window.location.href='/filing/?q=NVT&fid=all'">
-                      <td>NVT</td><td>10-Q</td><td>nVent Electric</td><td>2018-09-30</td>
-                  </tr>
-                  <tr class="guide-main-table-row" onclick="window.location.href='/filing/?q=TSLA&fid=all'">
-                      <td>TSLA</td><td>10-K</td><td>Tesla</td><td>2017-12-31</td>
-                  </tr>
-                  <tr class="guide-main-table-row" onclick="window.location.href='/filing/?q=GPK&fid=all'">
-                      <td>GPK</td><td>10-K</td><td>Graphic Packaging Holding</td><td>2018-09-30</td>
-                  </tr>
-                  <tr class="guide-main-table-row" onclick="window.location.href='/filing/?q=KFY&fid=all'">
-                      <td>KFY</td><td>10-Q</td><td>Korn Ferry</td><td>2018-07-31</td>
-                  </tr>
-                  <tr class="guide-main-table-row" onclick="window.location.href='/filing/?q=EVRI&fid=all'">
-                      <td>EVRI</td><td>10-Q</td><td>Everi Holdings</td><td>2018-09-30</td>
-                  </tr>
-                  <tr class="guide-main-table-row" onclick="window.location.href='/filing/?q=GARS&fid=all'">
-                      <td>GARS</td><td>10-K</td><td>Garrison Capital</td><td>2018-09-30</td>
-                  </tr>
-                  <tr class="guide-main-table-row" onclick="window.location.href='/filing/?q=PEBK&fid=all'">
-                      <td>PEBK</td><td>10-K</td><td>Peoples Bancorp of North Carolina</td><td>2018-09-30</td>
-                  </tr>
-              </tbody></table>
-          </div>
-      
-        
-      </div>
-
-
 
    
    
@@ -83,35 +64,7 @@
  <!----------- Footer ----------------------->
     <!------------------------------------------>
    
-    <div class="footer-div">
-        <div class="main-div" style="position: relative;">
-          <div class="price-div" >
-            {% if not user.is_authenticated %}
-            <span class ="footer-span" >Just $29/month</span>
-            <br/>
-            <span class="footer-span-two" >Paid monthly. Cancel anytime.</span>
-            <br/>
-            <div class="terms-policy" >
-                <a href="#terms" >Terms</a>
-                <a href="#privacy" >Privacy</a>
-            </div>
-        <div class="sign_up_div">
-                <a href="{% url 'register' %}"><button class="footerbutton">Get Started</button></a>
-            </div>
-        </div>
-       
-            {% else %}
-            <div class="price-div1" >
-            <span class ="footer-span1" > <a href="{% url 'about' %}"><button id="loginbutton">About</button></a>
-                <a href="{% url 'faq' %}"><button id="loginbutton">FAQ</button></a>
-                <a href="{% url 'contact' %}"><button id="loginbutton">Contact</button></a>
-                <a href="{% url 'pricing' %}"><button id="loginbutton">Pricing</button></a>
-              </span>
-            </div>
-              {% endif %}
-          
-        </div>
-      </div>
+
 {% endblock %}
 
 {% block script %}

@@ -159,7 +159,7 @@ class TOCAlternativeExtractor(object):
             else:
                 tag_text = tag_text.title()
             
-            tag_text = tag_text.replace('.', ', ').replace('  ', ' ').strip(' . ')
+            tag_text = tag_text.replace('.', '. ').replace('  ', ' ').strip(' . ')
 
             exhbit_text = tag_text.lower().replace('.', ' - ').replace('  ', ' ').strip(' - ')
 

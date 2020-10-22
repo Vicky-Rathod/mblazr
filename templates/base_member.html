@@ -76,7 +76,6 @@
           <a href="{% url 'faq' %}">FAQ</a>
           <a href="{% url 'contact' %}">Contact</a>
           <a href="{% url 'pricing' %}">Pricing</a>
-          <a href="{% url 'memberhome' %}">Dashboard</a>
           <a href="{% url 'account' %}">My account</a>
           <a href="{% url 'logout' %}">Logout</a>
         </div>
@@ -97,14 +96,17 @@
    
 
 </div>
+<div class="menu-options">
+  <a href="{% url 'about' %}"><button id="loginbutton">About</button></a>
+  <a href="{% url 'faq' %}"><button id="loginbutton">FAQ</button></a>
+  <a href="{% url 'contact' %}"><button id="loginbutton">Contact</button></a>
+  <a href="{% url 'pricing' %}"><button id="loginbutton">Pricing</button></a>
+</div>
       <div class="header-right-div">
-        <a href="{% url 'about' %}"><button id="loginbutton">About</button></a>
-        <a href="{% url 'faq' %}"><button id="loginbutton">FAQ</button></a>
-        <a href="{% url 'contact' %}"><button id="loginbutton">Contact</button></a>
-        <a href="{% url 'pricing' %}"><button id="loginbutton">Pricing</button></a>
-        <div class="dropdown">
-          <button onclick="myFunction()" class="dropbtn">Hi, {{ user.email }}</button>
-          <div id="myDropdown" class="dropdown-content">
+       
+         <div class="dropdown">
+          <button  class="dropbtn">Hi, {{ user.email }}</button>
+          <div  class="dropdown-content">
             <a href="{% url 'memberhome' %}">Dashboard</a>
             <a href="{% url 'account' %}">My account</a>
             <a href="{% url 'logout' %}">Logout</a>
@@ -115,35 +117,10 @@
 
 
 
-<!----------- Search container ------------->
-<!------------------------------------------>
 
 
-                
-      <div class="search-wrapper-div">
-        <form class="autocomplete" autocomplete="off" action="" name="searchForm">
+
      
-        <div class="search-div0" >
-          <div class="search-t0" ></div>
-          {% if user.is_authenticated %}
-          <input id="myInput" autocomplete="off" type="text"  spellcheck="false" placeholder="Search (ticker, company)" autofocus="">
-          <div class="search-symbol-div">
-              <div class="symbol-div">
-                  ⚲
-              </div>
-          </div>
-          {% else %}
-          <input id="myInput" autocomplete="off" type="text"  spellcheck="false" placeholder="Search (ticker, company)" autofocus="" value="TSLA">
-          <div class="search-symbol-div">
-              <div class="symbol-div">
-                  ⚲
-              </div>
-          </div>
-          {% endif %}
-        </div>
-      </div>
-      <div class="search_results_div"></div>
-      </form>
   </div>
       <!------------------------------------------>
     <!----------- Top Navigation bar ----------->

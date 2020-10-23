@@ -21,30 +21,44 @@ class TOCAlternativeExtractor(object):
     
     exhibit_end = -1
 
+    html = ''
+
     def extract(self, url):
 
         with open(url) as file:
             html = file.read()
+            self.html = html
         
         self.url = url
 
         links = self._get_alternative_links(html)
 
-        links += self._get_exhibits(html)
+        links += self._get_exhibits(self.html)
 
         data = Namespace(table=links)
+
+        self.save_html(self.html)
 
         return data
 
     def _get_exhibits(self, html):
 
-        if self.exhibit_end == -1: return ""
+        exhibit_end = html.find('exhibits="true"')
+
+        if exhibit_end == -1:
+            exhibit_end = html.find("exhibits='true'")
         
-        html = html.replace( html[:self.exhibit_end], '')
+        if exhibit_end == -1: return ""
+            
+        html = html.replace( html[:exhibit_end], '')
 
         soup = BeautifulSoup(html, features='lxml')
 
         exhibits = ""
+
+        distinct_exhibits = []
+
+        exhibit_counter = 1
 
         for link in soup.find_all('a'):
 
@@ -56,8 +70,14 @@ class TOCAlternativeExtractor(object):
 
             href = link.get('href')
 
-            if href:
-                exhibits += f"<a href='{href}' class='exhibit-link' target='_blank'>{link_text}</a>"
+            if href and href not in distinct_exhibits:
+
+                href_text = href.split('/')[-1]
+
+                exhibits += f"<a href='{href}' class='exhibit-link' target='_blank'>EX-{exhibit_counter} {href_text}</a>"
+                distinct_exhibits.append(href)
+
+                exhibit_counter += 1
 
         if not exhibits:
             return ''
@@ -138,20 +158,23 @@ class TOCAlternativeExtractor(object):
                 tag_text = tag_text.upper()
             else:
                 tag_text = tag_text.title()
+            
+            tag_text = tag_text.replace('.', '. ').replace('  ', ' ').strip(' . ')
 
             exhbit_text = tag_text.lower().replace('.', ' - ').replace('  ', ' ').strip(' - ')
 
             if 'exhibit' in exhbit_text and self.exhibit_end == -1:
-                self.exhibit_end = html.find(str(tag))
+                tag['exhibits'] = 'true'
+                self.exhibit_end = 1
 
             id_counter += 1
 
             if id_counter == num_of_headings and self.exhibit_end == -1:
-                self.exhibit_end = html.find(str(tag))
+                tag['exhibits'] = 'true'
             
             new_soup += f"<a href='#{tag_id}' class='{tag_class}-link'>{tag_text}</a>" 
-
-        self.save_html(str(modified_soup.body).replace('[[REMOVED_TABLE]]', default_table).replace('<body>', '').replace('</body>', ''))
+        
+        self.html = str(modified_soup.body).replace('[[REMOVED_TABLE]]', default_table)
 
         return new_soup
 
@@ -159,9 +182,10 @@ class TOCAlternativeExtractor(object):
 
         text = html
 
-        start = text.index("SECURITIES AND EXCHANGE COMMISSION")
+        start = text.find("SECURITIES AND EXCHANGE COMMISSION")
 
-        text = text[start:]
+        if start != -1:
+            text = text[start:]
 
         pattern = re.compile(
             r'<a.+href="([\S]+)".*>Table of Contents.*</a>', re.IGNORECASE)
@@ -193,7 +217,7 @@ class TOCAlternativeExtractor(object):
 
         end_pos = text.lower().find('</table>')
         
-        if pos != -1 or end_pos != -1:
+        if pos != -1 and end_pos != -1:
             text = text[:end_pos+8]
         
         else:

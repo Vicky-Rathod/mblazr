@@ -450,6 +450,7 @@
     .filedate:hover{
       background-color:#d8ecf3;
     }
+  
     #search-icon{
         font-size:1.8em;
         font-weight:bolder;
@@ -459,6 +460,9 @@
         -o-transform: rotate(45deg);
         transform: rotate(45deg);
     }
+     #searchformsmall{
+         display:none;
+     }
 
     #searchform{
    position:relative;
@@ -553,4 +557,4 @@
  }
   #table_filing .print{
   display:none;
-  }git
+  }

@@ -33,11 +33,13 @@ table.table_nav td:hover {cursor:pointer;}
   float: left;
   padding-left: 243px;
   font-size: large;
+  margin-top: -10px;
 }
 .menu-options1 {
   float: left;
   padding-left: 214px;
   font-size: large;
+  margin-top: -10px;
 }
 .keyboard_shortcut_wrapper {height:30px;text-align:center;vertical-align:center;line-height:30px;width:40px;margin-left:5px;background-color:#DDD;color:#000;float:left;border-radius:5px;}
 .keyboard_shortcut_letter {font-family:"Courier New";font-size:24px;font-weight:600;}
@@ -69,7 +71,7 @@ table.table_nav td:hover {cursor:pointer;}
       padding: 0px;}
     .guide-div {display:none;}
     
-    .header-div {margin:0px;padding:0px;height:65px;border:none;background-color:#FFF; margin-top: 35px;}
+    .header-div {margin:auto;padding:0px;height:65px;border:none;background-color:#FFF; margin-top: 35px;}
     .header-right-div {display:none;}
     
     .header-left-div {display:none;}
@@ -104,7 +106,7 @@ table.table_nav td:hover {cursor:pointer;}
     #search_div {    width: 80%;
       padding-top: 100px;
       margin: auto;
-      margin-top: 100px;
+      margin-top: 42px;
       height: 400px;
      text-align:center;background-image:linear-gradient(#ffffff,#ffffff);color:#000;
       -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
@@ -121,7 +123,7 @@ table.table_nav td:hover {cursor:pointer;}
       font-size: large;
   }
     .mobilev{display: none;}
-    .header-left-div {padding-top: 28px;    padding-left: 176px;
+    .header-left-div {padding-top: 28px;    padding-left: 140px;
      
   }
 
@@ -208,11 +210,11 @@ font-size:10pt;margin:0 auto;
 }
 nav div h2{
 float: left;
-letter-spacing: 3px;
-margin-top: -34px;
+
+margin-top: -28px;
 margin-left: 14px;
 font-family: Tahoma,Geneva,sans-serif;   
-font-weight: 700; 
+font-weight: 500; 
 font-size: 2.5em; 
 color: #72c1fb;
 }

@@ -9,7 +9,7 @@ from django import forms
 class ContactForm(forms.Form):
   name = forms.CharField(required=True, label='Name')
   email = forms.EmailField(required=True, label='Email')
-  message = forms.CharField(required=True, widget=forms.Textarea(), label='Mssg')
+  message = forms.CharField(required=True, widget=forms.Textarea(attrs={'rows':3, 'cols':40}), label='Mssg')
 
   def __init__(self, *args, **kwargs):
     super(ContactForm, self).__init__(*args, **kwargs)

@@ -571,10 +571,12 @@ document.addEventListener('DOMContentLoaded',function(){
         })  
       
         $( ".section document-view-section div" ).eq(1).after('<div id="doc-head"></div>')
-      
 
+        //strip all unnecesary charaters in document
 
-
+        document.querySelectorAll('.document-view-section')[0].replace('\n','')
+          document.querySelectorAll('.document-view-section')[0].replace('\t','')
+          document.querySelectorAll('.document-view-section')[0].replace("b'\","")
 
         })
         

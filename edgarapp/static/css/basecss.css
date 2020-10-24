@@ -117,7 +117,7 @@ table.table_nav td:hover {cursor:pointer;}
     .search-wrapper-div {position:absolute;left:calc(50% - 300px);width:500px;    margin-top: -10px;}
     .search_results_div {width:100%;text-align:left;margin:0;padding:0;border:2px #72c1fb solid;border-radius:5px;display:none;background-color:white;color:#000;}
     #search_results_td_div {border:none;border-left:0px;border-right:0px;padding:30px;}
-    .header-right-div {     margin: -46px 80px;
+    .header-right-div {margin: -46px 102px;
       float: right;
       color: #000;
       font-size: large;

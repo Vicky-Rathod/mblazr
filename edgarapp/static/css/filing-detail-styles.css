@@ -447,7 +447,7 @@
     }
     #filings-section-list tbody tr:first-child{
         color:black;
-         background-color:#f3e5d8;
+
 
     }
     .filedate:hover{
@@ -545,13 +545,14 @@
  }
  .toc{
 
-     position:relative;
-     top:1vh;
+      position:relative;
+     top:0.9vh;
      left:0%;
      height:95vh;
       max-height:95vh;
       overflow-y:scroll;
-
+     padding :0px;
+     margin-left :0px;
 
  }
   #fixed-content-filing{

@@ -142,8 +142,6 @@ class TOCAlternativeExtractor(object):
 
             tag_text_lower = tag_text.lower()
 
-            print(tag_text)
-
 
             split_text = tag_text_lower.split()
 

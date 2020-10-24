@@ -112,9 +112,9 @@ class TOCAlternativeExtractor(object):
 
             style_text = tag.get('style')
 
-            if not ('font-weight:700' in style_text or 'font-weight:bold' in style_text or 'font-weight:800' in style_text or 'font-weight:900' in style_text):
+            if not ('font-weight:700' in style_text or 'font-weight:bold' in style_text or 'font-weight:800' in style_text or 'font-weight:900' in style_text or 'font-weight: 700' in style_text or 'font-weight: bold' in style_text or 'font-weight: 800' in style_text or 'font-weight: 900' in style_text ):
                 return False
-            
+                        
             split_text = tag_text.split()
 
             if len(split_text) <= 1:
@@ -134,21 +134,43 @@ class TOCAlternativeExtractor(object):
 
         num_of_headings = len(list(headings))
 
+        headings_list = []
+
         for tag in headings:
             
-            tag_text = tag.get_text()
+            tag_text = tag.get_text().strip().replace('&nbsp;', ' ').replace('\n', '')
 
-            split_text = tag_text.lower().split()
+            tag_text_lower = tag_text.lower()
+
+
+            split_text = tag_text_lower.split()
 
             if split_text[0] == 'item' and split_text[1][-1] == '.':
+
                 for t in tag.parents:
+
                     if t.name == 'tr':
-                        tag_text = t.get_text()
+                        tag_text = t.get_text().strip().replace('&nbsp;', ' ').replace('\n', '')
+                        tag_text_lower = tag_text.lower()
                         break
                     elif t.name == 'body':
                         break
 
-            tag_first_word = tag_text.split()[0].lower()
+            if tag_text_lower in headings_list:
+                continue
+
+            link_found = False
+
+            for link in headings_list:
+                if link.startswith(tag_text_lower) and link != 'part i' and link != 'part ii':
+                    link_found = True
+
+            if link_found:
+                continue
+
+            headings_list.append(tag_text_lower)
+                
+            tag_first_word = tag_text_lower.split()[0]
             tag_class = tag_first_word if tag_first_word != 'items' else 'item'
             tag_id = tag_first_word + str(id_counter)
 
@@ -158,10 +180,10 @@ class TOCAlternativeExtractor(object):
                 tag_text = tag_text.upper()
             else:
                 tag_text = tag_text.title()
-            
+
             tag_text = tag_text.replace('.', '. ').replace('  ', ' ').strip(' . ')
 
-            exhbit_text = tag_text.lower().replace('.', ' - ').replace('  ', ' ').strip(' - ')
+            exhbit_text = tag_text_lower.replace('.', ' - ').replace('  ', ' ').strip(' - ')
 
             if 'exhibit' in exhbit_text and self.exhibit_end == -1:
                 tag['exhibits'] = 'true'
@@ -170,9 +192,10 @@ class TOCAlternativeExtractor(object):
             id_counter += 1
 
             if id_counter == num_of_headings and self.exhibit_end == -1:
-                tag['exhibits'] = 'true'
+                tag['exhibits'] = 'true'            
             
-            new_soup += f"<a href='#{tag_id}' class='{tag_class}-link'>{tag_text}</a>" 
+            new_soup += f"<a href='#{tag_id}' class='{tag_class}-link'>{tag_text}</a>"
+            
         
         self.html = str(modified_soup.body).replace('[[REMOVED_TABLE]]', default_table)
 

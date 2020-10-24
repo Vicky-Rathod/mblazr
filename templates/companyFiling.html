@@ -571,12 +571,44 @@ document.addEventListener('DOMContentLoaded',function(){
         })  
       
         $( ".section document-view-section div" ).eq(1).after('<div id="doc-head"></div>')
-      
+
+        //strip all unnecesary charaters in document
+
+       let ns = document.querySelectorAll('.document-view-section')[0]
+       ns.innerHTML.replace('\n','')
+       let ts=   document.querySelectorAll('.document-view-section')[0]
+       ts.innerHTML.replace('\t','')
+        let bs=  document.querySelectorAll('.document-view-section')[0]
+        bs.innerHTML.replace("b'\'",'')
+
+        })
+
+        //track which filing has been clicked on
+
+        let filingslinks = document.querySelectorAll('.filedate')
+        let filingvalue = window.location.href.split('&')[1].split('=')[1]
+
+        if(filingvalue==='all'){
+  console.log("this is working")
+     let row =document.querySelector('#filings-section-list').querySelector('tbody').querySelectorAll('tr')[0]
+      row.style.backgroundColor='#f3e5d8';
+       }else{
+            filingslinks.forEach((filing)=>{
+            if(filing.outerHTML.search(filingvalue)>-1){
+
+
+               filing.setAttribute('style','background-color:#f3e5d8')
+            }
 
 
 
 
         })
+
+
+        }
+
+
         
 
    

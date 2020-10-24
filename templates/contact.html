@@ -1,123 +1,70 @@
 <!-- contact.html -->
 <!-- @radiasl for ExarNorth -->
+<!-- home.html -->
+<!-- @radiasl for ExarNorth -->
 
 {% extends extended_template %}
 {% load static %}
 
 {% block head %}
-  <title>Contact</title>
-  <link rel="stylesheet" href="../../static/bootstrap/css/forms.css">
-  <style type="text/css">
-    .formContent {
-      -webkit-border-radius: 10px 10px 10px 10px;
-      border-radius: 10px 10px 10px 10px;
-      background: #fff;
-      padding: 30px;
-      width: 90%;
-      position: relative;
-    }
-    .form-signin {
-      padding: 15px 35px 45px;
-      margin: 0 auto;
-      background-color: #fff;
+<title>mBlazr Contact</title>
+<script type="text/javascript" src="{% static 'js/autocomplete.js' %}"></script>
 
-      .form-signin-heading,
-      .checkbox {
-        margin-bottom: 30px;
-      }
-      .checkbox {
-        font-weight: normal;
-      }
-      .form-control {
-        position: relative;
-        font-size: 16px;
-        height: auto;
-        padding: 10px;
-        @include box-sizing(border-box);
-        &:focus {
-          z-index: 2;
-        }
-      }
-      input[type="text"], input[type="email"], textarea {
-        background-color: #f6f6f6;
-        color: #0d0d0d;
-        text-decoration: none;
-        margin-bottom: -1px;
-        font-size: 13px;
-        width: 85%;
-        display: inline-block;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-      }
-      input[type="password"] {
-        background-color: #f6f6f6;
-        color: #0d0d0d;
-        text-decoration: none;
-        margin-bottom: 20px;
-        font-size: 13px;
-        width: 85%;
-        display: inline-block;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-      }
-      input[type=text]:focus, input[type="email"]:focus, textarea:focus {
-        background-color: #fff;
-        border-bottom: 2px solid #5fbae9;
-      }
-      input[type=text]:placeholder, input[type="email"]:placeholder, textarea:placeholder {
-        color: #cccccc;
-      }
-    }
-    @media(max-width: 500px){
-      footer{
-        height: 130px !important;
-        padding-bottom: 10px;
-        padding-top: 10px;
-      }
-    }
-  </style>
+<link href="{% static 'css/autocomplete.css' %}" rel="stylesheet" >
+<link href="{% static 'css/home-styles.css' %}" rel="stylesheet" >
+<link href="{% static 'css/homecss.css' %}" rel="stylesheet" >
+<link href="{% static 'css/contactcss.css' %}" rel="stylesheet" >
 {% endblock %}
+
 
 {% block content %}
-  <div class="container">
-    <h2>&nbsp;</h2>
-    <div class="jumbotron">
 
-      <center><h2>Contact</h2>
-        <!-- Confirmation message -->
-        {% if messages %}
-          <ul class="messages">
-              {% for message in messages %}
-              <p {% if message.tags %} class="{{ message.tags }}"{% endif %} style="color:green;">{{ message }}</p>
-              {% endfor %}
-          </ul>
-        {% endif %}
-        <h4>&nbsp;</h4>
-      </center>
 
-      <!-- Form -->
-      <div class = "wrapper">
-        <div class = "formContent">
-          <form class="form-signin" method="post" action="" role="form" enctype = "multipart/form-data" style="margin-top:-30px; margin-bottom:-18px;" align="center">
-            <fieldset>
-              {% csrf_token %}
-              <br>{{ form.name.label }}{{ form.name }}
-              <br>{{ form.email.label }}{{ form.email }}
-              <br><a style="visibility:hidden;">{{ form.message.label }}</a>{{ form.message }}
-              <br>
-              <input class="btn btn-lg btn-primary" type="submit" value="Send"/>
-            </fieldset>
-          </form>
-        </div>
-      </div>
 
-    </div>
-
-    <!--------------- Footer ------------------->
+    <!----------- Search container ------------->
     <!------------------------------------------>
-    <footer>
-    </footer>
+    
+            <div id="search_div_contact" >
+              <h1>Contact</h1>
+              <br>
+              <form method="post" action="" role="form" enctype = "multipart/form-data" style="margin-top:-30px; margin-bottom:-18px;" align="center">
+                <fieldset>
+                  {% csrf_token %}
+                  <br>{{ form.name.label }}{{ form.name }}
+                  <br>{{ form.email.label }}{{ form.email }}
+                  <br><a style="visibility:hidden;">{{ form.message.label }}</a>{{ form.message }}
+                  <br>
+                  <input class="btn btn-lg btn-primary" type="submit" value="Send"/>
+                </fieldset>
+              </form>
+    
+       
+              </div>
+            
+             
+            </div>
+        
 
-  </div>
+ 
+
+   
+   
+
+
+
+      </div>
+    </div>
+ <!----------- Footer ----------------------->
+    <!------------------------------------------>
+   
 
 {% endblock %}
+
+{% block script %}
+<!-- <script src="../../static/bootstrap/js/formautocomplete.js"></script> -->
+{% endblock %}
+
+
+
+
+

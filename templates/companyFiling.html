@@ -59,27 +59,7 @@
 
 
         </div>
-          <div id="smallsearchbar">
-              <form  class="autocomplete m-0 searchmobile "  autocomplete="off" action="" name="searchForm">
-  <div class="row" style="width:100%">
 
-
-            <input type="text" class=" col-md-10" autocomplete="off" id="myInput" spellcheck="false" placeholder="Search (ticker)">
-                  <button class="col-md-2" type="submit" id="myBtn" disabled>
-                      <div id="search-icon" >
-                        &#9906;
-                      </div>
-
-                       </button>
-
-           </div>
-
-
-
-
-
-        </form>
-          </div>
 
       </div>
 
@@ -92,20 +72,6 @@
       <div class="col-md-3 section firstsec" id="1st"  style="height: 100%;">
         <!-- <div style="position: fixed; z-index: 1;"> -->
 
-        <form  class="autocomplete m-0 " id="searchform" autocomplete="off" action="" name="searchForm">
-          <div class="row" style="width:100%">
-
-
-            <input type="text" class=" col-md-10" autocomplete="off" id="myInput" spellcheck="false" placeholder="Search (ticker)">
-                  <button class="col-md-2" type="submit" id="myBtn" disabled>
-                      <div id="search-icon" >
-                        &#9906;
-                      </div>
-
-                       </button>
-
-           </div>
-        </form>
 
 
     <!-- </div> -->
@@ -428,6 +394,21 @@ document.addEventListener('DOMContentLoaded',function(){
             </script>
 
 
+  <form  class="autocomplete m-0 " id="searchform" autocomplete="off" action="" name="searchForm">
+          <div class="row" style="width:100%">
+
+
+            <input type="text" class=" col-md-10" autocomplete="off" id="myInput" spellcheck="false" placeholder="Search (ticker)">
+                  <button class="col-md-2" type="submit" id="myBtn" disabled>
+                      <div id="search-icon" >
+                        &#9906;
+                      </div>
+
+                       </button>
+
+           </div>
+        </form>
+
 
       <section id="filings-section-list" >
 
@@ -436,8 +417,7 @@ document.addEventListener('DOMContentLoaded',function(){
           <table class=" table-hover ">
               <div id="fixed-content-filing">
 
-
-                     <div id="companyname" class="text-center center">{{ object_list.1.0 }}</div>
+               <div id="companyname" class="text-center center">{{ object_list.1.0 }}</div>
                   <div id="buttons-file-sec" >
                       <button id="myBtn1" class="btn btn-sm ">Funds</button>
                       <button id="myBtn2" class="btn btn-sm  ">Directors</button>
@@ -561,7 +541,7 @@ document.addEventListener('DOMContentLoaded',function(){
         let showfilings_btn = document.querySelectorAll('.show_filings_btn')[0]
         let showdoc_btn = document.querySelectorAll('.show_doc_btn')[0]
         let showtoc_btn = document.querySelectorAll('.show_toc_btn')[0]
-        let smallsearchbar = document.querySelector('#smallsearchbar')
+
  
         showfilings_btn.addEventListener('click',function(){
           let shortcutsmobile =document.querySelector('#shortcuts-mobile')      
@@ -569,7 +549,7 @@ document.addEventListener('DOMContentLoaded',function(){
           doc_preview.style.display = 'none'
           toc.style.display= 'none'
           shortcutsmobile.style.display='none'
-          smallsearchbar.style.display = 'block'
+
         })
         showdoc_btn.addEventListener('click',function(){
           let shortcutsmobile = document.querySelector('#shortcuts-mobile')   
@@ -578,7 +558,7 @@ document.addEventListener('DOMContentLoaded',function(){
           toc.style.display= 'none'
 
           shortcutsmobile.style.display='block'
-          smallsearchbar.style.display = 'none'
+
         })
         
         showtoc_btn.addEventListener('click',function(){
@@ -587,7 +567,7 @@ document.addEventListener('DOMContentLoaded',function(){
           doc_preview.style.display = 'none'
           toc.style.display= 'block'
           shortcutsmobile.style.display='none'
-           smallsearchbar.style.display = 'none'
+
         })  
       
         $( ".section document-view-section div" ).eq(1).after('<div id="doc-head"></div>')

@@ -460,10 +460,9 @@
         -o-transform: rotate(45deg);
         transform: rotate(45deg);
     }
-     #searchformsmall{
-         display:none;
-     }
-
+   #smallsearchbar{
+    display:none;
+   }
     #searchform{
    position:relative;
    top:1vh;
@@ -543,7 +542,7 @@
  .toc{
 
      position:relative;
-     top:1.9vh;
+     top:1vh;
      left:0%;
      height:95vh;
       max-height:95vh;

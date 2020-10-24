@@ -43,7 +43,9 @@
 
      </div>
       <div id="filing-quick-navbar-small">
-          <button class="button1 show_filings_btn">Company</button>
+          <button class="button1 show_filings_btn">Company
+          </button>
+
           <button class="center-btn show_doc_btn">Mblazr</button>
           <button class="button2 show_toc_btn">Filing</button>
           <div id="shortcuts-mobile" >
@@ -57,6 +59,27 @@
 
 
         </div>
+          <div id="smallsearchbar">
+              <form  class="autocomplete m-0 searchmobile "  autocomplete="off" action="" name="searchForm">
+  <div class="row" style="width:100%">
+
+
+            <input type="text" class=" col-md-10" autocomplete="off" id="myInput" spellcheck="false" placeholder="Search (ticker)">
+                  <button class="col-md-2" type="submit" id="myBtn" disabled>
+                      <div id="search-icon" >
+                        &#9906;
+                      </div>
+
+                       </button>
+
+           </div>
+
+
+
+
+
+        </form>
+          </div>
 
       </div>
 
@@ -65,6 +88,7 @@
       <!--------------------------------------->
       <!----------- 1st column ---------------->
       <!------------ LEFT MENU ---------------->
+
       <div class="col-md-3 section firstsec" id="1st"  style="height: 100%;">
         <!-- <div style="position: fixed; z-index: 1;"> -->
 
@@ -411,23 +435,8 @@ document.addEventListener('DOMContentLoaded',function(){
 
           <table class=" table-hover ">
               <div id="fixed-content-filing">
-                <form class="autocomplete m-0 " id="searchformsmall" autocomplete="off" action="" name="searchForm">
-                            <div class="row" style="width:100%">
 
 
-            <input type="text" class=" col-md-10" autocomplete="off" id="myInput" spellcheck="false" placeholder="Search (ticker)">
-                  <button class="col-md-2" type="submit" id="myBtn" disabled="">
-                      <div id="search-icon">
-                        ⚲
-                      </div>
-
-                       </button>
-
-           </div>
-    
-          </form>
-
-               
                      <div id="companyname" class="text-center center">{{ object_list.1.0 }}</div>
                   <div id="buttons-file-sec" >
                       <button id="myBtn1" class="btn btn-sm ">Funds</button>
@@ -552,6 +561,7 @@ document.addEventListener('DOMContentLoaded',function(){
         let showfilings_btn = document.querySelectorAll('.show_filings_btn')[0]
         let showdoc_btn = document.querySelectorAll('.show_doc_btn')[0]
         let showtoc_btn = document.querySelectorAll('.show_toc_btn')[0]
+        let smallsearchbar = document.querySelector('#smallsearchbar')
  
         showfilings_btn.addEventListener('click',function(){
           let shortcutsmobile =document.querySelector('#shortcuts-mobile')      
@@ -559,13 +569,16 @@ document.addEventListener('DOMContentLoaded',function(){
           doc_preview.style.display = 'none'
           toc.style.display= 'none'
           shortcutsmobile.style.display='none'
+          smallsearchbar.style.display = 'block'
         })
         showdoc_btn.addEventListener('click',function(){
           let shortcutsmobile = document.querySelector('#shortcuts-mobile')   
           fillinglist.style.display = 'none'
           doc_preview.style.display = 'block'
           toc.style.display= 'none'
+
           shortcutsmobile.style.display='block'
+          smallsearchbar.style.display = 'none'
         })
         
         showtoc_btn.addEventListener('click',function(){
@@ -574,6 +587,7 @@ document.addEventListener('DOMContentLoaded',function(){
           doc_preview.style.display = 'none'
           toc.style.display= 'block'
           shortcutsmobile.style.display='none'
+           smallsearchbar.style.display = 'none'
         })  
       
         $( ".section document-view-section div" ).eq(1).after('<div id="doc-head"></div>')

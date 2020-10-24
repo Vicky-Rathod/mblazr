@@ -1,38 +1,82 @@
-<!-- about.html -->
+<!-- home.html -->
 <!-- @radiasl for ExarNorth -->
 
 {% extends extended_template %}
 {% load static %}
 
 {% block head %}
-  <title>About</title>
+<title>mBlazr About</title>
+<script type="text/javascript" src="{% static 'js/autocomplete.js' %}"></script>
+
+<link href="{% static 'css/autocomplete.css' %}" rel="stylesheet" >
+<link href="{% static 'css/home-styles.css' %}" rel="stylesheet" >
+<link href="{% static 'css/homecss.css' %}" rel="stylesheet" >
+<style>@media only screen and (min-width: 1100px){
+  #search_div {
+      width: 80%;
+      padding-top: 100px;
+      margin: auto;
+      margin-top: 42px;
+      padding-right: 25px;
+      padding-left: 25px;
+      height: 400px;
+      text-align: center;
+      background-image: linear-gradient(#ffffff,#ffffff);
+      color: #000;
+      -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+      -moz-box-shadow: 3px 3px 5px 6px #ccc;
+      box-shadow: 3px 3px 5px 6px #ccc;
+  }
+}
+  </style>
 {% endblock %}
 
+
 {% block content %}
-  <div class="container">
-    <h2>&nbsp;</h2>
 
-    <!------------- Main section --------------->
+
+
+    <!----------- Search container ------------->
     <!------------------------------------------>
-    <div class="jumbotron">
-      <center><h2>About</h2>
-      <p class="lead">"This is what we are all about.. blabla"</p></center>
-      <h2>&nbsp;</h2>
-      <p>Nullam quis risus eget <a href="#">urna mollis ornare</a> vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
-      <p><small>This line of text is meant to be treated as fine print.</small></p>
-      <p>The following snippet of text is <strong>rendered as bold text</strong>.</p>
-      <p>The following snippet of text is <em>rendered as italicized text</em>.</p>
-      <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
+    
+            <div id="search_div" >
+              <h1>About</h1>
+              <h2 class="search-h2" >"This is what we are all about.. blabla"</h2>
+              <h2 class="search-h2" >
+                Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.
 
-      <h2>&nbsp;</h2>
-      <h2>&nbsp;</h2>
+This line of text is meant to be treated as fine print.
+
+The following snippet of text is rendered as bold text.
+
+The following snippet of text is rendered as italicized text.
+
+An abbreviation of the word attribute is attr.
+
+              </h2>
+ 
+       
+              </div>
+              <div class="search_results_div"></div>
+             
+            </div>
+        
+
+ 
+
+   
+   
+
+
+
+      </div>
     </div>
-
-    <!----------- Footer ----------------------->
+ <!----------- Footer ----------------------->
     <!------------------------------------------>
-    <footer>
-    </footer>
+   
 
-  </div>
+{% endblock %}
 
+{% block script %}
+<!-- <script src="../../static/bootstrap/js/formautocomplete.js"></script> -->
 {% endblock %}

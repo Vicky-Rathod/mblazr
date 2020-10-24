@@ -546,4 +546,8 @@ def logout_view(request):
 
 
 def PlanView(request):
-    return render(request, 'plan.html')
+    extended_template = 'base.html'
+    if request.user.is_authenticated:
+        extended_template = 'base_member.html'
+    return render(request, 'plan.html',{'extended_template': extended_template,
+    })

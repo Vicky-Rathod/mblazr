@@ -8,7 +8,7 @@
 {% block head %}
   <title>{{title}}</title>
   <link rel="stylesheet" href="../../static/bootstrap/css/forms.css">
-  <link href="{% static 'css/formcss.css' %}" rel="stylesheet" >
+  <link href="{% static 'css/formscss.css' %}" rel="stylesheet" >
  
 {% endblock %}
 
@@ -16,7 +16,7 @@
 
   
           <form class="form-signin" method = 'POST' action= '' enctype = "multipart/form-data" align="center">
-            <center><img src="../../static/images/User.png" id="icon" alt="User Icon" /></center>
+            <center><h3>Sign In</h3></center>
             &nbsp;
             {% csrf_token %}
             {{ form.as_p }}

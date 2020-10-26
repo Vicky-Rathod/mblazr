@@ -31,13 +31,13 @@ table.table_nav td:hover {cursor:pointer;}
 .tr_hov {background-color:#d9e1f2;}
 .menu-options {
   float: left;
-  padding-left: 243px;
+  padding-left: 164px;
   font-size: large;
   margin-top: -10px;
 }
 .menu-options1 {
   float: left;
-  padding-left: 214px;
+  padding-left: 285px;
   font-size: large;
   margin-top: -10px;
 }
@@ -58,6 +58,9 @@ table.table_nav td:hover {cursor:pointer;}
 .q10k_tbl td {border:1px solid #72c1fb;}
 
 @media only screen and (max-width:1100px) {
+  .header-right-div-user{
+    display: none;
+  }
     h1 {font-size:2.0em;font-weight:700;padding:0;margin:0;color:#000;}
     #search_input_div {padding-left:8px;}
     .menu-options{display: none;}
@@ -79,6 +82,7 @@ table.table_nav td:hover {cursor:pointer;}
     padding: 42px 7px;
     margin: auto;
     height: 270px;
+    border-radius: 22px;
     background: linear-gradient(#ffffff,#ffffff);
       -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
       -moz-box-shadow:    3px 3px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
@@ -108,6 +112,7 @@ table.table_nav td:hover {cursor:pointer;}
       margin: auto;
       margin-top: 42px;
       height: 400px;
+      border-radius: 22px;
      text-align:center;background-image:linear-gradient(#ffffff,#ffffff);color:#000;
       -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
       -moz-box-shadow:    3px 3px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
@@ -117,11 +122,16 @@ table.table_nav td:hover {cursor:pointer;}
     .search-wrapper-div {position:absolute;left:calc(50% - 300px);width:500px;    margin-top: -10px;}
     .search_results_div {width:100%;text-align:left;margin:0;padding:0;border:2px #72c1fb solid;border-radius:5px;display:none;background-color:white;color:#000;}
     #search_results_td_div {border:none;border-left:0px;border-right:0px;padding:30px;}
-    .header-right-div {margin: -46px 102px;
+    .header-right-div {     margin: -46px 102px;;
       float: right;
       color: #000;
       font-size: large;
   }
+  .header-right-div-user {     margin: -46px 163px;;
+    float: right;
+    color: #000;
+    font-size: large;
+}
     .mobilev{display: none;}
     .header-left-div {padding-top: 28px;    padding-left: 140px;
      
@@ -134,6 +144,7 @@ table.table_nav td:hover {cursor:pointer;}
 
     
 }
+
 .navbar-brand {
 float: left;
 height: 64px;

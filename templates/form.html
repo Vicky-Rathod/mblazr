@@ -16,12 +16,12 @@
 
   
           <form class="form-signin" method = 'POST' action= '' enctype = "multipart/form-data" align="center">
-            <center><h3>Sign In</h3></center>
+            <center><h3  style="position: inherit;">Sign In</h3></center>
             &nbsp;
             {% csrf_token %}
             {{ form.as_p }}
             <br>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">{{title}}</button>
+            <button class="btn btn-lg btn-primary submit-btn" type="submit">{{title}}</button>
             <br><center>
               {% if title == "Login" %}
                 <a href = "#">Forgot your password?</a>

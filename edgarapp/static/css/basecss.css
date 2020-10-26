@@ -23,7 +23,7 @@ table.table_nav tr {line-height:20px;}
 table.table_nav {border-collapse:collapse;width:100%;}
 table.table_nav th {border:1px solid black;border-left:0px;border-right:0px;height:20px;}
 table.table_nav td {border:1px solid black;border-left:0px;border-right:0px;height:20px;}
-table.table_nav th:hover {}
+
 table.table_nav tr:hover td {background-color:#d9e1f2;}
 table.table_nav td:hover {cursor:pointer;}
 

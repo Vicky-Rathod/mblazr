@@ -18,11 +18,14 @@
           <form class="form-signin" method = 'POST' action= '' enctype = "multipart/form-data" align="center">
             <center><h3  style="position: inherit;">Sign In</h3></center>
             &nbsp;
+            <center>
             {% csrf_token %}
             {{ form.as_p }}
             <br>
             <button class="btn btn-lg btn-primary submit-btn" type="submit">{{title}}</button>
-            <br><center>
+            <br>
+          </center>
+            <center>
               {% if title == "Login" %}
                 <a href = "#">Forgot your password?</a>
                   {% if request.GET.next %}

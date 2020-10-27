@@ -23,7 +23,7 @@ table.table_nav tr {line-height:20px;}
 table.table_nav {border-collapse:collapse;width:100%;}
 table.table_nav th {border:1px solid black;border-left:0px;border-right:0px;height:20px;}
 table.table_nav td {border:1px solid black;border-left:0px;border-right:0px;height:20px;}
-
+table.table_nav th:hover {}
 table.table_nav tr:hover td {background-color:#d9e1f2;}
 table.table_nav td:hover {cursor:pointer;}
 
@@ -31,13 +31,13 @@ table.table_nav td:hover {cursor:pointer;}
 .tr_hov {background-color:#d9e1f2;}
 .menu-options {
   float: left;
-  padding-left: 164px;
+  padding-left: 106px;
   font-size: large;
   margin-top: -10px;
 }
 .menu-options1 {
   float: left;
-  padding-left: 285px;
+  padding-left: 272px;
   font-size: large;
   margin-top: -10px;
 }
@@ -110,7 +110,7 @@ table.table_nav td:hover {cursor:pointer;}
     #search_div {    width: 80%;
       padding-top: 100px;
       margin: auto;
-      margin-top: 42px;
+      margin-top: 100px;
       height: 400px;
       border-radius: 22px;
      text-align:center;background-image:linear-gradient(#ffffff,#ffffff);color:#000;
@@ -127,7 +127,7 @@ table.table_nav td:hover {cursor:pointer;}
       color: #000;
       font-size: large;
   }
-  .header-right-div-user {     margin: -46px 163px;;
+  .header-right-div-user {     margin: -46px 145px;;
     float: right;
     color: #000;
     font-size: large;

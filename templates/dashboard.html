@@ -1,30 +1,71 @@
-<!-- dashboard.html -->
+<!-- home.html -->
 <!-- @radiasl for ExarNorth -->
 
-{% extends "base_member.html" %}
+{% extends extended_template %}
 {% load static %}
+
 {% block head %}
-  <title>Dashboard</title>
+<title>mBlazr About</title>
+<script type="text/javascript" src="{% static 'js/autocomplete.js' %}"></script>
+
+<link href="{% static 'css/autocomplete.css' %}" rel="stylesheet" >
+<link href="{% static 'css/home-styles.css' %}" rel="stylesheet" >
+<link href="{% static 'css/homecss.css' %}" rel="stylesheet" >
+<style>@media only screen and (min-width: 1100px){
+  #search_div {
+      width: 80%;
+      padding-top: 100px;
+      margin: auto;
+      margin-top: 42px;
+      padding-right: 25px;
+      padding-left: 25px;
+      height: 400px;
+      text-align: center;
+      background-image: linear-gradient(#ffffff,#ffffff);
+      color: #000;
+      -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+      -moz-box-shadow: 3px 3px 5px 6px #ccc;
+      box-shadow: 3px 3px 5px 6px #ccc;
+  }
+}
+  </style>
 {% endblock %}
+
 
 {% block content %}
 
-<div class="container">
-  <h2>&nbsp;</h2>
-  <!----------- Search container ------------->
-  <!------------------------------------------>
-  <div class="jumbotron">
-    <h2>&nbsp;</h2>
-    <center><h2>Members homepage</h2>
-    <p class="lead">This page can only be seen by logged in members. Cool!</p></center>
-    <h2>&nbsp;</h2>
-    <h2>&nbsp;</h2>
-  </div>
 
-  <!----------- Footer ----------------------->
-  <!------------------------------------------>
-  <footer>
-  </footer>
 
-</div>
+    <!----------- Search container ------------->
+    <!------------------------------------------>
+    
+            <div id="search_div" >
+              <h1>DashBoard</h1>
+              <h2 class="search-h2" >"This is what we are all about.. blabla"</h2>
+            
+ 
+       
+              </div>
+              <div class="search_results_div"></div>
+             
+            </div>
+        
+
+ 
+
+   
+   
+
+
+
+      </div>
+    </div>
+ <!----------- Footer ----------------------->
+    <!------------------------------------------>
+   
+
+{% endblock %}
+
+{% block script %}
+<!-- <script src="../../static/bootstrap/js/formautocomplete.js"></script> -->
 {% endblock %}

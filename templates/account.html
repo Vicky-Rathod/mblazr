@@ -13,9 +13,9 @@
 {% block content %}
 <div id="search_div_account" >
       <center>
-        <h1>My account</h1>
-        <h2>This is your account page. You can find details about your subscriptions or change your login credentials.</h2>
-        <h2>Need to change your password?</h2>
+        <h2>My account</h2>
+        <h5 >This is your account page. You can find details about your subscriptions or change your login credentials.</h5>
+        <h5 >Need to change your password?</h5>
         <!-- Confirmation message -->
         {% if messages %}
           <ul class="messages">
@@ -27,7 +27,7 @@
       </center>
       <div class="wrapper">
         <div class = "formContent">
-          <form class="form-signin" method = 'POST' action= '' enctype = "multipart/form-data" style="margin-top:-30px;margin-bottom:-18px;" align="center">
+          <form class="form-signin" method = 'POST' action= '' enctype = "multipart/form-data" align="center">
             &nbsp;
             {% csrf_token %}
             <br>{{ form.old_password.label }}{{ form.old_password }}
